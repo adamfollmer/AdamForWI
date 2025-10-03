@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adam Follmer for Office</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom underline style for nav links */
+        .nav-underline {
+            position: relative;
+            padding-bottom: 8px;
+        }
+        .nav-underline::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: #AEE8FF;
+            transform: scaleX(0);
+            transition: transform 0.3s ease-in-out;
+        }
+        .nav-underline:hover::after {
+            transform: scaleX(1);
+        }
+        /* Custom styles for the modal to ensure it's centered and has a backdrop */
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Sticky Navigation Bar -->
+    <nav class="bg-[#073763] text-white p-4 flex items-center justify-between sticky top-0 z-50 shadow-lg">
+        <div class="flex items-center space-x-8">
+            <!-- Campaign Logo -->
+            <a href="index.html" class="flex items-center space-x-2">
+                 <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-xs text-black">Logo</div>
+            </a>
+
+            <!-- Navigation Links for larger screens -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="meetadam.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Meet Adam</a>
+                <a href="platform.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Platform</a>
+                <a href="videoseries.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Video Series</a>
+                <a href="transparency.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Transparency</a>
+            </div>
+        </div>
+
+        <div class="flex items-center">
+             <!-- Action Buttons -->
+            <div class="hidden md:flex items-center space-x-2">
+                <button id="donateBtn" class="bg-[#AEE8FF] text-[#073763] font-bold py-2 px-4 rounded-md text-xs sm:text-sm shadow-md hover:bg-white transition-colors duration-300">
+                    DON'T DONATE
+                </button>
+                <button id="involvedBtn" class="bg-[#AEE8FF] text-[#073763] font-bold py-2 px-4 rounded-md text-xs sm:text-sm shadow-md hover:bg-white transition-colors duration-300">
+                    GET INVOLVED
+                </button>
+            </div>
+            
+            <!-- Hamburger Menu Button -->
+            <div class="md:hidden ml-4">
+                <button id="hamburger-btn" class="focus:outline-none">
+                    <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#073763] text-white">
+        <a href="meetadam.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Meet Adam</a>
+        <a href="platform.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Platform</a>
+        <a href="videoseries.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Video Series</a>
+        <a href="transparency.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Transparency</a>
+        <div class="px-6 py-4 border-t border-gray-700 flex flex-col space-y-4">
+            <button id="mobileDonateBtn" class="bg-[#AEE8FF] text-[#073763] font-bold py-3 px-4 rounded-md text-sm shadow-md hover:bg-white transition-colors duration-300">
+                DON'T DONATE
+            </button>
+            <button id="mobileInvolvedBtn" class="bg-[#AEE8FF] text-[#073763] font-bold py-3 px-4 rounded-md text-sm shadow-md hover:bg-white transition-colors duration-300">
+                GET INVOLVED
+            </button>
+        </div>
+    </div>
+
+
+    <!-- Main Content -->
+    <main>
+        <!-- Section 1: Hero -->
+        <section id="home" class="bg-[#073763] text-white min-h-screen flex items-center">
+            <div class="container mx-auto px-6 py-24">
+                <div class="flex flex-col md:flex-row items-center justify-center gap-12">
+                    <!-- Headshot -->
+                    <div class="w-48 h-48 md:w-64 md:h-64 bg-gray-400 rounded-full flex-shrink-0 border-4 border-[#AEE8FF] shadow-2xl flex items-center justify-center text-gray-600">
+                        Headshot
+                    </div>
+                    <!-- Text and Logo -->
+                    <div class="text-center md:text-left">
+                        <div class="w-32 h-32 md:w-48 md:h-48 bg-gray-300 rounded-lg flex items-center justify-center text-sm text-black mx-auto md:mx-0 mb-6">Campaign Logo</div>
+                        <h1 class="text-4xl md:text-6xl font-black leading-tight tracking-tight">
+                            Fighting to restore a system that benefits the many, not the few.
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: My Mission -->
+        <section id="meet-adam" class="bg-white py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row-reverse items-center justify-center gap-12">
+                    <!-- Picture -->
+                    <div class="w-full md:w-1/2 flex justify-center">
+                         <div class="w-96 h-64 bg-gray-300 rounded-lg shadow-xl flex items-center justify-center text-gray-600">Picture</div>
+                    </div>
+                    <!-- Text Box -->
+                    <div class="w-full md:w-1/2">
+                        <h2 class="text-5xl font-bold text-[#073763] mb-6">My Mission</h2>
+                        <div class="text-lg text-gray-700 space-y-6">
+                            <p><span class="bg-[#073763] text-white p-1 rounded">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span> Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada. Curabitur sit amet quam a ex tristique euismod. Donec finibus, justo et viverra scelerisque, felis sem.</p>
+                            <p><span class="bg-[#D62828] text-white p-1 rounded">Sed ut perspiciatis unde omnis iste natus error sit.</span> Voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas. Ut enim ad minima veniam.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section: $10,000 is enough -->
+        <section id="platform" class="bg-white py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center justify-center gap-12">
+                    <!-- Text Box -->
+                    <div class="w-full md:w-1/2">
+                        <h2 class="text-5xl font-bold text-[#073763] mb-6">$10,000<br>is enough</h2>
+                        <div class="text-lg text-gray-700 space-y-6">
+                            <p><span class="bg-[#D62828] text-white p-1 rounded">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span> Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada. Curabitur sit amet quam a ex tristique euismod. Donec finibus, justo et viverra scelerisque, felis sem.</p>
+                            <p><span class="bg-[#073763] text-white p-1 rounded">Sed ut perspiciatis unde omnis iste natus error sit.</span> Voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas. Ut enim ad minima veniam.</p>
+                        </div>
+                    </div>
+                     <!-- Picture -->
+                    <div class="w-full md:w-1/2 flex justify-center">
+                         <div class="w-96 h-64 bg-gray-300 rounded-lg shadow-xl flex items-center justify-center text-gray-600">Another Picture</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 4: Footer -->
+        <footer id="transparency" class="bg-[#073763] text-white py-12">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
+                <!-- Logo and Copyright -->
+                <div class="flex items-center gap-4">
+                    <div class="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center text-xs text-black">Logo</div>
+                </div>
+                <!-- Socials -->
+                <div class="flex items-center justify-center space-x-4">
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266.058 1.644.07 4.85.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.948-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z"/></svg></a>
+                    <!-- Placeholder for other icons -->
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">Threads</a>
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">Facebook</a>
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">X</a>
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">TikTok</a>
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">Bluesky</a>
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">YouTube</a>
+                </div>
+                <!-- Contact Button -->
+                <a href="mailto:contact@adamfollmer.com" class="bg-[#AEE8FF] text-[#073763] font-bold py-2 px-4 rounded-md text-sm shadow-md hover:bg-white transition-colors duration-300">
+                    CONTACT
+                </a>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Modals -->
+    <!-- "Don't Donate" Modal -->
+    <div id="donateModal" class="fixed inset-0 w-full h-full flex items-center justify-center modal-backdrop hidden z-50">
+        <div class="bg-[#AEE8FF] text-[#073763] w-11/12 md:w-4/6 lg:w-1/2 p-8 rounded-lg shadow-2xl border-2 border-black relative transform transition-all duration-300 scale-95 opacity-0">
+            <button class="absolute top-2 right-4 text-4xl font-bold text-black hover:text-[#D62828]">&times;</button>
+            <h2 class="text-3xl md:text-4xl font-black text-center mb-4">I don’t want your money!</h2>
+            <p class="text-base md:text-lg text-center mb-6">We cannot outspend the billionaires that will use their wealth to influence our elections in both legal and illegal ways. Instead, rely on your ability to convey this campaign’s message to your friends, family, coworkers, and neighbors.</p>
+            <p class="text-lg md:text-xl font-bold text-center">We have to find a way to radically change how we engage with politics.</p>
+        </div>
+    </div>
+    
+    <!-- "Get Involved" Modal -->
+    <div id="involvedModal" class="fixed inset-0 w-full h-full flex items-center justify-center modal-backdrop hidden z-50">
+        <div class="bg-[#AEE8FF] text-[#073763] w-11/12 md:w-4/6 lg:w-1/2 p-8 rounded-lg shadow-2xl border-2 border-black relative transform transition-all duration-300 scale-95 opacity-0">
+            <button class="absolute top-2 right-4 text-4xl font-bold text-black hover:text-[#D62828]">&times;</button>
+            <h2 class="text-3xl md:text-4xl font-black text-center mb-6">No texts, no phone calls, no yard signs, no t-shirts, no door knocking.</h2>
+            <div class="text-center text-lg">
+                <p class="font-bold text-2xl mb-4">Find:</p>
+                <ul class="space-y-2 list-none">
+                    <li>Three family friends</li>
+                    <li>Three co-workers</li>
+                    <li>Three neighbors</li>
+                </ul>
+                <p class="mt-6">Have authentic conversations about the issues that impact you. Encourage them to visit this site, follow the video series and do the same.</p>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Hamburger Menu Logic ---
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            hamburgerBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+            });
+            
+            // --- Modal functionality ---
+            const donateBtn = document.getElementById('donateBtn');
+            const involvedBtn = document.getElementById('involvedBtn');
+            const mobileDonateBtn = document.getElementById('mobileDonateBtn');
+            const mobileInvolvedBtn = document.getElementById('mobileInvolvedBtn');
+
+            const donateModal = document.getElementById('donateModal');
+            const involvedModal = document.getElementById('involvedModal');
+            
+            const modals = [donateModal, involvedModal];
+
+            function openModal(modal) {
+                if (modal) {
+                    modal.classList.remove('hidden');
+                    // Use a short timeout to allow the display property to change before starting the transition
+                    setTimeout(() => {
+                        modal.querySelector('div').classList.remove('scale-95', 'opacity-0');
+                        modal.querySelector('div').classList.add('scale-100', 'opacity-100');
+                    }, 10);
+                }
+            }
+
+            function closeModal(modal) {
+                if (modal && !modal.classList.contains('hidden')) {
+                     modal.querySelector('div').classList.add('scale-95', 'opacity-0');
+                     modal.querySelector('div').classList.remove('scale-100', 'opacity-100');
+                    setTimeout(() => {
+                        modal.classList.add('hidden');
+                    }, 300); // Match transition duration
+                }
+            }
+
+            donateBtn.addEventListener('click', () => openModal(donateModal));
+            involvedBtn.addEventListener('click', () => openModal(involvedModal));
+            mobileDonateBtn.addEventListener('click', () => openModal(donateModal));
+            mobileInvolvedBtn.addEventListener('click', () => openModal(involvedModal));
+            
+            modals.forEach(modal => {
+                if (modal) {
+                    // Close button inside modal
+                    const closeBtn = modal.querySelector('button');
+                    if(closeBtn) {
+                        closeBtn.addEventListener('click', () => closeModal(modal));
+                    }
+
+                    // Clicking on the backdrop to close
+                    modal.addEventListener('click', (e) => {
+                        if (e.target === modal) {
+                            closeModal(modal);
+                        }
+                    });
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    modals.forEach(closeModal);
+                }
+            });
+
+            // Close mobile menu when a link is clicked for smooth scrolling
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
