@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Inter', sans-serif; }
-    /* Keep the custom underline style for nav links */
     .nav-underline { position: relative; padding-bottom: 8px; }
     .nav-underline::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background-color: #AEE8FF; transform: scaleX(0); transition: transform 0.3s ease-in-out; }
     .nav-underline:hover::after { transform: scaleX(1); }
@@ -17,49 +16,60 @@
   </style>
 </head>
 <body class="bg-white">
-  <!-- Sticky Navigation Bar (unchanged) -->
-  <nav class="bg-[#073763] text-white p-4 flex items-center justify-between sticky top-0 z-50 shadow-lg">
-    <div class="flex items-center space-x-8">
-      <a href="index.html" class="flex items-center space-x-2">
-        <div class="bg-gray-300 rounded-full flex items-center justify-center text-xs text-black">
-          <img src="logo.png" alt="Campaign logo" />
-        </div>
-      </a>
-      <div class="hidden md:flex items-center space-x-8">
-        <a href="meetadam.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Meet Adam</a>
-        <a href="platform.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Platform</a>
-        <a href="videoseries.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Video Series</a>
-        <a href="transparency.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Transparency</a>
-      </div>
-    </div>
-    <div class="flex items-center">
-      <div class="hidden md:flex items-center space-x-2">
-        <button id="donateBtn" class="bg-[#AEE8FF] text-[#073763] font-bold py-2 px-4 rounded-md text-xs sm:text-sm shadow-md hover:bg-white transition-colors duration-300">DON'T DONATE</button>
-        <button id="involvedBtn" class="bg-[#AEE8FF] text-[#073763] font-bold py-2 px-4 rounded-md text-xs sm:text-sm shadow-md hover:bg-white transition-colors duration-300">HOW TO HELP</button>
-      </div>
-      <div class="md:hidden ml-4">
-        <button id="hamburger-btn" class="focus:outline-none" aria-label="Toggle menu">
-          <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-          <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-        </button>
-      </div>
-    </div>
-  </nav>
+	<nav class="bg-[#073763] text-white p-4 flex items-center justify-between sticky top-0 z-50 shadow-lg>
+			<div class="flex items-center space-x-8">
+				<!-- Campaign Logo -->
+				<a href="index.html" class="flex items-center space-x-2">
+					<!-- Image size is now fixed and it will not distort -->
+					 <img src="logo.png" alt="Campaign Logo">
+				</a>
 
-  <!-- Mobile Menu (unchanged) -->
-  <div id="mobile-menu" class="hidden md:hidden bg-[#073763] text-white">
-    <a href="meetadam.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Meet Adam</a>
-    <a href="platform.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Platform</a>
-    <a href="videoseries.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Video Series</a>
-    <a href="transparency.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Transparency</a>
-    <div class="px-6 py-4 border-t border-gray-700 flex flex-col space-y-4">
-      <button id="mobileDonateBtn" class="bg-[#AEE8FF] text-[#073763] font-bold py-3 px-4 rounded-md text-sm shadow-md hover:bg-white transition-colors duration-300">DON'T DONATE</button>
-      <button id="mobileInvolvedBtn" class="bg-[#AEE8FF] text-[#073763] font-bold py-3 px-4 rounded-md text-sm shadow-md hover:bg-white transition-colors duration-300">GET INVOLVED</button>
-    </div>
-  </div>
+				<!-- Navigation Links for larger screens -->
+				<div class="hidden md:flex items-center space-x-8">
+					<a href="meetadam.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Meet Adam</a>
+					<a href="platform.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Platform</a>
+					<a href="videoseries.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Video Series</a>
+					<a href="transparency.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Transparency</a>
+				</div>
+			</div>
+
+			<div class="flex items-center">
+				 <!-- Action Buttons -->
+				<div class="hidden md:flex items-center space-x-1">
+					<button id="donateBtn" class="bg-white text-[#073763] font-bold py-2 px-4 rounded-md text-xs sm:text-sm shadow-md hover:bg-gray-200 transition-colors duration-300">
+						DON'T DONATE
+					</button>
+					<button id="involvedBtn" class="bg-white text-[#073763] font-bold py-2 px-4 rounded-md text-xs sm:text-sm shadow-md hover:bg-gray-200 transition-colors duration-300">
+						HOW TO HELP
+					</button>
+				</div>
+				
+				<!-- Hamburger Menu Button -->
+				<div class="md:hidden ml-4">
+					<button id="hamburger-btn" class="focus:outline-none">
+						<svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+						<svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+					</button>
+				</div>
+			</div>
+	</nav>
+		
+		<div id="mobile-menu" class="hidden md:hidden bg-[#073763] text-white fixed w-full left-0 top-16 shadow-lg">
+			<a href="meetadam.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Meet Adam</a>
+			<a href="platform.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Platform</a>
+			<a href="videoseries.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Video Series</a>
+			<a href="transparency.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Transparency</a>
+			<div class="px-6 py-4 border-t border-gray-700 flex flex-col space-y-4">
+				<button id="mobileDonateBtn" class="bg-white text-[#073763] font-bold py-3 px-4 rounded-md text-sm shadow-md hover:bg-gray-200 transition-colors duration-300">
+					DON'T DONATE
+				</button>
+				<button id="mobileInvolvedBtn" class="bg-white text-[#073763] font-bold py-3 px-4 rounded-md text-sm shadow-md hover:bg-gray-200 transition-colors duration-300">
+					GET INVOLVED
+				</button>
+			</div>
+		</div>
 
   <main>
-    <!-- Intro: what the video series is -->
     <section class="bg-[#073763] text-white">
       <div class="container mx-auto px-6 py-14 md:py-20 max-w-5xl">
         <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-4">Video Series</h1>
@@ -74,26 +84,24 @@
 			</div>
 			<br>
 		<p class="text-lg leading-relaxed text-white/90">
-          Watch the newest release, explore the most‑discussed ideas, and browse the archive below.
+          Watch the newest release, explore related videos, and browse the archive below.
         </p>
       </div>
     </section>
 
-    <!-- Featured (most recent) video -->
     <section class="bg-white">
       <div class="container mx-auto px-6 py-14 md:py-20">
         <div class="flex items-end justify-between mb-6">
           <h2 class="text-3xl md:text-4xl font-bold text-[#073763]">Latest Release</h2>
           <span id="featuredDate" class="text-sm text-gray-500"></span>
         </div>
-        <div id="featuredCard" class="relative rounded-xl overflow-hidden shadow-2xl border border-gray-200">
-          <button id="playFeatured" class="absolute inset-0 group" aria-label="Play latest video">
-            <img id="featuredThumb" src="" alt="Latest video thumbnail" class="w-full aspect-video object-cover">
-            <div class="absolute inset-0 bg-black/35 group-hover:bg-black/25 transition-colors"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <svg class="w-20 h-20 text-white opacity-90 group-hover:scale-105 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-.445-10.832A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>
-            </div>
-          </button>
+        <div id="featuredCard" class="rounded-xl overflow-hidden shadow-2xl border border-gray-200">
+          <div class="relative">
+             <img id="featuredThumb" src="" alt="Latest video thumbnail" class="w-full aspect-video object-cover" />
+             <button id="playFeatured" class="absolute inset-0 group flex items-center justify-center bg-black/35 group-hover:bg-black/25 transition-colors" aria-label="Play latest video">
+                <svg class="w-20 h-20 text-white opacity-90 group-hover:scale-105 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-.445-10.832A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>
+             </button>
+          </div>
           <div class="p-5 md:p-6 bg-white">
             <h3 id="featuredTitle" class="text-2xl md:text-3xl font-bold text-[#073763] mb-2"></h3>
             <p id="featuredDesc" class="text-gray-700"></p>
@@ -102,73 +110,65 @@
       </div>
     </section>
 
-    <!-- Popular ideas: three-card carousel -->
     <section class="bg-[#D62828]">
       <div class="container mx-auto px-6 py-14 md:py-20">
         <div class="flex items-center justify-between mb-6">
-          <h2 class="text-3xl md:text-4xl font-bold text-white">Inspiration for the campaign.</h2>
-          <div class="flex gap-2">
-            <button id="popPrev" class="bg-white/20 hover:bg-white/30 text-white rounded-lg px-3 py-2 text-sm" aria-label="Previous">⟨</button>
-            <button id="popNext" class="bg-white/20 hover:bg-white/30 text-white rounded-lg px-3 py-2 text-sm" aria-label="Next">⟩</button>
-          </div>
+          <h2 class="text-3xl md:text-4xl font-bold text-white">Inspiration for the Campaign</h2>
         </div>
-
-        <div class="relative">
-          <div id="popularTrack" class="flex gap-4 overflow-hidden">
-            <!-- Cards injected by JS -->
-          </div>
-        </div>
+        <div id="guestVideoGrid" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            </div>
       </div>
     </section>
 
-    <!-- Archive table -->
     <section class="bg-white">
       <div class="container mx-auto px-6 py-14 md:py-20">
-        <div class="flex items-center justify-between mb-6">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
           <h2 class="text-3xl md:text-4xl font-bold text-[#073763]">All Previous Videos</h2>
-          <input id="tableFilter" type="text" placeholder="Filter by title…" class="w-56 max-w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#AEE8FF]" />
+          <input id="tableFilter" type="text" placeholder="Filter by title…" class="w-full sm:w-56 border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#AEE8FF]" />
         </div>
         <div class="overflow-x-auto border border-gray-200 rounded-xl shadow-sm">
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
               <tr>
-                <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">#</th>
+                <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider hidden sm:table-cell">#</th>
                 <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Title</th>
-                <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Release Date</th>
+                <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider hidden md:table-cell">Release Date</th>
                 <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Watch</th>
               </tr>
             </thead>
             <tbody id="archiveBody" class="bg-white divide-y divide-gray-100">
-              <!-- Rows injected by JS -->
-            </tbody>
+              </tbody>
           </table>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer (unchanged) -->
-  <footer class="bg-[#073763] text-white py-12">
-    <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
-      <div class="flex items-center gap-4">
-        <div><img src="logo.png" alt="Campaign logo" /></div>
-      </div>
-      <div class="flex flex-wrap items-center justify-center gap-4">
-        <a href="#" class="hover:text-[#AEE8FF] transition-colors">Instagram</a>
-        <a href="#" class="hover:text-[#AEE8FF] transition-colors">Threads</a>
-        <a href="#" class="hover:text-[#AEE8FF] transition-colors">Facebook</a>
-        <a href="#" class="hover:text-[#AEE8FF] transition-colors">X</a>
-        <a href="#" class="hover:text-[#AEE8FF] transition-colors">TikTok</a>
-        <a href="#" class="hover:text-[#AEE8FF] transition-colors">Bluesky</a>
-        <a href="#" class="hover:text-[#AEE8FF] transition-colors">YouTube</a>
-      </div>
-      <a href="mailto:contact@adamfollmer.com" class="bg-[#AEE8FF] text-[#073763] font-bold py-2 px-4 rounded-md text-sm shadow-md hover:bg-white transition-colors duration-300">CONTACT</a>
-    </div>
-  </footer>
+        <footer id="transparency" class="bg-[#073763] text-white py-12">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
+                <!-- Logo and Copyright -->
+                <div class="flex items-center gap-4">
+                    <div><img src="logo.png"></div>
+                </div>
+                <!-- Socials -->
+                <div class="flex flex-wrap items-center justify-center gap-4">
+                    <a href="https://www.instagram.com/adamforwi/" class="hover:text-[#AEE8FF] transition-colors">Instagram</a>
+                    <a href="https://adamforwi.substack.com/" class="hover:text-[#AEE8FF] transition-colors">Substack</a>
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">Facebook</a>
+                    <a href="https://x.com/adamforwi" class="hover:text-[#AEE8FF] transition-colors">X</a>
+                    <a href="https://tiktok.com/@adamforwi" class="hover:text-[#AEE8FF] transition-colors">TikTok</a>
+                    <a href="https://bsky.app/profile/adamforwi.bsky.social" class="hover:text-[#AEE8FF] transition-colors">Bluesky</a>
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">YouTube</a>
+                </div>
+                <!-- Contact Button -->
+                <a href="mailto:adam@adamforwi.com" class="bg-white text-[#073763] font-bold py-2 px-4 rounded-md text-sm shadow-md hover:bg-white transition-colors duration-300">
+                    CONTACT
+                </a>
+            </div>
+        </footer>
 
-  <!-- Modals (kept consistent) -->
     <div id="donateModal" class="fixed inset-0 w-full h-full flex items-center justify-center modal-backdrop hidden z-50">
-        <div class="bg-[#AEE8FF] text-[#073763] w-11/12 md:w-4/6 lg:w-1/2 p-8 rounded-lg shadow-2xl border-2 border-black relative transform transition-all duration-300 scale-95 opacity-0">
+        <div class="bg-white text-[#073763] w-11/12 md:w-4/6 lg:w-1/2 p-8 rounded-lg shadow-2xl border-2 border-black relative transform transition-all duration-300 scale-95 opacity-0">
             <button class="absolute top-2 right-4 text-4xl font-bold text-black hover:text-[#D62828]">&times;</button>
             <h2 class="text-3xl md:text-4xl font-black text-center mb-4">Keep your money!</h2>
             <p class="text-base md:text-lg text-center mb-6">We cannot outspend the billionaires.<br><br> They will use their wealth to influence our elections using whatever means possible. <b>Instead</b>, rely on your ability to convey this campaign’s message to your friends, family, coworkers, and neighbors.</p>
@@ -178,7 +178,7 @@
     
     <!-- "Get Involved" Modal -->
     <div id="involvedModal" class="fixed inset-0 w-full h-full flex items-center justify-center modal-backdrop hidden z-50">
-        <div class="bg-[#AEE8FF] text-[#073763] w-11/12 md:w-4/6 lg:w-1/2 p-8 rounded-lg shadow-2xl border-2 border-black relative transform transition-all duration-300 scale-95 opacity-0">
+        <div class="bg-white text-[#073763] w-11/12 md:w-4/6 lg:w-1/2 p-8 rounded-lg shadow-2xl border-2 border-black relative transform transition-all duration-300 scale-95 opacity-0">
             <button class="absolute top-2 right-4 text-4xl font-bold text-black hover:text-[#D62828]">&times;</button>
             <h2 class="text-3xl md:text-4xl font-black text-center mb-6">Campaign Differently</h2>
             <div class="text-center text-lg">
@@ -194,162 +194,164 @@
         </div>
     </div>
 
-  <!-- Video Player Modal (shared) -->
-  <div id="videoModal" class="fixed inset-0 w-full h-full flex items-center justify-center modal-backdrop hidden z-50">
-    <div class="w-11/12 md:w-3/4 lg:w-2/3 relative transform transition-all duration-300 scale-95 opacity-0">
-      <button class="absolute -top-10 right-0 text-5xl font-bold text-white hover:text-gray-300" aria-label="Close">&times;</button>
-      <div class="aspect-w-16 aspect-h-9 bg-black rounded-lg overflow-hidden shadow-2xl">
-        <iframe id="youtubePlayer" class="w-full h-full" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-    </div>
-  </div>
-
   <script>
-    // ------- Data (edit this as you publish) -------
-    // url can be a full YouTube link or just the video ID
-    const videos = [
+    // =================================================================
+    // VIDEO DATA - This is the main part you'll edit
+    // =================================================================
+
+    // Add your new weekly videos to the TOP of this list.
+    // The first video here will always be the "Latest Release".
+    // All other videos will automatically appear in the archive table.
+    const myVideos = [
       {
-        title: 'Why $10,000 Is Enough For A Campaign',
+        title: 'The Two Party System',
         date: '2025-09-28',
-        url: 'https://youtu.be/pUKaB4P5Qns?si=D9A8ZB89rADbIOjs', // replace with real ID
-        description: 'How we change incentives and win without billionaire money.',
-        popular: true
+        url: 'dQw4w9WgXcQ', // Can be video ID or full URL
+        description: 'Never going to give you up. Never going to let you down.',
       },
-      {
-        title: 'Healthcare That Actually Works',
-        date: '2025-09-21',
-        url: 'https://youtu.be/ZxZO0jd8VoU?si=5eREMB4yb_CjNmy2',
-        description: 'Cutting costs while expanding access—no corporate middlemen.',
-        popular: true
-      },
-      {
-        title: 'A 32‑Hour Workweek, Seriously',
-        date: '2025-09-14',
-        url: 'https://youtu.be/5EDKRGkgLsI?si=rjchTSYq8Pm99wVq',
-        description: 'Higher productivity, better lives, stronger families.',
-        popular: true
-      },
-      {
-        title: 'Investing in Education, Not Bureaucracy',
-        date: '2025-09-07',
-        url: 'M7lc1UVf-VE',
-        description: 'Every kid deserves a fair start and a real shot.',
-        popular: false
-      }
-      // Add more weekly releases here as they go live
+      // {
+      //   title: 'My Second Video',
+      //   date: '2025-09-21',
+      //   url: 'YOUR_YOUTUBE_ID_HERE',
+      //   description: 'A description for the second video.',
+      // },
     ];
 
-    // ------- Utilities -------
+    // These three videos are for the "Guest Videos" section and are kept separate.
+    const guestVideos = [
+       {
+        title: 'More Perfect Union',
+        url: 'ZxZO0jd8VoU',
+      },
+      {
+        title: 'Chris Hedges',
+        url: '5EDKRGkgLsI',
+      },
+      {
+        title: 'Garys Economics',
+        url: 'pUKaB4P5Qns',
+      }
+    ];
+
+    // =================================================================
+    // PAGE LOGIC - You shouldn't need to edit below this line
+    // =================================================================
+
+    // ------- Utility Functions -------
     const ytId = (u) => {
       if (!u) return '';
-      // Extract ID from common YouTube formats or return as-is
       const m = String(u).match(/[?&]v=([^&#]+)|youtu\.be\/([^?#/]+)|^([\w-]{11})/);
       return (m && (m[1] || m[2] || m[3])) || '';
     };
     const ytThumb = (id) => `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
     const prettyDate = (iso) => new Date(iso + 'T12:00:00').toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
 
-    // ------- Render Featured -------
-    const featured = [...videos].sort((a, b) => new Date(b.date) - new Date(a.date))[0];
-    const featuredId = ytId(featured?.url);
-    document.getElementById('featuredThumb').src = ytThumb(featuredId);
-    document.getElementById('featuredTitle').textContent = featured.title;
-    document.getElementById('featuredDesc').textContent = featured.description || '';
-    document.getElementById('featuredDate').textContent = `Released ${prettyDate(featured.date)}`;
-
-    // Modal handling shared between featured & cards
+    // ------- Video Modal Controls -------
     const videoModal = document.getElementById('videoModal');
     const youtubePlayer = document.getElementById('youtubePlayer');
+
     function openVideo(id) {
-      if (!id) return;
+      if (!id || !videoModal || !youtubePlayer) return;
       youtubePlayer.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
       videoModal.classList.remove('hidden');
       setTimeout(() => {
-        const inner = videoModal.querySelector('div');
-        inner.classList.remove('scale-95', 'opacity-0');
-        inner.classList.add('scale-100', 'opacity-100');
+        const inner = videoModal.querySelector('div.transform');
+        if (inner) {
+            inner.classList.remove('scale-95', 'opacity-0');
+            inner.classList.add('scale-100', 'opacity-100');
+        }
       }, 10);
     }
+
     function closeVideo() {
-      const inner = videoModal.querySelector('div');
-      inner.classList.add('scale-95', 'opacity-0');
-      inner.classList.remove('scale-100', 'opacity-100');
+      if (!videoModal || !youtubePlayer) return;
+      const inner = videoModal.querySelector('div.transform');
+      if (inner) {
+        inner.classList.add('scale-95', 'opacity-0');
+        inner.classList.remove('scale-100', 'opacity-100');
+      }
       setTimeout(() => {
         youtubePlayer.src = '';
         videoModal.classList.add('hidden');
       }, 300);
     }
-    document.querySelector('#videoModal button').addEventListener('click', closeVideo);
-    videoModal.addEventListener('click', (e) => { if (e.target === videoModal) closeVideo(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeVideo(); });
 
-    document.getElementById('playFeatured').addEventListener('click', () => openVideo(featuredId));
-
-    // ------- Popular Carousel (3 cards visible) -------
-    const popular = videos.filter(v => v.popular).sort((a, b) => new Date(b.date) - new Date(a.date));
-    const popularTrack = document.getElementById('popularTrack');
-
-    function renderPopular(offset = 0) {
-      const COUNT = 3;
-      popularTrack.innerHTML = '';
-      for (let i = 0; i < COUNT; i++) {
-        const item = popular[(offset + i) % popular.length];
-        if (!item) continue;
-        const id = ytId(item.url);
-        const card = document.createElement('div');
-        card.className = 'flex-1 min-w-0 bg-white/10 rounded-xl overflow-hidden shadow-lg border border-white/20';
-        card.innerHTML = `
-          <button class="relative block w-full" aria-label="Play ${item.title}">
-            <img src="${ytThumb(id)}" alt="${item.title} thumbnail" class="w-full aspect-video object-cover" />
-            <div class="absolute inset-0 bg-black/30 hover:bg-black/20 transition-colors"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <svg class="w-14 h-14 text-white opacity-90" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-.445-10.832A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>
-            </div>
-          </button>
-          <div class="p-4 text-white">
-            <h3 class="font-bold text-lg leading-snug line-clamp-2">${item.title}</h3>
-            <p class="text-white/80 text-sm mt-1">${prettyDate(item.date)}</p>
-          </div>
-        `;
-        card.querySelector('button').addEventListener('click', () => openVideo(id));
-        popularTrack.appendChild(card);
-      }
-    }
-
-    let popOffset = 0;
-    renderPopular(popOffset);
-    document.getElementById('popPrev').addEventListener('click', () => { popOffset = (popOffset - 1 + popular.length) % popular.length; renderPopular(popOffset); });
-    document.getElementById('popNext').addEventListener('click', () => { popOffset = (popOffset + 1) % popular.length; renderPopular(popOffset); });
-
-    // ------- Archive Table -------
-    const archiveBody = document.getElementById('archiveBody');
-    const sorted = [...videos].sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    function renderTable(filter = '') {
-      const q = filter.trim().toLowerCase();
-      archiveBody.innerHTML = '';
-      let i = 1;
-      sorted.forEach(v => {
-        if (q && !v.title.toLowerCase().includes(q)) return;
-        const id = ytId(v.url);
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td class="px-4 py-3 text-sm text-gray-600">${i}</td>
-          <td class="px-4 py-3"><a href="https://www.youtube.com/watch?v=${id}" target="_blank" class="text-[#073763] hover:underline font-semibold">${v.title}</a></td>
-          <td class="px-4 py-3 text-gray-600 text-sm">${prettyDate(v.date)}</td>
-          <td class="px-4 py-3"><button class="bg-[#AEE8FF] text-[#073763] font-bold py-1.5 px-3 rounded-md text-xs shadow hover:bg-white transition">Play</button></td>
-        `;
-        tr.querySelector('button').addEventListener('click', () => openVideo(id));
-        archiveBody.appendChild(tr);
-        i++;
-      });
-    }
-    renderTable();
-
-    document.getElementById('tableFilter').addEventListener('input', (e) => renderTable(e.target.value));
-
-    // ------- Shared Nav + Modal Behavior (matching your index) -------
+    // ------- Render Page Content -------
     document.addEventListener('DOMContentLoaded', () => {
+      const sortedMyVideos = [...myVideos].sort((a, b) => new Date(b.date) - new Date(a.date));
+      const featuredVideo = sortedMyVideos[0];
+      const archiveVideos = sortedMyVideos.slice(1);
+
+      // 1. Render Featured Video
+      if (featuredVideo) {
+        const featuredId = ytId(featuredVideo.url);
+        document.getElementById('featuredThumb').src = ytThumb(featuredId);
+        document.getElementById('featuredTitle').textContent = featuredVideo.title;
+        document.getElementById('featuredDesc').textContent = featuredVideo.description || '';
+        document.getElementById('featuredDate').textContent = `Released ${prettyDate(featuredVideo.date)}`;
+        document.getElementById('playFeatured').addEventListener('click', () => openVideo(featuredId));
+      }
+
+      // 2. Render Guest Videos
+      const guestGrid = document.getElementById('guestVideoGrid');
+      if (guestGrid) {
+        guestGrid.innerHTML = '';
+        guestVideos.forEach(item => {
+          const id = ytId(item.url);
+          const card = document.createElement('div');
+          card.className = 'flex-1 min-w-0 bg-white/10 rounded-xl overflow-hidden shadow-lg border border-white/20 flex flex-col';
+          card.innerHTML = `
+            <button class="relative block w-full group" aria-label="Play ${item.title}">
+              <img src="${ytThumb(id)}" alt="${item.title} thumbnail" class="w-full aspect-video object-cover" />
+              <div class="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <svg class="w-14 h-14 text-white opacity-90 group-hover:scale-105 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-.445-10.832A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>
+              </div>
+            </button>
+            <div class="p-4 text-white flex-grow">
+              <h3 class="font-bold text-lg leading-snug line-clamp-2">${item.title}</h3>
+            </div>
+          `;
+          card.querySelector('button').addEventListener('click', () => openVideo(id));
+          guestGrid.appendChild(card);
+        });
+      }
+
+      // 3. Render Archive Table
+      const archiveBody = document.getElementById('archiveBody');
+      const tableFilter = document.getElementById('tableFilter');
+      
+      function renderTable(filter = '') {
+        const q = filter.trim().toLowerCase();
+        archiveBody.innerHTML = '';
+
+        const filteredVideos = archiveVideos.filter(v => !q || v.title.toLowerCase().includes(q));
+
+        if (filteredVideos.length === 0) {
+            archiveBody.innerHTML = '<tr><td colspan="4" class="text-center text-gray-500 py-8">No previous videos yet. Check back soon!</td></tr>';
+            return;
+        }
+        
+        filteredVideos.forEach((v, index) => {
+          const id = ytId(v.url);
+          const tr = document.createElement('tr');
+          tr.className = 'hover:bg-gray-50';
+          tr.innerHTML = `
+            <td class="px-4 py-3 text-sm text-gray-600 hidden sm:table-cell">${index + 1}</td>
+            <td class="px-4 py-3 font-semibold text-[#073763]">${v.title}</td>
+            <td class="px-4 py-3 text-gray-600 text-sm hidden md:table-cell">${prettyDate(v.date)}</td>
+            <td class="px-4 py-3"><button class="bg-[#AEE8FF] text-[#073763] font-bold py-1.5 px-3 rounded-md text-xs shadow hover:bg-white transition">Play</button></td>
+          `;
+          tr.querySelector('button').addEventListener('click', () => openVideo(id));
+          archiveBody.appendChild(tr);
+        });
+      }
+      
+      renderTable();
+      if(tableFilter) tableFilter.addEventListener('input', (e) => renderTable(e.target.value));
+
+      // ------- Shared Nav + Modal Behavior -------
+      // Hamburger Menu
       const hamburgerBtn = document.getElementById('hamburger-btn');
       const mobileMenu = document.getElementById('mobile-menu');
       const menuIcon = document.getElementById('menu-icon');
@@ -360,16 +362,9 @@
           menuIcon.classList.toggle('hidden');
           closeIcon.classList.toggle('hidden');
         });
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-          link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            menuIcon.classList.remove('hidden');
-            closeIcon.classList.add('hidden');
-          });
-        });
       }
 
-      // Info modals
+      // Info Modals (Donate/Involved)
       const donateBtn = document.getElementById('donateBtn');
       const involvedBtn = document.getElementById('involvedBtn');
       const mobileDonateBtn = document.getElementById('mobileDonateBtn');
@@ -377,38 +372,37 @@
       const donateModal = document.getElementById('donateModal');
       const involvedModal = document.getElementById('involvedModal');
 
-      function openModal(modal) {
+      function openInfoModal(modal) {
         if (!modal) return;
         modal.classList.remove('hidden');
         setTimeout(() => {
-          modal.querySelector('div').classList.remove('scale-95', 'opacity-0');
-          modal.querySelector('div').classList.add('scale-100', 'opacity-100');
+          modal.querySelector('div.transform').classList.remove('scale-95', 'opacity-0');
         }, 10);
       }
-      function closeModal(modal) {
+      function closeInfoModal(modal) {
         if (!modal || modal.classList.contains('hidden')) return;
-        modal.querySelector('div').classList.add('scale-95', 'opacity-0');
-        modal.querySelector('div').classList.remove('scale-100', 'opacity-100');
+        modal.querySelector('div.transform').classList.add('scale-95', 'opacity-0');
         setTimeout(() => { modal.classList.add('hidden'); }, 300);
       }
 
-      [donateBtn, involvedBtn, mobileDonateBtn, mobileInvolvedBtn].forEach(btn => {
-        if (!btn) return;
-        btn.addEventListener('click', () => openModal(btn.id.includes('Donate') ? donateModal : involvedModal));
-      });
-
+      [donateBtn, mobileDonateBtn].forEach(btn => btn?.addEventListener('click', () => openInfoModal(donateModal)));
+      [involvedBtn, mobileInvolvedBtn].forEach(btn => btn?.addEventListener('click', () => openInfoModal(involvedModal)));
       [donateModal, involvedModal].forEach(modal => {
         if (!modal) return;
-        const closeBtn = modal.querySelector('button');
-        if (closeBtn) closeBtn.addEventListener('click', () => closeModal(modal));
-        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(modal); });
+        modal.querySelector('button')?.addEventListener('click', () => closeInfoModal(modal));
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeInfoModal(modal); });
       });
 
+      // Close any modal with Escape key
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-          [donateModal, involvedModal].forEach(closeModal);
+          closeVideo();
+          closeInfoModal(donateModal);
+          closeInfoModal(involvedModal);
         }
       });
+       document.querySelector('#videoModal button').addEventListener('click', closeVideo);
+       videoModal.addEventListener('click', (e) => { if (e.target === videoModal) closeVideo(); });
     });
   </script>
 </body>

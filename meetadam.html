@@ -38,60 +38,58 @@
 <body class="bg-white">
 
     <!-- Sticky Navigation Bar -->
-    <nav class="bg-[#073763] text-white p-4 flex items-center justify-between sticky top-0 z-50 shadow-lg">
-        <div class="flex items-center space-x-8">
-            <!-- Campaign Logo -->
-            <a href="index.html" class="flex items-center space-x-2">
-                 <div class="bg-gray-300 rounded-full flex items-center justify-center text-xs text-black">
-				 <img src="logo.png">
-				 </div>
-            </a>
+	<nav class="bg-[#073763] text-white p-4 flex items-center justify-between sticky top-0 z-50 shadow-lg>
+			<div class="flex items-center space-x-8">
+				<!-- Campaign Logo -->
+				<a href="index.html" class="flex items-center space-x-2">
+					<!-- Image size is now fixed and it will not distort -->
+					 <img src="logo.png" alt="Campaign Logo">
+				</a>
 
-            <!-- Navigation Links for larger screens -->
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="meetadam.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Meet Adam</a>
-                <a href="platform.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Platform</a>
-                <a href="videoseries.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Video Series</a>
-                <a href="transparency.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Transparency</a>
-            </div>
-        </div>
+				<!-- Navigation Links for larger screens -->
+				<div class="hidden md:flex items-center space-x-8">
+					<a href="meetadam.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Meet Adam</a>
+					<a href="platform.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Platform</a>
+					<a href="videoseries.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Video Series</a>
+					<a href="transparency.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Transparency</a>
+				</div>
+			</div>
 
-        <div class="flex items-center">
-             <!-- Action Buttons -->
-            <div class="hidden md:flex items-center space-x-2">
-                <button id="donateBtn" class="bg-[#AEE8FF] text-[#073763] font-bold py-2 px-4 rounded-md text-xs sm:text-sm shadow-md hover:bg-white transition-colors duration-300">
-                    DON'T DONATE
-                </button>
-                <button id="involvedBtn" class="bg-[#AEE8FF] text-[#073763] font-bold py-2 px-4 rounded-md text-xs sm:text-sm shadow-md hover:bg-white transition-colors duration-300">
-                    GET INVOLVED
-                </button>
-            </div>
-            
-            <!-- Hamburger Menu Button -->
-            <div class="md:hidden ml-4">
-                <button id="hamburger-btn" class="focus:outline-none">
-                    <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                    <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-            </div>
-        </div>
-    </nav>
-    
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-[#073763] text-white">
-        <a href="meetadam.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Meet Adam</a>
-        <a href="platform.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Platform</a>
-        <a href="videoseries.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Video Series</a>
-        <a href="transparency.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Transparency</a>
-        <div class="px-6 py-4 border-t border-gray-700 flex flex-col space-y-4">
-            <button id="mobileDonateBtn" class="bg-[#AEE8FF] text-[#073763] font-bold py-3 px-4 rounded-md text-sm shadow-md hover:bg-white transition-colors duration-300">
-                DON'T DONATE
-            </button>
-            <button id="mobileInvolvedBtn" class="bg-[#AEE8FF] text-[#073763] font-bold py-3 px-4 rounded-md text-sm shadow-md hover:bg-white transition-colors duration-300">
-                GET INVOLVED
-            </button>
-        </div>
-    </div>
+			<div class="flex items-center">
+				 <!-- Action Buttons -->
+				<div class="hidden md:flex items-center space-x-1">
+					<button id="donateBtn" class="bg-white text-[#073763] font-bold py-2 px-4 rounded-md text-xs sm:text-sm shadow-md hover:bg-gray-200 transition-colors duration-300">
+						DON'T DONATE
+					</button>
+					<button id="involvedBtn" class="bg-white text-[#073763] font-bold py-2 px-4 rounded-md text-xs sm:text-sm shadow-md hover:bg-gray-200 transition-colors duration-300">
+						HOW TO HELP
+					</button>
+				</div>
+				
+				<!-- Hamburger Menu Button -->
+				<div class="md:hidden ml-4">
+					<button id="hamburger-btn" class="focus:outline-none">
+						<svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+						<svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+					</button>
+				</div>
+			</div>
+	</nav>
+		
+		<div id="mobile-menu" class="hidden md:hidden bg-[#073763] text-white fixed w-full left-0 top-16 shadow-lg">
+			<a href="meetadam.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Meet Adam</a>
+			<a href="platform.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Platform</a>
+			<a href="videoseries.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Video Series</a>
+			<a href="transparency.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Transparency</a>
+			<div class="px-6 py-4 border-t border-gray-700 flex flex-col space-y-4">
+				<button id="mobileDonateBtn" class="bg-white text-[#073763] font-bold py-3 px-4 rounded-md text-sm shadow-md hover:bg-gray-200 transition-colors duration-300">
+					DON'T DONATE
+				</button>
+				<button id="mobileInvolvedBtn" class="bg-white text-[#073763] font-bold py-3 px-4 rounded-md text-sm shadow-md hover:bg-gray-200 transition-colors duration-300">
+					GET INVOLVED
+				</button>
+			</div>
+		</div>
 
 
     <!-- Main Content -->
@@ -152,16 +150,16 @@
                 </div>
                 <!-- Socials -->
                 <div class="flex flex-wrap items-center justify-center gap-4">
-                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">Instagram</a>
-                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">Threads</a>
+                    <a href="https://www.instagram.com/adamforwi/" class="hover:text-[#AEE8FF] transition-colors">Instagram</a>
+                    <a href="https://adamforwi.substack.com/" class="hover:text-[#AEE8FF] transition-colors">Substack</a>
                     <a href="#" class="hover:text-[#AEE8FF] transition-colors">Facebook</a>
-                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">X</a>
-                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">TikTok</a>
-                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">Bluesky</a>
+                    <a href="https://x.com/adamforwi" class="hover:text-[#AEE8FF] transition-colors">X</a>
+                    <a href="https://tiktok.com/@adamforwi" class="hover:text-[#AEE8FF] transition-colors">TikTok</a>
+                    <a href="https://bsky.app/profile/adamforwi.bsky.social" class="hover:text-[#AEE8FF] transition-colors">Bluesky</a>
                     <a href="#" class="hover:text-[#AEE8FF] transition-colors">YouTube</a>
                 </div>
                 <!-- Contact Button -->
-                <a href="mailto:contact@adamfollmer.com" class="bg-[#AEE8FF] text-[#073763] font-bold py-2 px-4 rounded-md text-sm shadow-md hover:bg-white transition-colors duration-300">
+                <a href="mailto:adam@adamforwi.com" class="bg-white text-[#073763] font-bold py-2 px-4 rounded-md text-sm shadow-md hover:bg-white transition-colors duration-300">
                     CONTACT
                 </a>
             </div>
@@ -172,7 +170,7 @@
     <!-- Modals -->
     <!-- "Don't Donate" Modal -->
     <div id="donateModal" class="fixed inset-0 w-full h-full flex items-center justify-center modal-backdrop hidden z-50">
-        <div class="bg-[#AEE8FF] text-[#073763] w-11/12 md:w-4/6 lg:w-1/2 p-8 rounded-lg shadow-2xl border-2 border-black relative transform transition-all duration-300 scale-95 opacity-0">
+        <div class="bg-white text-[#073763] w-11/12 md:w-4/6 lg:w-1/2 p-8 rounded-lg shadow-2xl border-2 border-black relative transform transition-all duration-300 scale-95 opacity-0">
             <button class="absolute top-2 right-4 text-4xl font-bold text-black hover:text-[#D62828]">&times;</button>
             <h2 class="text-3xl md:text-4xl font-black text-center mb-4">Keep your money!</h2>
             <p class="text-base md:text-lg text-center mb-6">We cannot outspend the billionaires.<br><br> They will use their wealth to influence our elections using whatever means possible. <b>Instead</b>, rely on your ability to convey this campaign’s message to your friends, family, coworkers, and neighbors.</p>
@@ -182,7 +180,7 @@
     
     <!-- "Get Involved" Modal -->
     <div id="involvedModal" class="fixed inset-0 w-full h-full flex items-center justify-center modal-backdrop hidden z-50">
-        <div class="bg-[#AEE8FF] text-[#073763] w-11/12 md:w-4/6 lg:w-1/2 p-8 rounded-lg shadow-2xl border-2 border-black relative transform transition-all duration-300 scale-95 opacity-0">
+        <div class="bg-white text-[#073763] w-11/12 md:w-4/6 lg:w-1/2 p-8 rounded-lg shadow-2xl border-2 border-black relative transform transition-all duration-300 scale-95 opacity-0">
             <button class="absolute top-2 right-4 text-4xl font-bold text-black hover:text-[#D62828]">&times;</button>
             <h2 class="text-3xl md:text-4xl font-black text-center mb-6">Campaign Differently</h2>
             <div class="text-center text-lg">
