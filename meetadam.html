@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adam Follmer for Office</title>
+    <title>Meet Adam - Follmer For Congress</title>
+	<link rel="icon" href="Minicon.svg" type="image/svg+xml">
+    <link rel="icon" href="Minicon1.png" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="Minicon2.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
@@ -38,92 +41,91 @@
 <body class="bg-white">
 
     <!-- Sticky Navigation Bar -->
-	<nav class="bg-[#073763] text-white p-4 flex items-center justify-between sticky top-0 z-50 shadow-lg>
-			<div class="flex items-center space-x-8">
-				<!-- Campaign Logo -->
-				<a href="index.html" class="flex items-center space-x-2">
-					<!-- Image size is now fixed and it will not distort -->
-					 <img src="logo.png" alt="Campaign Logo">
-				</a>
+    <nav class="bg-[#073763] text-white p-4 flex items-center justify-between sticky top-0 z-50 shadow-lg">
+        <div class="flex items-center space-x-8">
+            <!-- Campaign Logo -->
+            <a href="index.html" class="flex items-center space-x-2">
+                 <div class="bg-gray-300 rounded-full flex items-center justify-center text-xs text-black">
+				 <img src="logo.png">
+				 </div>
+            </a>
 
-				<!-- Navigation Links for larger screens -->
-				<div class="hidden md:flex items-center space-x-8">
-					<a href="meetadam.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Meet Adam</a>
-					<a href="platform.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Platform</a>
-					<a href="videoseries.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Video Series</a>
-					<a href="transparency.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Transparency</a>
-				</div>
-			</div>
+            <!-- Navigation Links for larger screens -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="meetadam.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Meet Adam</a>
+                <a href="platform.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Platform</a>
+                <a href="videoseries.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Video Series</a>
+                <a href="transparency.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Transparency</a>
+            </div>
+        </div>
 
-			<div class="flex items-center">
-				 <!-- Action Buttons -->
-				<div class="hidden md:flex items-center space-x-1">
-					<button id="donateBtn" class="bg-white text-[#073763] font-bold py-2 px-4 rounded-md text-xs sm:text-sm shadow-md hover:bg-gray-200 transition-colors duration-300">
-						DON'T DONATE
-					</button>
-					<button id="involvedBtn" class="bg-white text-[#073763] font-bold py-2 px-4 rounded-md text-xs sm:text-sm shadow-md hover:bg-gray-200 transition-colors duration-300">
-						HOW TO HELP
-					</button>
-				</div>
-				
-				<!-- Hamburger Menu Button -->
-				<div class="md:hidden ml-4">
-					<button id="hamburger-btn" class="focus:outline-none">
-						<svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-						<svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-					</button>
-				</div>
-			</div>
-	</nav>
-		
-		<div id="mobile-menu" class="hidden md:hidden bg-[#073763] text-white fixed w-full left-0 top-16 shadow-lg">
-			<a href="meetadam.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Meet Adam</a>
-			<a href="platform.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Platform</a>
-			<a href="videoseries.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Video Series</a>
-			<a href="transparency.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Transparency</a>
-			<div class="px-6 py-4 border-t border-gray-700 flex flex-col space-y-4">
-				<button id="mobileDonateBtn" class="bg-white text-[#073763] font-bold py-3 px-4 rounded-md text-sm shadow-md hover:bg-gray-200 transition-colors duration-300">
-					DON'T DONATE
-				</button>
-				<button id="mobileInvolvedBtn" class="bg-white text-[#073763] font-bold py-3 px-4 rounded-md text-sm shadow-md hover:bg-gray-200 transition-colors duration-300">
-					GET INVOLVED
-				</button>
-			</div>
-		</div>
+        <div class="flex items-center">
+             <!-- Action Buttons -->
+            <div class="hidden md:flex items-center space-x-2">
+                <button id="donateBtn" class="bg-[#AEE8FF] text-[#073763] font-bold py-2 px-4 rounded-md text-xs sm:text-sm shadow-md hover:bg-white transition-colors duration-300">
+                    DON'T DONATE
+                </button>
+                <button id="involvedBtn" class="bg-[#AEE8FF] text-[#073763] font-bold py-2 px-4 rounded-md text-xs sm:text-sm shadow-md hover:bg-white transition-colors duration-300">
+                    GET INVOLVED
+                </button>
+            </div>
+            
+            <!-- Hamburger Menu Button -->
+            <div class="md:hidden ml-4">
+                <button id="hamburger-btn" class="focus:outline-none">
+                    <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#073763] text-white">
+        <a href="meetadam.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Meet Adam</a>
+        <a href="platform.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Platform</a>
+        <a href="videoseries.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Video Series</a>
+        <a href="transparency.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Transparency</a>
+        <div class="px-6 py-4 border-t border-gray-700 flex flex-col space-y-4">
+            <button id="mobileDonateBtn" class="bg-[#AEE8FF] text-[#073763] font-bold py-3 px-4 rounded-md text-sm shadow-md hover:bg-white transition-colors duration-300">
+                DON'T DONATE
+            </button>
+            <button id="mobileInvolvedBtn" class="bg-[#AEE8FF] text-[#073763] font-bold py-3 px-4 rounded-md text-sm shadow-md hover:bg-white transition-colors duration-300">
+                GET INVOLVED
+            </button>
+        </div>
+    </div>
 
 
     <!-- Main Content -->
     <main>
        <!-- Section 1: Hero -->
-        <section id="meet-adam" class="bg-[#073763] text-white py-20 md:py-32">
-            <div class="container mx-auto px-6">
-                <div class="flex flex-col md:flex-row items-center justify-between gap-12 mb-12">
-                    <!-- Text -->
-                    <div class="w-full md:w-1/2 text-center md:text-left">
-                        <h2 class="text-6xl md:text-7xl font-black leading-tight tracking-tight">Meet Adam</h2>
-                        <p class="text-xl md:text-2xl text-[#AEE8FF] mt-2">Candidate for Wisconsin's First Congressional District.</p>
-                    </div>
-                    <!-- Picture -->
-                    <div class="w-full md:w-1/2 flex justify-center md:justify-end">
-                         <div class="w-80 h-80 bg-gray-400 rounded-lg shadow-xl flex items-center justify-center text-gray-600">Picture</div>
-                    </div>
-                </div>
-                <!-- Long form text -->
-                <div class="max-w-4xl mx-auto text-lg space-y-4 text-gray-200">
-				  <p>My name is Adam Follmer. I was born and raised in Wisconsin and have proudly called District 1 home since 2016, when I put down roots in St. Francis. I teach at a local university, preparing future speech-language pathologists for a field I’ve spent years working in myself.</p>
+	<section id="meet-adam" class="bg-[#073763] text-white py-20 md:py-32">
+			<div class="container mx-auto px-6">
+				<div class="flex flex-col md:flex-row items-center justify-between gap-12 mb-12">
+					<div class="w-full md:w-1/2 text-center md:text-left">
+						<h2 class="text-6xl md:text-7xl font-black leading-tight tracking-tight">Meet Adam</h2>
+						<p class="text-xl md:text-2xl text-[#AEE8FF] mt-2">Candidate for Wisconsin's First Congressional District.</p>
+					</div>
+					<div class="w-full md:w-1/2 flex justify-center md:justify-end">
+						 <img src="meetadam.png" alt="Adam Follmer" class="w-80 h-80 rounded-lg shadow-xl object-cover">
+						 </div>
+				</div>
+				<div class="max-w-4xl mx-auto text-lg space-y-4 text-gray-200">
+				  <p>My name is Adam Follmer. I was born and raised in Wisconsin and have proudly called District 1 home since 2016, when I put down roots in St. Francis. I teach at a local university, preparing future speech-language pathologists for a field I’ve spent years working in myself.</p>
 
-				  <p>During my time working at healthcare facilities from South Milwaukee to Racine to Kenosha, I saw the same story repeated: incredible people keeping the system afloat despite chronic understaffing, heavy workloads, and profit-driven decision-making. Too often, medical care was dictated not by patients’ needs, but by what an insurance plan would cover.</p>
+				  <p>During my time working at healthcare facilities from South Milwaukee to Racine to Kenosha, I saw the same story repeated: incredible people keeping the system afloat despite chronic understaffing, heavy workloads, and profit-driven decision-making. Too often, medical care was dictated not by patients’ needs, but by what an insurance plan would cover.</p>
 
-				  <p>The dedication of healthcare workers has always been inspiring, but the strain they face is unsustainable. I felt it myself, and it lead to me stepping away from full-time clinical practice. What I carried home were ideas: that our healthcare system could be so much more than it is today.</p>
+				  <p>The dedication of healthcare workers has always been inspiring, but the strain they face is unsustainable. I felt it myself, and it lead to me stepping away from full-time clinical practice. What I carried home were ideas: that our healthcare system could be so much more than it is today.</p>
 
-				  <p>Teaching gave me a chance to help future clinicians enter the field with their eyes open. I worked to modernize training—not to discourage anyone, but to prepare students for the realities of working within a for-profit healthcare system, and to equip them to make it better.</p>
+				  <p>Teaching gave me a chance to help future clinicians enter the field with their eyes open. I worked to modernize training—not to discourage anyone, but to prepare students for the realities of working within a for-profit healthcare system, and to equip them to make it better.</p>
 
-				  <p>As someone who took on significant student loans, I understand the burden new graduates face. Many were willing to shoulder that debt in exchange for the promise of stable, meaningful work. But as cost-cutting in healthcare grows, that promise feels increasingly uncertain.</p>
+				  <p>As someone who took on significant student loans, I understand the burden new graduates face. Many were willing to shoulder that debt in exchange for the promise of stable, meaningful work. But as cost-cutting in healthcare grows, that promise feels increasingly uncertain.</p>
 
-				  <p>What keeps me committed to public service is the same thing that first drew me to healthcare: a belief that people deserve dignity, fairness, and opportunity. I’ve seen firsthand the cost of systems that put profit ahead of patients, students, and working families. I’m running to be a voice for the people who keep our communities strong and to build policies that put them, not corporate interests, at the center.</p>
-                </div>
-            </div>
-        </section>
+				  <p>What keeps me committed to public service is the same thing that first drew me to healthcare: a belief that people deserve dignity, fairness, and opportunity. I’ve seen firsthand the cost of systems that put profit ahead of patients, students, and working families. I’m running to be a voice for the people who keep our communities strong and to build policies that put them, not corporate interests, at the center.</p>
+				</div>
+			</div>
+		</section>
 
         <!-- Section 2: Video -->
         <section id="video-series" class="bg-white py-20 md:py-32 text-center">
@@ -150,16 +152,16 @@
                 </div>
                 <!-- Socials -->
                 <div class="flex flex-wrap items-center justify-center gap-4">
-                    <a href="https://www.instagram.com/adamforwi/" class="hover:text-[#AEE8FF] transition-colors">Instagram</a>
-                    <a href="https://adamforwi.substack.com/" class="hover:text-[#AEE8FF] transition-colors">Substack</a>
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">Instagram</a>
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">Threads</a>
                     <a href="#" class="hover:text-[#AEE8FF] transition-colors">Facebook</a>
-                    <a href="https://x.com/adamforwi" class="hover:text-[#AEE8FF] transition-colors">X</a>
-                    <a href="https://tiktok.com/@adamforwi" class="hover:text-[#AEE8FF] transition-colors">TikTok</a>
-                    <a href="https://bsky.app/profile/adamforwi.bsky.social" class="hover:text-[#AEE8FF] transition-colors">Bluesky</a>
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">X</a>
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">TikTok</a>
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">Bluesky</a>
                     <a href="#" class="hover:text-[#AEE8FF] transition-colors">YouTube</a>
                 </div>
                 <!-- Contact Button -->
-                <a href="mailto:adam@adamforwi.com" class="bg-white text-[#073763] font-bold py-2 px-4 rounded-md text-sm shadow-md hover:bg-white transition-colors duration-300">
+                <a href="mailto:contact@adamfollmer.com" class="bg-[#AEE8FF] text-[#073763] font-bold py-2 px-4 rounded-md text-sm shadow-md hover:bg-white transition-colors duration-300">
                     CONTACT
                 </a>
             </div>
@@ -170,7 +172,7 @@
     <!-- Modals -->
     <!-- "Don't Donate" Modal -->
     <div id="donateModal" class="fixed inset-0 w-full h-full flex items-center justify-center modal-backdrop hidden z-50">
-        <div class="bg-white text-[#073763] w-11/12 md:w-4/6 lg:w-1/2 p-8 rounded-lg shadow-2xl border-2 border-black relative transform transition-all duration-300 scale-95 opacity-0">
+        <div class="bg-[#AEE8FF] text-[#073763] w-11/12 md:w-4/6 lg:w-1/2 p-8 rounded-lg shadow-2xl border-2 border-black relative transform transition-all duration-300 scale-95 opacity-0">
             <button class="absolute top-2 right-4 text-4xl font-bold text-black hover:text-[#D62828]">&times;</button>
             <h2 class="text-3xl md:text-4xl font-black text-center mb-4">Keep your money!</h2>
             <p class="text-base md:text-lg text-center mb-6">We cannot outspend the billionaires.<br><br> They will use their wealth to influence our elections using whatever means possible. <b>Instead</b>, rely on your ability to convey this campaign’s message to your friends, family, coworkers, and neighbors.</p>
@@ -180,7 +182,7 @@
     
     <!-- "Get Involved" Modal -->
     <div id="involvedModal" class="fixed inset-0 w-full h-full flex items-center justify-center modal-backdrop hidden z-50">
-        <div class="bg-white text-[#073763] w-11/12 md:w-4/6 lg:w-1/2 p-8 rounded-lg shadow-2xl border-2 border-black relative transform transition-all duration-300 scale-95 opacity-0">
+        <div class="bg-[#AEE8FF] text-[#073763] w-11/12 md:w-4/6 lg:w-1/2 p-8 rounded-lg shadow-2xl border-2 border-black relative transform transition-all duration-300 scale-95 opacity-0">
             <button class="absolute top-2 right-4 text-4xl font-bold text-black hover:text-[#D62828]">&times;</button>
             <h2 class="text-3xl md:text-4xl font-black text-center mb-6">Campaign Differently</h2>
             <div class="text-center text-lg">
