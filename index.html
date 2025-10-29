@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Follmer For Congress</title>
+	<link rel="icon" href="Minicon.svg" type="image/svg+xml">
+    <link rel="icon" href="Minicon1.png" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="Minicon2.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom underline style for nav links */
+        .nav-underline {
+            position: relative;
+            padding-bottom: 8px;
+        }
+        .nav-underline::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: #AEE8FF;
+            transform: scaleX(0);
+            transition: transform 0.3s ease-in-out;
+        }
+        .nav-underline:hover::after {
+            transform: scaleX(1);
+        }
+        /* Custom styles for the modal to ensure it's centered and has a backdrop */
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <nav class="bg-[#002b54] text-white p-4 flex items-center justify-between sticky top-0 z-50 shadow-lg">
+        <div class="flex items-center space-x-8">
+            <a href="index.html" class="flex items-center space-x-2">
+				 <div class="flex items-center justify-center text-xs text-black">
+					<img src="logoInvert.png" style="width: 240px; height: 79px;" alt="Follmer For Congress Logo">
+				 </div>
+			</a>
+
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="meetadam.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Meet Adam</a>
+                <a href="platform.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Platform</a>
+                <a href="videoseries.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Video Series</a>
+            </div>
+        </div>
+
+        <div class="flex items-center">
+             <div class="hidden md:flex items-center space-x-2">
+                <button id="donateBtn" class="bg-[#AEE8FF] text-[#073763] font-bold py-2 px-4 rounded-md text-xs sm:text-sm shadow-md hover:bg-white transition-colors duration-300">
+                    DON'T DONATE
+                </button>
+                <button id="involvedBtn" class="bg-[#AEE8FF] text-[#073763] font-bold py-2 px-4 rounded-md text-xs sm:text-sm shadow-md hover:bg-white transition-colors duration-300">
+                    HOW TO HELP
+                </button>
+            </div>
+            
+            <div class="md:hidden ml-4">
+                <button id="hamburger-btn" class="focus:outline-none">
+                    <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <div id="mobile-menu" class="hidden md:hidden bg-[#002b54] text-white **fixed top-[64px] left-0 right-0 z-40**">
+		<a href="meetadam.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Meet Adam</a>
+		<a href="platform.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Platform</a>
+		<a href="videoseries.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Video Series</a>
+		<div class="px-6 py-4 border-t border-gray-700 flex flex-col space-y-4">
+			<button id="mobileDonateBtn" class="bg-[#AEE8FF] text-[#073763] font-bold py-3 px-4 rounded-md text-sm shadow-md hover:bg-white transition-colors duration-300">
+				DON'T DONATE
+			</button>
+			<button id="mobileInvolvedBtn" class="bg-[#AEE8FF] text-[#073763] font-bold py-3 px-4 rounded-md text-sm shadow-md hover:bg-white transition-colors duration-300">
+				GET INVOLVED
+			</button>
+		</div>
+	</div>
+
+
+    <main>
+        <section id="home" class="bg-[#073763] text-white py-20 md:py-32">
+			<div class="container mx-auto px-6">
+				<div class="flex flex-col md:flex-row items-center justify-center gap-12">
+					<div class="w-48 md:w-80 flex-shrink-0">
+						<img src="MainHeadshot.png" alt="Adam Follmer headshot" class="w-full h-auto drop-shadow-xl rounded-full border-4 border-[#AEE8FF]">
+					</div>
+					<div class="text-center md:text-left">
+						<h1 class="text-4xl md:text-6xl font-black leading-tight tracking-tight">
+							Government serving the 
+							<span class="text-[#AEE8FF]">workers</span>, 
+							<span class="whitespace-nowrap">
+								not the 
+								<span class="text-[#AEE8FF] underline">wealthy.</span>
+							</span>
+						</h1>
+					</div>
+				</div>
+			</div>
+		</section>
+
+        <section id="meet-adam" class="bg-white py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row-reverse items-center justify-center gap-12">
+                    <div class="w-full md:w-1/2 flex justify-center">
+                         <img src="sunrise.png" alt="Adam Follmer in a field" class="w-full max-w-sm h-auto rounded-lg shadow-xl">
+                         </div>
+                    <div class="w-full md:w-1/2">
+                        <h2 class="text-5xl font-bold text-[#073763] mb-6">The Future We Deserve</h2>
+                        <div class="text-lg text-gray-700 space-y-6">
+                              <p>
+								Most of our elected officials no longer serve the people who put them in office.
+								They’ve stopped acting like true <strong>public servants</strong>. Instead,
+								too many answer to wealthy corporations that have turned basic human needs
+								into profit-making ventures.
+							  </p>
+
+							  <p>
+								When the basics of dignity become for profit, humanity gets lost.
+							  </p>
+
+							  <p>
+								But there’s a <strong>better future</strong> within reach. 
+								A government that puts people first, ensuring everyone has access to essential services.
+								A shorter workweek that frees up time for innovation and a better quality of life.
+								Investment in education so the next generation can tackle the challenges ahead.
+							  </p>
+
+
+
+							  <p>
+								That future is possible — if we come together, focus on what unites us,
+								and reject the efforts of the wealthy and powerful to keep us divided.
+							  </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="video-series" class="bg-gray-300 py-20 md:py-32 text-center">
+			<div class="container mx-auto px-6">
+				<h2 class="text-5xl font-bold text-[#073763] mb-8">Discover a Different Way</h2>
+                <div id="videoThumbnail" class="relative max-w-4xl mx-auto rounded-lg overflow-hidden shadow-2xl cursor-pointer group">
+                    <img src="https://img.youtube.com/vi/hLSnJoCTN_g/maxresdefault.jpg" alt="Adam Follmer for Wisconsin's First Congressional District" class="w-full">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                        <svg class="w-24 h-24 text-white opacity-80 group-hover:opacity-100 transform group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="platform" class="bg-white py-20 md:py-32">
+			<div class="container mx-auto px-6">
+				<div class="flex flex-col md:flex-row items-center justify-start gap-12">
+					<div class="w-full">
+						<h2 class="text-5xl font-bold text-[#073763] mb-6">$10,000 Campaign Limit</h2>
+						<div class="text-lg text-gray-700 space-y-6">
+							<p><span class="bg-[#073763] text-white p-1 rounded">Every year, we see another campaign spending record being broken.</span> The <i>Citizens United</i> decision opened the door to an endless barrage of texts, calls, door-to-door visits, and advertisements. Both major parties receive millions of dollars and funnel these funds through media buys, consultants, and campaign staff. Neither has an incentive to create a fair, cost-controlled election process. Doing so would cut into their business model.</p>
+							<p><span class="bg-[#D62828] text-white p-1 rounded">So why do we put up with it?</span> We are only two election cycles away from electing a House ready to draft reform legislation, a Senate willing to pass it, and a large enough coalition to override any presidential veto. The challenge is not just to elect a single candidate, but to send enough like-minded representatives to Washington. People who will resist corporate influence and commit to reshaping our government. </p>
+							<p><span class="bg-[#073763] text-white p-1 rounded">I am capping my campaign spending at $10,000.</span> Instead of pouring money into ads and consultants, I’m betting on something more powerful: people. If the message resonates, voters will share it in conversations while visiting with a neighbor, at work, or around the dinner table. Steady change from person to person, building trust and momentum without being drowned out by the influence of the elite few.  </p>
+							
+							<p>Want to see exactly where my campaign funds come from and go? 
+								<a href="transparency.html" class="text-[#073763] font-extrabold hover:text-[#AEE8FF] hover:underline transition-colors duration-200">
+									See my campaign contributions and expenditures here.
+								</a>
+							</p>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+        
+        <footer id="transparency" class="bg-[#002b54] text-white py-12">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="flex items-center gap-4">
+                    <div><img src="logoInvert.png" style="width: 240px; height: 79px;" alt="Follmer For Congress Logo"></div>
+                </div>
+                <div class="flex flex-wrap items-center justify-center gap-4">
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">Instagram</a>
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">Threads</a>
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">Facebook</a>
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">X</a>
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">TikTok</a>
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">Bluesky</a>
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">YouTube</a>
+                </div>
+                <a href="mailto:adam@adamforwi.com" class="bg-[#AEE8FF] text-[#073763] font-bold py-2 px-4 rounded-md text-sm shadow-md hover:bg-white transition-colors duration-300">
+                    CONTACT
+                </a>
+            </div>
+        </footer>
+
+    </main>
+
+    <div id="donateModal" class="fixed inset-0 w-full h-full flex items-center justify-center modal-backdrop hidden z-50">
+		<div class="bg-gray-300 text-[#073763] w-11/12 md:w-4/6 lg:w-1/2 p-8 rounded-lg shadow-2xl border-2 border-black relative transform transition-all duration-300 scale-95 opacity-0">
+			<button class="absolute top-2 right-4 text-4xl font-bold text-black hover:text-[#D62828]">&times;</button>
+			<h2 class="text-3xl md:text-4xl font-black text-center mb-4">We cannot outspend the billionaires.</h2>
+			
+			<p class="text-center mb-6">
+				<i class="text-xl md:text-2xl font-extrabold block mb-2">But we can organize and outnumber them.</i><br><br>
+				<span class="text-sm md:text-base"><b>They will use their wealth to influence our politicians and elections using whatever means possible.<br>Fight back by sharing this campaign’s message to your friends, family, coworkers, and neighbors.</b></span>
+			</p>
+			
+			<p class="text-lg md:text-xl font-bold text-center mt-6">
+				<a href="index.html#platform" 
+				   class="block text-lg font-bold uppercase tracking-wider py-2 px-4 
+						  bg-[#0b5394] text-[#AEE8FF] shadow-md 
+						  hover:bg-[#AEE8FF] hover:text-[#073763] 
+						  rounded-lg transition-colors duration-300">
+					Change how we engage with politics.
+				</a>
+			</p>
+		</div>
+	</div>
+    
+    <div id="involvedModal" class="fixed inset-0 w-full h-full flex items-center justify-center modal-backdrop hidden z-50">
+		<div class="bg-gray-300 text-[#073763] w-11/12 md:w-4/6 lg:w-1/2 p-8 rounded-lg shadow-2xl border-2 border-black relative transform transition-all duration-300 scale-95 opacity-0">
+			<button class="absolute top-2 right-4 text-4xl font-bold text-black hover:text-[#D62828]">&times;</button>
+			
+			<h2 class="text-3xl md:text-4xl font-black text-center mb-4">Let's Campaign Differently.</h2>
+			
+			<p class="text-center mb-6">
+				<b class="text-xl md:text-2xl font-extrabold block mb-2">Focus on Connection, Not Consumption.</b>
+				<span class="text-sm md:text-base">
+					Skip the usual campaign noise. No massive mailers, texts, calls, or yard signs. <br> Our method is simple: authentic, personal conversations.
+				</span>
+			</p>
+
+			<p class="text-lg font-bold text-center mb-4">
+				<span class="block mb-2">Share this message with three groups:</span>
+				<ul class="list-disc list-inside space-y-1 w-fit mx-auto text-left text-base md:text-lg">
+					<li>Family members or friends</li>
+					<li>Co-workers</li>
+					<li>Neighbors</li>
+				</ul>
+			</p>
+			
+			<p class="text-lg md:text-xl font-bold text-center mt-6">
+				<a href="volunteer.html" 
+				   class="block text-lg font-bold uppercase tracking-wider py-2 px-4 
+						  bg-[#0b5394] text-[#AEE8FF] shadow-md 
+						  hover:bg-[#AEE8FF] hover:text-[#073763] 
+						  rounded-lg transition-colors duration-300">
+					Want to do even more? See our volunteer page.
+				</a>
+			</p>
+		</div>
+	</div>
+    
+	<div id="videoModal" class="fixed inset-0 w-full h-full flex items-center justify-center modal-backdrop hidden z-50">
+         <div class="w-11/12 md:w-3/4 lg:w-2/3 relative transform transition-all duration-300 scale-95 opacity-0">
+            <button class="absolute -top-10 right-0 text-5xl font-bold text-white hover:text-gray-300">&times;</button>
+            <div class="aspect-[16/9] bg-black rounded-lg overflow-hidden shadow-2xl">
+                 <iframe id="youtubePlayer" class="w-full h-full" src="" title="Adam Follmer for Wisconsin's First Congressional District" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+	<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Hamburger Menu Logic ---
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            hamburgerBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+            });
+            
+            // --- Modal functionality ---
+            const donateBtn = document.getElementById('donateBtn');
+            const involvedBtn = document.getElementById('involvedBtn');
+            const mobileDonateBtn = document.getElementById('mobileDonateBtn');
+            const mobileInvolvedBtn = document.getElementById('mobileInvolvedBtn');
+            const videoThumbnail = document.getElementById('videoThumbnail');
+
+            const donateModal = document.getElementById('donateModal');
+            const involvedModal = document.getElementById('involvedModal');
+            const videoModal = document.getElementById('videoModal');
+            
+            const modals = [donateModal, involvedModal, videoModal];
+            const youtubePlayer = document.getElementById('youtubePlayer');
+            
+			// const originalVideoSrc = youtubePlayer.src; // This line is no longer needed
+			function openModal(modal) {
+                if (modal) {
+                    modal.classList.remove('hidden');
+                    // Use a short timeout to allow the display property to change before starting the transition
+                    setTimeout(() => {
+                        modal.querySelector('div').classList.remove('scale-95', 'opacity-0');
+                        modal.querySelector('div').classList.add('scale-100', 'opacity-100');
+                    }, 10);
+                }
+            }
+
+            function closeModal(modal) {
+                if (modal && !modal.classList.contains('hidden')) {
+                     modal.querySelector('div').classList.add('scale-95', 'opacity-0');
+                     modal.querySelector('div').classList.remove('scale-100', 'opacity-100');
+                    setTimeout(() => {
+                        modal.classList.add('hidden');
+                        // Stop YouTube video when modal is closed
+                        if (modal.id === 'videoModal') {
+                            youtubePlayer.src = ""; // Clear src to stop video
+                        }
+                    }, 300); // Match transition duration
+                }
+            }
+
+            donateBtn.addEventListener('click', () => openModal(donateModal));
+            involvedBtn.addEventListener('click', () => openModal(involvedModal));
+            mobileDonateBtn.addEventListener('click', () => openModal(donateModal));
+            mobileInvolvedBtn.addEventListener('click', () => openModal(involvedModal));
+            
+			videoThumbnail.addEventListener('click', () => {
+                 // youtubePlayer.src = originalVideoSrc; // Old line
+				 youtubePlayer.src = "https://www.youtube.com/embed/hLSnJoCTN_g?autoplay=1&enablejsapi=1"; // Set src to start video
+                 openModal(videoModal);
+            });
+			modals.forEach(modal => {
+                if (modal) {
+                    // Close button inside modal
+                    const closeBtn = modal.querySelector('button');
+                    if(closeBtn) {
+                        closeBtn.addEventListener('click', () => closeModal(modal));
+                    }
+
+                    // Clicking on the backdrop to close
+                    modal.addEventListener('click', (e) => {
+                        if (e.target === modal) {
+                            closeModal(modal);
+                        }
+                    });
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    modals.forEach(closeModal);
+                }
+            });
+
+            // Close mobile menu when a link is clicked for smooth scrolling
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
