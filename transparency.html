@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transparency - Follmer For Congress</title>
+	<link rel="icon" href="Minicon.svg" type="image/svg+xml">
+    <link rel="icon" href="Minicon1.png" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="Minicon2.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        /* Keep nav underline exactly like index */
+        .nav-underline { position: relative; padding-bottom: 8px; }
+        .nav-underline::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background-color: #AEE8FF; transform: scaleX(0); transition: transform 0.3s ease-in-out; }
+        .nav-underline:hover::after { transform: scaleX(1); }
+        .modal-backdrop { background-color: rgba(0,0,0,0.6); }
+        /* Data table tweaks */
+        th, td { vertical-align: middle; }
+        td[contenteditable="true"] { outline: none; }
+        td[contenteditable="true"]:focus { box-shadow: inset 0 0 0 2px #AEE8FF; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Sticky Navigation Bar (kept the same) -->
+    <nav class="bg-[#002b54] text-white p-4 flex items-center justify-between sticky top-0 z-50 shadow-lg">
+        <div class="flex items-center space-x-8">
+            <!-- Campaign Logo -->
+			<a href="index.html" class="flex items-center space-x-2">
+				 <div class="flex items-center justify-center text-xs text-black">
+					<img src="logoInvert.png" style="width: 240px; height: 79px;" alt="Follmer For Congress Logo">
+				 </div>
+			</a>
+
+            <!-- Navigation Links for larger screens -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="meetadam.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Meet Adam</a>
+                <a href="platform.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Platform</a>
+                <a href="videoseries.html" class="text-sm font-bold uppercase tracking-wider nav-underline">Video Series</a>
+            </div>
+        </div>
+
+        <div class="flex items-center">
+             <!-- Action Buttons -->
+            <div class="hidden md:flex items-center space-x-2">
+                <button id="donateBtn" class="bg-[#AEE8FF] text-[#073763] font-bold py-2 px-4 rounded-md text-xs sm:text-sm shadow-md hover:bg-white transition-colors duration-300">
+                    DON'T DONATE
+                </button>
+                <button id="involvedBtn" class="bg-[#AEE8FF] text-[#073763] font-bold py-2 px-4 rounded-md text-xs sm:text-sm shadow-md hover:bg-white transition-colors duration-300">
+                    HOW TO HELP
+                </button>
+            </div>
+            
+            <!-- Hamburger Menu Button -->
+            <div class="md:hidden ml-4">
+                <button id="hamburger-btn" class="focus:outline-none">
+                    <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+	<div id="mobile-menu" class="hidden md:hidden bg-[#002b54] text-white **fixed top-[64px] left-0 right-0 z-40**">
+		<a href="meetadam.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Meet Adam</a>
+		<a href="platform.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Platform</a>
+		<a href="videoseries.html" class="block text-sm font-bold uppercase tracking-wider py-4 px-6 hover:bg-[#0b5394]">Video Series</a>
+		<div class="px-6 py-4 border-t border-gray-700 flex flex-col space-y-4">
+			<button id="mobileDonateBtn" class="bg-[#AEE8FF] text-[#073763] font-bold py-3 px-4 rounded-md text-sm shadow-md hover:bg-white transition-colors duration-300">
+				DON'T DONATE
+			</button>
+			<button id="mobileInvolvedBtn" class="bg-[#AEE8FF] text-[#073763] font-bold py-3 px-4 rounded-md text-sm shadow-md hover:bg-white transition-colors duration-300">
+				GET INVOLVED
+			</button>
+		</div>
+	</div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Header -->
+        <section class="bg-[#073763] text-white py-16">
+            <div class="container mx-auto px-6">
+                <h1 class="text-4xl md:text-5xl font-black">Full Transparency</h1>
+                <p class="mt-4 max-w-3xl text-lg text-[#AEE8FF]">
+                    You deserve to see exactly where campaign money comes from, where it goes, and how I spend my time.
+                    I believe every public servant should embody transparency—and I intend to model it here in real time.
+                </p>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="bg-white py-10 md:py-16">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6" aria-live="polite">
+                    <div class="rounded-2xl border-2 border-black shadow-xl p-6 bg-[#AEE8FF] text-[#073763]">
+                        <h2 class="text-sm font-bold uppercase tracking-wider">Money Raised</h2>
+                        <p id="totalRaised" class="mt-2 text-4xl md:text-5xl font-black">$100</p>
+                    </div>
+                    <div class="rounded-2xl border-2 border-black shadow-xl p-6 bg-white">
+                        <h2 class="text-sm font-bold uppercase tracking-wider text-[#073763]">Money Spent</h2>
+                        <p id="totalSpent" class="mt-2 text-4xl md:text-5xl font-black text-[#D62828]">$0</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ledger Table -->
+        <section class="bg-white pb-24">
+            <div class="container mx-auto px-6">
+                <p class="text-gray-700 mb-3">Data is maintained by the campaign and updated weekly.</p>
+
+                <div class="overflow-x-auto rounded-xl border border-gray-300 shadow">
+                    <table id="ledgerTable" class="min-w-full divide-y divide-gray-300">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Date</th>
+                                <th scope="col" class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Type (Raised/Spent)</th>
+                                <th scope="col" class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Source / Purpose</th>
+                                <th scope="col" class="px-4 py-3 text-right text-xs font-bold text-gray-600 uppercase tracking-wider">Amount (USD)</th>
+                                <th scope="col" class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-100">
+                            <!-- Initial example row: self-contribution $100, spent $0 -->
+                            <tr>
+                                <td class="px-4 py-3 whitespace-nowrap">2025-10-02</td>
+                                <td class="px-4 py-3 whitespace-nowrap">Raised</td>
+                                <td class="px-4 py-3">Self contribution</td>
+                                <td class="px-4 py-3 text-right">100.00</td>
+                                <td class="px-4 py-3">Seed to open account</td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="bg-gray-50">
+                            <tr>
+                                <td colspan="3" class="px-4 py-3 text-right font-bold text-[#073763]">Totals</td>
+                                <td class="px-4 py-3 text-right">
+                                    <div class="text-sm">Raised: <span id="tRaisedFoot" class="font-bold">$100.00</span></div>
+                                    <div class="text-sm">Spent: <span id="tSpentFoot" class="font-bold">$0.00</span></div>
+                                </td>
+                                <td colspan="2" class="px-4 py-3 text-left text-sm text-gray-600">(Figures above update from this ledger)</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer (kept the same) -->
+        <footer id="transparency" class="bg-[#002b54] text-white py-12">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
+                <!-- Logo and Copyright -->
+                <div class="flex items-center gap-4">
+                    <div><img src="logoInvert.png" style="width: 240px; height: 79px;" alt="Follmer For Congress Logo"></div>
+                </div>
+                <!-- Socials -->
+                <div class="flex flex-wrap items-center justify-center gap-4">
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">Instagram</a>
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">Threads</a>
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">Facebook</a>
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">X</a>
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">TikTok</a>
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">Bluesky</a>
+                    <a href="#" class="hover:text-[#AEE8FF] transition-colors">YouTube</a>
+                </div>
+                <!-- Contact Button -->
+                <a href="mailto:adam@adamforwi.com" class="bg-[#AEE8FF] text-[#073763] font-bold py-2 px-4 rounded-md text-sm shadow-md hover:bg-white transition-colors duration-300">
+                    CONTACT
+                </a>
+            </div>
+        </footer>
+
+    <!-- "Don't Donate" Modal -->
+    <!-- "Don't Donate" Modal -->
+	<div id="donateModal" class="fixed inset-0 w-full h-full flex items-center justify-center modal-backdrop hidden z-50">
+		<div class="bg-gray-300 text-[#073763] w-11/12 md:w-4/6 lg:w-1/2 p-8 rounded-lg shadow-2xl border-2 border-black relative transform transition-all duration-300 scale-95 opacity-0">
+			<button class="absolute top-2 right-4 text-4xl font-bold text-black hover:text-[#D62828]">&times;</button>
+			<h2 class="text-3xl md:text-4xl font-black text-center mb-4">We cannot outspend the billionaires.</h2>
+			
+			<p class="text-center mb-6">
+				<i class="text-xl md:text-2xl font-extrabold block mb-2">But we can organize and outnumber them.</i><br><br>
+				<span class="text-sm md:text-base"><b>They will use their wealth to influence our politicians and elections using whatever means possible.<br>Fight back by sharing this campaign’s message to your friends, family, coworkers, and neighbors.</b></span>
+			</p>
+			
+			<p class="text-lg md:text-xl font-bold text-center mt-6">
+				<a href="index.html#platform" 
+				   class="block text-lg font-bold uppercase tracking-wider py-2 px-4 
+						  bg-[#0b5394] text-[#AEE8FF] shadow-md 
+						  hover:bg-[#AEE8FF] hover:text-[#073763] 
+						  rounded-lg transition-colors duration-300">
+					Change how we engage with politics.
+				</a>
+			</p>
+		</div>
+	</div>
+    
+    <!-- "Get Involved" Modal -->
+	<div id="involvedModal" class="fixed inset-0 w-full h-full flex items-center justify-center modal-backdrop hidden z-50">
+		<div class="bg-gray-300 text-[#073763] w-11/12 md:w-4/6 lg:w-1/2 p-8 rounded-lg shadow-2xl border-2 border-black relative transform transition-all duration-300 scale-95 opacity-0">
+			<button class="absolute top-2 right-4 text-4xl font-bold text-black hover:text-[#D62828]">&times;</button>
+			
+			<h2 class="text-3xl md:text-4xl font-black text-center mb-4">Let's Campaign Differently.</h2>
+			
+			<p class="text-center mb-6">
+				<b class="text-xl md:text-2xl font-extrabold block mb-2">Focus on Connection, Not Consumption.</b>
+				<span class="text-sm md:text-base">
+					Skip the usual campaign noise. No massive mailers, texts, calls, or yard signs. <br> Our method is simple: authentic, personal conversations.
+				</span>
+			</p>
+
+			<p class="text-lg font-bold text-center mb-4">
+				<span class="block mb-2">Share this message with three groups:</span>
+				<ul class="list-disc list-inside space-y-1 w-fit mx-auto text-left text-base md:text-lg">
+					<li>Family members or friends</li>
+					<li>Co-workers</li>
+					<li>Neighbors</li>
+				</ul>
+			</p>
+			
+			<p class="text-lg md:text-xl font-bold text-center mt-6">
+				<a href="volunteer.html" 
+				   class="block text-lg font-bold uppercase tracking-wider py-2 px-4 
+						  bg-[#0b5394] text-[#AEE8FF] shadow-md 
+						  hover:bg-[#AEE8FF] hover:text-[#073763] 
+						  rounded-lg transition-colors duration-300">
+					Want to do even more? See our volunteer page.
+				</a>
+			</p>
+		</div>
+	</div>
+
+    <script>
+        // --- Shared UI (hamburger + modals) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            if (hamburgerBtn) {
+                hamburgerBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    menuIcon.classList.toggle('hidden');
+                    closeIcon.classList.toggle('hidden');
+                });
+            }
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                });
+            });
+
+            const donateBtn = document.getElementById('donateBtn');
+            const involvedBtn = document.getElementById('involvedBtn');
+            const mobileDonateBtn = document.getElementById('mobileDonateBtn');
+            const mobileInvolvedBtn = document.getElementById('mobileInvolvedBtn');
+            const donateModal = document.getElementById('donateModal');
+            const involvedModal = document.getElementById('involvedModal');
+            const modals = [donateModal, involvedModal];
+
+            function openModal(modal) {
+                if (!modal) return;
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.querySelector('div').classList.remove('scale-95', 'opacity-0');
+                    modal.querySelector('div').classList.add('scale-100', 'opacity-100');
+                }, 10);
+            }
+            function closeModal(modal) {
+                if (!modal || modal.classList.contains('hidden')) return;
+                modal.querySelector('div').classList.add('scale-95', 'opacity-0');
+                modal.querySelector('div').classList.remove('scale-100', 'opacity-100');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            }
+
+            [donateBtn, mobileDonateBtn].forEach(btn => btn && btn.addEventListener('click', () => openModal(donateModal)));
+            [involvedBtn, mobileInvolvedBtn].forEach(btn => btn && btn.addEventListener('click', () => openModal(involvedModal)));
+            modals.forEach(modal => {
+                if (!modal) return;
+                const closeBtn = modal.querySelector('button');
+                closeBtn && closeBtn.addEventListener('click', () => closeModal(modal));
+                modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(modal); });
+            });
+
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') modals.forEach(closeModal); });
+        });
+
+        // --- Ledger logic (auto-sums -> figures) ---
+        (function() {
+            const table = document.getElementById('ledgerTable');
+            const totalRaisedEl = document.getElementById('totalRaised');
+            const totalSpentEl = document.getElementById('totalSpent');
+            const footRaisedEl = document.getElementById('tRaisedFoot');
+            const footSpentEl = document.getElementById('tSpentFoot');
+            const addRowBtn = document.getElementById('addRowBtn');
+            const downloadCsvBtn = document.getElementById('downloadCsvBtn');
+
+            function parseAmount(str) {
+                if (!str) return 0;
+                const n = parseFloat(String(str).replace(/[^0-9.-]/g, ''));
+                return isNaN(n) ? 0 : n;
+            }
+            function formatUSD(n) {
+                return n.toLocaleString(undefined, { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
+            }
+            function recalc() {
+                let raised = 0, spent = 0;
+                const rows = table.querySelectorAll('tbody tr');
+                rows.forEach(tr => {
+                    const tds = tr.querySelectorAll('td');
+                    if (tds.length < 4) return;
+                    const type = (tds[1].innerText || '').trim().toLowerCase();
+                    const amt = parseAmount(tds[3].innerText);
+                    if (type.startsWith('r')) raised += amt; // Raised
+                    else if (type.startsWith('s')) spent += amt; // Spent
+                });
+                totalRaisedEl.textContent = formatUSD(raised);
+                totalSpentEl.textContent = formatUSD(spent);
+                footRaisedEl.textContent = formatUSD(raised);
+                footSpentEl.textContent = formatUSD(spent);
+            }
+
+            // Observe edits
+            table.addEventListener('input', recalc);
+
+            // Remove row
+            table.addEventListener('click', (e) => {
+                const btn = e.target.closest('.removeRow');
+                if (btn) { btn.closest('tr').remove(); recalc(); }
+            });
+
+            // Add new row
+            addRowBtn.addEventListener('click', () => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="px-4 py-3 whitespace-nowrap">${new Date().toISOString().slice(0,10)}</td>
+                    <td class="px-4 py-3 whitespace-nowrap">Raised</td>
+                    <td class="px-4 py-3">Description</td>
+                    <td class="px-4 py-3 text-right">0.00</td>
+                    <td class="px-4 py-3">—</td>
+                    <td class="px-4 py-3 text-center"><button class="removeRow text-[#D62828] font-bold">×</button></td>
+                `;
+                table.querySelector('tbody').prepend(tr);
+            });
+
+            // Download CSV
+            downloadCsvBtn.addEventListener('click', () => {
+                const rows = [...table.querySelectorAll('tr')].map(tr => [...tr.querySelectorAll('th,td')].map(td => '"' + (td.innerText || '').replace(/"/g, '""') + '"').join(','));
+                const csv = rows.join('\n');
+                const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url; a.download = 'campaign_ledger.csv'; a.click();
+                setTimeout(() => URL.revokeObjectURL(url), 1000);
+            });
+
+            // Initial calc
+            recalc();
+        })();
+    </script>
+</body>
+</html>
