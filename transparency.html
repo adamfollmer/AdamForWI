@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transparency - Follmer For Congress</title>
+	<link rel="icon" href="Minicon.svg" type="image/svg+xml">
+    <link rel="icon" href="Minicon1.png" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="Minicon2.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Modern Campaign "Punch" - Massive Typography Utility */
+        .font-campaign {
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+
+        /* Custom underline style for nav links */
+        .nav-underline {
+            position: relative;
+            padding-bottom: 8px;
+        }
+        .nav-underline::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: #AEE8FF;
+            transform: scaleX(0);
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav-underline:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .modal-backdrop {
+            background-color: rgba(0, 7, 20, 0.9);
+            backdrop-filter: blur(4px);
+        }
+
+        /* Subtle texture for backgrounds */
+        .bg-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.5) 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+            -webkit-mask-image: linear-gradient(to bottom, black 0%, black 10%, transparent 20%, transparent 80%, black 90%, black 100%);
+            mask-image: linear-gradient(to bottom, black 0%, black 10%, transparent 20%, transparent 80%, black 90%, black 100%);
+        }
+        
+        /* Table tweaks */
+        th, td { vertical-align: middle; }
+    </style>
+</head>
+<body class="bg-white text-[#073763] antialiased selection:bg-[#AEE8FF] selection:text-[#073763]">
+
+    <!-- NAVIGATION -->
+    <nav class="bg-[#002b54] text-white py-5 px-6 flex items-center justify-between sticky top-0 z-50 border-b border-[#AEE8FF]/20 shadow-xl backdrop-blur-md bg-opacity-95">
+        <div class="flex items-center space-x-12">
+            <a href="index.html" class="flex items-center group">
+                 <img src="logoInvert.png" class="h-10 md:h-12 w-auto transition-transform group-hover:scale-105" alt="Follmer For Congress">
+			</a>
+
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="meetadam.html" class="text-sm font-black uppercase tracking-widest nav-underline text-white/90 hover:text-white">Meet Adam</a>
+                <a href="platform.html" class="text-sm font-black uppercase tracking-widest nav-underline text-white/90 hover:text-white">Platform</a>
+                <a href="videoseries.html" class="text-sm font-black uppercase tracking-widest nav-underline text-white/90 hover:text-white">Video Series</a>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+             <div class="hidden md:flex items-center gap-3">
+                <button id="donateBtn" class="bg-[#AEE8FF] text-[#002b54] border-2 border-[#AEE8FF] font-black py-2 px-6 rounded text-sm hover:bg-transparent hover:text-[#AEE8FF] transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg">
+                    DON'T DONATE
+                </button>
+                <a href="volunteer.html" class="bg-transparent border-2 border-white text-white font-black py-2 px-6 rounded text-sm hover:bg-white hover:text-[#002b54] transition-all duration-300 transform hover:-translate-y-0.5 inline-block">
+                    GET INVOLVED
+                </a>
+            </div>
+            
+            <div class="md:hidden">
+                <button id="hamburger-btn" class="focus:outline-none text-[#AEE8FF]">
+                    <svg id="menu-icon" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    <svg id="close-icon" class="w-8 h-8 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- MOBILE MENU -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#002b54] text-white fixed top-[80px] left-0 right-0 bottom-0 z-40 border-t border-white/10">
+        <div class="flex flex-col p-6 space-y-6">
+            <a href="meetadam.html" class="text-2xl font-black uppercase tracking-wide">Meet Adam</a>
+            <a href="platform.html" class="text-2xl font-black uppercase tracking-wide">Platform</a>
+            <a href="videoseries.html" class="text-2xl font-black uppercase tracking-wide">Video Series</a>
+            <div class="h-px bg-white/20 w-full my-4"></div>
+            <button id="mobileDonateBtn" class="w-full bg-[#AEE8FF] text-[#002b54] font-black py-4 rounded text-lg uppercase shadow-lg">
+                Don't Donate
+            </button>
+			<a href="volunteer.html" class="text-center w-full border-2 border-white text-white font-black py-4 rounded text-lg uppercase">
+             Get Involved
+			</a>
+        </div>
+	</div>
+
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="bg-gradient-to-br from-[#002b54] to-[#001f3f] text-white pt-20 pb-24 md:py-32 relative overflow-hidden">
+            <!-- Pattern visibility matched to Index -->
+            <div class="absolute inset-0 bg-pattern opacity-40"></div>
+            <!-- Decorative blur -->
+            <div class="absolute -top-20 -right-20 w-96 h-96 bg-[#AEE8FF] rounded-full mix-blend-overlay filter blur-3xl opacity-20"></div>
+
+            <div class="container mx-auto px-6 relative z-10 text-center max-w-4xl">
+                <span class="inline-block py-1 px-3 border border-[#AEE8FF] text-[#AEE8FF] font-bold text-xs tracking-widest uppercase mb-6 bg-black/20 rounded-full">Transparency</span>
+                <h1 class="font-campaign text-6xl md:text-8xl leading-none mb-8">
+                    Campaign <span class="text-[#AEE8FF]">Finances</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-blue-100 font-medium leading-relaxed">
+                    You deserve to see exactly where campaign money comes from and where it goes. I believe every public servant should embody transparency, and I intend to model it here.
+                </p>
+            </div>
+        </section>
+
+        <!-- STATS SECTION -->
+        <section class="bg-white pt-20 pb-12">
+            <div class="container mx-auto px-6 max-w-5xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8" aria-live="polite">
+                    <!-- Money Raised Card -->
+                    <div class="relative bg-[#002b54] rounded-2xl p-8 shadow-xl overflow-hidden border border-[#002b54] group hover:scale-[1.02] transition-transform duration-300">
+                        <div class="absolute top-0 right-0 p-4 opacity-10">
+                            <svg class="w-32 h-32 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h2 class="text-[#AEE8FF] font-bold uppercase tracking-widest text-sm mb-2">Total Raised</h2>
+                        <p id="totalRaised" class="text-white text-5xl md:text-6xl font-campaign tracking-tight">$0</p>
+                        <div class="mt-4 h-1 w-full bg-white/10 rounded-full overflow-hidden">
+                            <div class="h-full bg-[#AEE8FF] w-full"></div>
+                        </div>
+                    </div>
+
+                    <!-- Money Spent Card -->
+                    <div class="relative bg-white rounded-2xl p-8 shadow-xl overflow-hidden border-2 border-gray-100 group hover:scale-[1.02] transition-transform duration-300">
+                        <div class="absolute top-0 right-0 p-4 opacity-5">
+                            <svg class="w-32 h-32 text-[#002b54]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        </div>
+                        <h2 class="text-[#002b54] font-bold uppercase tracking-widest text-sm mb-2">Total Spent</h2>
+                        <p id="totalSpent" class="text-[#D62828] text-5xl md:text-6xl font-campaign tracking-tight">$0</p>
+                        <div class="mt-4 h-1 w-full bg-gray-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-[#D62828] w-0 transition-all duration-1000" style="width: 1%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LEDGER SECTION -->
+        <section class="bg-white pb-24">
+            <div class="container mx-auto px-6 max-w-6xl">
+                <div class="flex items-center justify-between mb-6">
+                    <p class="text-gray-500 font-bold text-sm uppercase tracking-wide">Data updated weekly</p>
+                </div>
+
+                <div class="overflow-hidden border-2 border-gray-200 shadow-lg rounded-xl">
+                    <table id="ledgerTable" class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-[#002b54] text-white">
+                            <tr>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-black uppercase tracking-widest">Date</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-black uppercase tracking-widest">Type</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-black uppercase tracking-widest w-1/3">Source / Purpose</th>
+                                <th scope="col" class="px-6 py-4 text-right text-xs font-black uppercase tracking-widest">Amount</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-black uppercase tracking-widest">Notes</th>
+                            </tr>
+                        </thead>
+                        <!-- EDIT HERE: Add new rows below. Ensure 'Type' is 'Raised' or 'Spent' for auto-calc. -->
+                        <tbody class="bg-white divide-y divide-gray-100 text-sm md:text-base">
+                            
+                            <!-- Row 1 -->
+                            <tr class="hover:bg-blue-50 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-700 font-medium">2025-06-27</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-bold uppercase">Raised</span></td>
+                                <td class="px-6 py-4 text-[#002b54] font-bold">Self contribution</td>
+                                <td class="px-6 py-4 text-right font-mono font-bold">$100.00</td>
+                                <td class="px-6 py-4 text-gray-500 italic">Needed to open account</td>
+                            </tr>
+							<tr class="hover:bg-blue-50 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-700 font-medium">2025-09-08</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-bold uppercase">Spent</span></td>
+                                <td class="px-6 py-4 text-[#002b54] font-bold">Website cost</td>
+                                <td class="px-6 py-4 text-right font-mono font-bold">$10.46</td>
+                                <td class="px-6 py-4 text-gray-500 italic">Domain name registration</td>
+                            </tr>
+							<tr class="hover:bg-blue-50 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-700 font-medium">2025-10-03</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-bold uppercase">Spent</span></td>
+                                <td class="px-6 py-4 text-[#002b54] font-bold">Website cost</td>
+                                <td class="px-6 py-4 text-right font-mono font-bold">$20.92</td>
+                                <td class="px-6 py-4 text-gray-500 italic">Back-up domain name registration</td>
+                            </tr>
+
+                        </tbody>
+                        <tfoot class="bg-gray-50 border-t-2 border-gray-200">
+                            <tr>
+                                <td colspan="3" class="px-6 py-4 text-right font-black text-[#002b54] uppercase tracking-widest">Totals</td>
+                                <td class="px-6 py-4 text-right">
+                                    <div class="text-sm text-green-700">Raised: <span id="tRaisedFoot" class="font-bold">$0.00</span></div>
+                                    <div class="text-sm text-[#D62828]">Spent: <span id="tSpentFoot" class="font-bold">$0.00</span></div>
+                                </td>
+                                <td class="px-6 py-4"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER (Matched to Index) -->
+        <footer id="transparency" class="bg-[#002b54] text-white py-20 border-t-8 border-[#AEE8FF]">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col lg:flex-row justify-between items-start gap-12">
+                    <div class="max-w-md">
+                        <img src="logoInvert.png" class="h-16 w-auto mb-6 opacity-90" alt="Follmer For Congress Logo">
+                        <p class="text-blue-200 text-lg mb-8">
+                            Paid for by Adam for WI District 1. <br>
+                        </p>
+                        <a href="mailto:adam@adamforwi.com" class="text-[#AEE8FF] font-black text-xl hover:text-white border-b-2 border-[#AEE8FF] pb-1">
+                            adam@adamforwi.com
+                        </a>
+                    </div>
+                    
+                    <div class="flex flex-col gap-6">
+                        <h4 class="font-campaign text-2xl text-[#AEE8FF]">Connect</h4>
+                        <div class="grid grid-cols-2 gap-x-12 gap-y-4 font-bold text-lg">
+                            <a href="https://www.instagram.com/adamforwi/" class="hover:text-[#AEE8FF] transition-colors">Instagram</a>
+							<a href="https://www.facebook.com/people/Adam-Follmer/61587293092153/" class="hover:text-[#AEE8FF] transition-colors">Facebook</a>
+                            <a href="https://x.com/adamforwi" class="hover:text-[#AEE8FF] transition-colors">X (Twitter)</a>
+                            <a href="https://www.tiktok.com/@adamforwi" class="hover:text-[#AEE8FF] transition-colors">TikTok</a>
+                            <a href="https://bsky.app/profile/adamforwi.bsky.social" class="hover:text-[#AEE8FF] transition-colors">Bluesky</a>
+                            <a href="https://www.youtube.com/@afollmer-5566" class="hover:text-[#AEE8FF] transition-colors">YouTube</a>
+                            <a href="https://substack.com/@adamforwi" class="hover:text-[#AEE8FF] transition-colors">Substack</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- MODALS (Matched to Index) -->
+
+    <!-- Donate Modal -->
+    <div id="donateModal" class="fixed inset-0 w-full h-full flex items-center justify-center modal-backdrop hidden z-50 p-4">
+		<div class="bg-white text-[#002b54] w-full max-w-2xl p-8 md:p-12 shadow-2xl relative transform transition-all duration-300 scale-95 opacity-0 border-t-8 border-[#D62828]">
+			<button id="closeDonateModal" class="absolute top-4 right-4 text-gray-400 hover:text-[#D62828] transition-colors">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+			<h2 class="font-campaign text-3xl md:text-5xl text-center mb-6 leading-tight">We cannot outspend the billionaires.</h2>
+			<div class="text-center space-y-6">
+				<p class="text-xl font-bold text-[#D62828]">But we can organize and outnumber them.</p>
+				<p class="text-gray-600 leading-relaxed">
+                    They will use their wealth to influence our politicians. Fight back by sharing this campaign’s message to your friends, family, coworkers, and neighbors.
+                </p>
+			</div>
+		</div>
+	</div>
+    
+    <!-- Involved Modal -->
+    <div id="involvedModal" class="fixed inset-0 w-full h-full flex items-center justify-center modal-backdrop hidden z-50 p-4">
+		<div class="bg-white text-[#002b54] w-full max-w-2xl p-8 md:p-12 shadow-2xl relative transform transition-all duration-300 scale-95 opacity-0 border-t-8 border-[#AEE8FF]">
+			<button id="closeInvolvedModal" class="absolute top-4 right-4 text-gray-400 hover:text-[#D62828] transition-colors">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+			
+			<h2 class="font-campaign text-3xl md:text-5xl text-center mb-6 leading-tight">Campaign Differently.</h2>
+			
+            <div class="space-y-6 text-center">
+                <p class="text-lg text-gray-600">
+                    <span class="block font-black text-[#002b54] text-xl mb-2">Focus on Connection, Not Consumption.</span>
+                    Skip the usual campaign noise. No massive mailers, texts, calls, or yard signs.
+                </p>
+
+                <div class="bg-gray-50 p-6 border-l-4 border-[#002b54] text-left">
+                    <p class="font-bold text-[#002b54] mb-3 uppercase tracking-wide text-sm">Action Item: Share this message with</p>
+                    <ul class="space-y-2 text-gray-700 font-medium">
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-[#AEE8FF] rounded-full"></div> Family members or friends</li>
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-[#AEE8FF] rounded-full"></div> Co-workers</li>
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-[#AEE8FF] rounded-full"></div> Neighbors</li>
+                    </ul>
+                </div>
+                
+                <a href="volunteer.html" 
+                   class="inline-block w-full md:w-auto bg-[#002b54] text-white font-black uppercase tracking-widest py-4 px-8 hover:bg-[#AEE8FF] hover:text-[#002b54] transition-colors shadow-lg">
+                    Volunteer
+                </a>
+            </div>
+		</div>
+	</div>
+
+    <script>
+        // --- Shared UI (hamburger + modals) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            if (hamburgerBtn) {
+                hamburgerBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    menuIcon.classList.toggle('hidden');
+                    closeIcon.classList.toggle('hidden');
+                    if(!mobileMenu.classList.contains('hidden')) {
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            const donateBtn = document.getElementById('donateBtn');
+            const involvedBtn = document.getElementById('involvedBtn');
+            const mobileDonateBtn = document.getElementById('mobileDonateBtn');
+            const mobileInvolvedBtn = document.getElementById('mobileInvolvedBtn');
+            
+            const donateModal = document.getElementById('donateModal');
+            const involvedModal = document.getElementById('involvedModal');
+            
+            const closeDonateModalBtn = document.getElementById('closeDonateModal');
+            const closeInvolvedModalBtn = document.getElementById('closeInvolvedModal');
+
+            const modals = [donateModal, involvedModal];
+
+            function openModal(modal) {
+                if (!modal) return;
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.querySelector('div').classList.remove('scale-95', 'opacity-0');
+                    modal.querySelector('div').classList.add('scale-100', 'opacity-100');
+                }, 10);
+            }
+            function closeModal(modal) {
+                if (!modal || modal.classList.contains('hidden')) return;
+                modal.querySelector('div').classList.add('scale-95', 'opacity-0');
+                modal.querySelector('div').classList.remove('scale-100', 'opacity-100');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            }
+
+            if(donateBtn) donateBtn.addEventListener('click', () => openModal(donateModal));
+            if(involvedBtn) involvedBtn.addEventListener('click', () => openModal(involvedModal));
+            if(mobileDonateBtn) mobileDonateBtn.addEventListener('click', () => openModal(donateModal));
+            if(mobileInvolvedBtn) mobileInvolvedBtn.addEventListener('click', () => openModal(involvedModal));
+            
+            if(closeDonateModalBtn) closeDonateModalBtn.addEventListener('click', () => closeModal(donateModal));
+            if(closeInvolvedModalBtn) closeInvolvedModalBtn.addEventListener('click', () => closeModal(involvedModal));
+            
+            if(donateModal) donateModal.addEventListener('click', (e) => { if(e.target === donateModal) closeModal(donateModal); });
+            if(involvedModal) involvedModal.addEventListener('click', (e) => { if(e.target === involvedModal) closeModal(involvedModal); });
+
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') modals.forEach(closeModal); });
+        });
+
+        // --- Ledger logic (auto-sums -> figures) ---
+        (function() {
+            const table = document.getElementById('ledgerTable');
+            const totalRaisedEl = document.getElementById('totalRaised');
+            const totalSpentEl = document.getElementById('totalSpent');
+            const footRaisedEl = document.getElementById('tRaisedFoot');
+            const footSpentEl = document.getElementById('tSpentFoot');
+
+            function parseAmount(str) {
+                if (!str) return 0;
+                const n = parseFloat(String(str).replace(/[^0-9.-]/g, ''));
+                return isNaN(n) ? 0 : n;
+            }
+            function formatUSD(n) {
+                return n.toLocaleString(undefined, { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
+            }
+            function recalc() {
+                let raised = 0, spent = 0;
+                const rows = table.querySelectorAll('tbody tr');
+                rows.forEach(tr => {
+                    const tds = tr.querySelectorAll('td');
+                    if (tds.length < 4) return;
+                    // Check type in the 2nd column
+                    const type = (tds[1].innerText || '').trim().toLowerCase();
+                    const amt = parseAmount(tds[3].innerText);
+                    if (type.includes('raised')) raised += amt; // Raised
+                    else if (type.includes('spent')) spent += amt; // Spent
+                });
+                totalRaisedEl.textContent = formatUSD(raised);
+                totalSpentEl.textContent = formatUSD(spent);
+                footRaisedEl.textContent = formatUSD(raised);
+                footSpentEl.textContent = formatUSD(spent);
+            }
+
+            // Observe edits
+            // We use MutationObserver or simple call recalc since rows are static mostly
+            // But if user edits code, it loads with new values.
+            recalc();
+        })();
+    </script>
+</body>
+</html>

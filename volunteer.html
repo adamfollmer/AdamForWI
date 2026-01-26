@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer - Follmer For Congress</title>
+	<link rel="icon" href="Minicon.svg" type="image/svg+xml">
+    <link rel="icon" href="Minicon1.png" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="Minicon2.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .font-campaign {
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+
+        .nav-underline {
+            position: relative;
+            padding-bottom: 8px;
+        }
+        .nav-underline::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: #AEE8FF;
+            transform: scaleX(0);
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav-underline:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .bg-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.5) 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+            -webkit-mask-image: linear-gradient(to bottom, black 0%, black 10%, transparent 20%, transparent 80%, black 90%, black 100%);
+            mask-image: linear-gradient(to bottom, black 0%, black 10%, transparent 20%, transparent 80%, black 90%, black 100%);
+        }
+
+        /* Definition Tooltip Styling - FIXED EDGE CUTOFF */
+        .definition-trigger {
+            text-decoration: underline dotted #AEE8FF;
+            text-underline-offset: 4px;
+            cursor: help;
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        .definition-content {
+            visibility: hidden;
+            width: 300px;
+            /* Use viewport width constraints to prevent edge cutoff */
+            max-width: calc(100vw - 40px); 
+            background-color: #002b54;
+            color: #fff;
+            text-align: left;
+            border-radius: 8px;
+            padding: 16px;
+            position: absolute;
+            z-index: 60; /* Higher than headers */
+            bottom: 130%;
+            left: 50%;
+            /* Centering fix: Use transform instead of negative margin */
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            font-weight: 400;
+            text-transform: none;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid #AEE8FF;
+            pointer-events: none;
+        }
+
+        .definition-trigger:hover .definition-content {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Ensure parent container doesn't clip tooltips */
+        details, .bg-gray-50 {
+            overflow: visible !important;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .master-dropdown[open] > summary {
+            background-color: #002b54;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-white text-[#073763] antialiased selection:bg-[#AEE8FF] selection:text-[#073763]">
+
+    <nav class="bg-[#002b54] text-white py-5 px-6 flex items-center justify-between sticky top-0 z-50 border-b border-[#AEE8FF]/20 shadow-xl backdrop-blur-md bg-opacity-95">
+        <div class="flex items-center space-x-12">
+            <a href="index.html" class="flex items-center group">
+                 <img src="logoInvert.png" class="h-10 md:h-12 w-auto transition-transform group-hover:scale-105" alt="Follmer For Congress">
+			</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="meetadam.html" class="text-sm font-black uppercase tracking-widest nav-underline text-white/90 hover:text-white">Meet Adam</a>
+                <a href="platform.html" class="text-sm font-black uppercase tracking-widest nav-underline text-white/90 hover:text-white">Platform</a>
+                <a href="videoseries.html" class="text-sm font-black uppercase tracking-widest nav-underline text-white/90 hover:text-white">Video Series</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+             <div class="hidden md:flex items-center gap-3">
+                <button id="donateBtn" class="bg-[#AEE8FF] text-[#002b54] border-2 border-[#AEE8FF] font-black py-2 px-6 rounded text-sm hover:bg-transparent hover:text-[#AEE8FF] transition-all duration-300 shadow-lg">DON'T DONATE</button>
+                <a href="volunteer.html" class="bg-transparent border-2 border-white text-white font-black py-2 px-6 rounded text-sm hover:bg-white hover:text-[#002b54] transition-all duration-300 inline-block">GET INVOLVED</a>
+            </div>
+            <div class="md:hidden">
+                <button id="hamburger-btn" class="focus:outline-none text-[#AEE8FF]">
+                    <svg id="menu-icon" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    <svg id="close-icon" class="w-8 h-8 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <div id="mobile-menu" class="hidden md:hidden bg-[#002b54] text-white fixed top-[80px] left-0 right-0 bottom-0 z-40 border-t border-white/10">
+        <div class="flex flex-col p-6 space-y-6">
+            <a href="meetadam.html" class="text-2xl font-black uppercase tracking-wide">Meet Adam</a>
+            <a href="platform.html" class="text-2xl font-black uppercase tracking-wide">Platform</a>
+            <a href="videoseries.html" class="text-2xl font-black uppercase tracking-wide">Video Series</a>
+            <div class="h-px bg-white/20 w-full my-4"></div>
+            <button id="mobileDonateBtn" class="w-full bg-[#AEE8FF] text-[#002b54] font-black py-4 rounded text-lg uppercase shadow-lg">Don't Donate</button>
+			<a href="volunteer.html" class="text-center w-full border-2 border-white text-white font-black py-4 rounded text-lg uppercase">Get Involved</a>
+        </div>
+	</div>
+
+    <main>
+        <section class="bg-gradient-to-br from-[#002b54] to-[#001f3f] text-white pt-20 pb-24 md:py-32 relative overflow-hidden">
+            <div class="absolute inset-0 bg-pattern opacity-40"></div>
+            <div class="container mx-auto px-6 relative z-10 text-center max-w-4xl">
+                <span class="inline-block py-1 px-3 border border-[#AEE8FF] text-[#AEE8FF] font-bold text-xs tracking-widest uppercase mb-6 bg-black/20 rounded-full">Volunteer</span>
+                <h1 class="font-campaign text-6xl md:text-8xl leading-none mb-8">Help The <span class="text-[#AEE8FF]">Campaign</span></h1>
+                <p class="text-xl md:text-2xl text-blue-100 font-medium leading-relaxed max-w-3xl mx-auto">
+                    This campaign is built on respect for your privacy while establishing a strong community network. I want you to be the trusted voice of your own network.
+                </p>
+            </div>
+        </section>
+
+        <section class="bg-white py-20 md:py-32">
+            <div class="container mx-auto px-6 max-w-4xl">
+                
+                <div class="max-w-3xl mx-auto text-center mb-16">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 p-8 rounded-2xl border border-gray-200 flex flex-col justify-between shadow-sm">
+                            <div>
+                                <h3 class="font-campaign text-2xl text-[#002b54] mb-4">New Here?</h3>
+                                <p class="text-gray-600 mb-8 leading-relaxed">If you're not familiar with how our campaign operates, why we don't take donations, or how we protect your privacy, read up on it here.</p>
+                            </div>
+                            <a href="#onboarding-start" onclick="document.getElementById('onboarding-start').open = true;" class="w-full bg-[#002b54] text-white font-black py-4 rounded uppercase tracking-widest hover:bg-[#AEE8FF] hover:text-[#002b54] transition-all shadow-lg text-center">
+                                Explore the Plan
+                            </a>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-8 rounded-2xl border border-gray-200 flex flex-col justify-between shadow-sm">
+                            <div>
+                                <h3 class="font-campaign text-2xl text-[#002b54] mb-4">Returning?</h3>
+                                <p class="text-gray-600 mb-8 leading-relaxed">Continue onto the district-wide web application to coordinate with your groups and support the community.</p>
+                            </div>
+                            <button class="w-full border-2 border-gray-300 text-gray-400 font-black py-4 rounded uppercase tracking-widest cursor-not-allowed flex items-center justify-center gap-2 group relative">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                                Coming Soon
+                                <span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block w-56 bg-gray-800 text-white text-[10px] p-2 rounded normal-case font-normal shadow-xl">Currently in development. Anticipated launch: End of January 2026.</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <details id="onboarding-start" class="master-dropdown group border-2 border-gray-200 rounded-2xl overflow-hidden scroll-mt-32">
+                    <summary class="flex justify-between items-center cursor-pointer list-none p-6 bg-white transition-colors duration-300 hover:bg-gray-50">
+                        <div class="flex items-center gap-4">
+                            <span class="bg-[#AEE8FF] text-[#002b54] w-10 h-10 rounded-full flex items-center justify-center font-black">?</span>
+                            <h3 class="font-campaign text-2xl md:text-3xl">How this Campaign Operates</h3>
+                        </div>
+                        <span class="transition-transform duration-300 group-open:rotate-180">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                    </summary>
+                    
+                    <div class="p-6 md:p-10 space-y-8 bg-white">
+                        
+                        <details class="group border-b border-gray-100 pb-8">
+                            <summary class="flex justify-between items-center cursor-pointer list-none py-4">
+                                <h4 class="font-campaign text-xl md:text-2xl text-[#002b54]">Our Current Reality</h4>
+                                <span class="text-[#002b54] transition-transform duration-300 group-open:rotate-180">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </span>
+                            </summary>
+                            <div class="mt-4 text-gray-700 space-y-6 text-lg leading-relaxed">
+                                <p>We continue to live through a period where those in power do so by dividing and conquering. They exploit our differences to distract us from the shared values and experiences that actually unite us.</p>
+                                <ul class="space-y-6">
+                                    <li>
+                                        <strong class="text-[#002b54]">Monetized attention and relationships:</strong> Our relationships have been outsourced to billionaire-owned algorithms designed to steal our time and attention. These <span class="definition-trigger">platforms<span class="definition-content">Facebook/Meta, Twitter, Substack, YouTube, TikTok, Bluesky, etc.</span></span> make us feel like we are "doing something," while we are actually becoming more isolated. We lack a consistent <span class="definition-trigger">third space<span class="definition-content">Shared public spaces where community happens outside of the workplace and the home.</span></span> to share ideas and grow. 
+                                    </li>
+                                    <li>
+                                        <strong class="text-[#002b54]">The wage gap & time debt:</strong> We work for wages that haven’t kept pace with healthcare, housing, education, and other needs. This creates an endless cycle of work and exhaustion, encouraging us to disconnect in an artificial digital escape, leaving a void once filled by community.
+                                    </li>
+                                    <li>
+                                        <strong class="text-[#002b54]">The surveillance state:</strong> From <span class="definition-trigger">Flock cameras<span class="definition-content">Flock cameras are automated license plate readers that create a searchable digital database of every vehicle and neighbor that passes through our streets. This infrastructure creates a permanent record of our daily movements, often shared with federal agencies without a warrant or public oversight</span></span> to <span class="definition-trigger">massive military/ICE budgets<span class="definition-content">The current administration has effectively tripled the ICE budget to $30 billion</span></span>, the infrastructure of control is growing. We cannot rely on the same communication platforms owned by the ruling class. If we wait to build a secure, independent alternative, the window for an earnest third-party or grassroots effort may close.
+                                    </li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <details class="group border-b border-gray-100 pb-8">
+                            <summary class="flex justify-between items-center cursor-pointer list-none py-4">
+                                <h4 class="font-campaign text-xl md:text-2xl text-[#002b54]">Our Response</h4>
+                                <span class="text-[#002b54] transition-transform duration-300 group-open:rotate-180">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </span>
+                            </summary>
+                            <div class="mt-4 text-gray-700 space-y-6 text-lg leading-relaxed">
+                                <p>This is not a traditional campaign. We aren't asking you to knock on the doors of strangers or step far outside your comfort zone. We are asking you to engage differently with the people you already know and trust.</p>
+                                
+                                <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-[#AEE8FF]">
+                                    <h5 class="font-bold text-[#002b54] mb-4 uppercase tracking-widest text-sm">The 3x3 "Nervous System"</h5>
+                                    <p class="mb-4 text-gray-700">Traditional campaigns are built to collect the most money possible so they can blast a generic message as far as they can. They prioritize a wide, shallow reach, shouting at strangers and hoping something sticks.</p>
+                                    
+                                    <div class="my-8 flex justify-center">
+                                        
+                                    </div>
+                                    
+                                    <p class="mb-4 text-gray-700">We are building something that moves slower, with more intention, to cover more surface area. Think of it like a <span class="definition-trigger">nervous system<span class="definition-content">A biological network that uses branching connections to send and receive signals. Unlike a straight line, it creates a "mesh" of information that ensures every part of the body is responsive, protected, and connected.</span></span> rather than a megaphone. Like a healthy nervous system, this campaign is a feedback loop. Information flows from the community to the campaign, and back again, ensuring the movement stays responsive to the real-world experiences of the people within it. By moving through trusted relationships, we create a network that is resilient and deeply rooted.</p>
+                                </div>
+
+                                <p>To build this system, we ask you to go deep with three people in three specific spaces:</p>
+                                <ul class="grid grid-cols-1 md:grid-cols-3 gap-4 font-black text-[#002b54] text-xs uppercase tracking-widest text-center">
+                                    <li class="bg-gray-100 p-4 rounded shadow-sm">
+                                        <span class="block text-[#AEE8FF] text-lg mb-1">●</span>
+                                        Labor/Learning
+                                        <span class="block normal-case font-normal text-gray-500 mt-1 text-[10px]">Your coworkers, fellow students, or trade partners.</span>
+                                    </li>
+                                    <li class="bg-gray-100 p-4 rounded shadow-sm">
+                                        <span class="block text-[#AEE8FF] text-lg mb-1">●</span>
+                                        Community/Connection
+                                        <span class="block normal-case font-normal text-gray-500 mt-1 text-[10px]">Your friends, family, faith circles, community groups, or hobby spaces.</span>
+                                    </li>
+                                    <li class="bg-gray-100 p-4 rounded shadow-sm">
+                                        <span class="block text-[#AEE8FF] text-lg mb-1">●</span>
+                                        Neighbors
+                                        <span class="block normal-case font-normal text-gray-500 mt-1 text-[10px]">The people in your direct geographic community.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <details class="group border-b border-gray-100 pb-8">
+                            <summary class="flex justify-between items-center cursor-pointer list-none py-4">
+                                <h4 class="font-campaign text-xl md:text-2xl text-[#002b54]">Our Tools</h4>
+                                <span class="text-[#002b54] transition-transform duration-300 group-open:rotate-180">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </span>
+                            </summary>
+                            <div class="mt-4 text-gray-700 space-y-6 text-lg leading-relaxed">
+                                <p>To facilitate these conversations with your network, the campaign provides the raw materials. You don’t need to be a policy expert. You just need to be a "translator" for your circle.</p>
+                                <ul class="space-y-6">
+                                    <li><strong class="text-[#002b54]">Weekly video series:</strong> Every week, I release a 10–15 minute video pulling back the curtain on how our system is designed. These are issues where deliberate government decisions have fueled wealth inequality for the profit of a few. We explore how these problems were made and, more importantly, the viable alternatives we can choose instead.</li>
+                                    <li><strong class="text-[#002b54]">Community knowledge:</strong> You are the direct connection to your community. You can take the information from the weekly video series and connect the points that matter most to your network. You know them and you trust them. This is designed to be a lengthy process, with small but consistent efforts. Don't force the conversations. Listen more than you speak. Avoid being a "fact-bully" and instead lean on your story to strengthen your message.</li>
+                                    <li><strong class="text-[#002b54]">Community events:</strong> Once our network is rooted, we move from conversation to contribution. Throughout the spring and summer, we will mobilize for local clean-ups, the restoration of shared spaces, and direct support for neighbors who need it most. We will link up with different groups where we can to deepen and expand existing community. By showing up for each other in tangible, physical ways, we change lives and minds. </li>
+                                    <li><strong class="text-[#002b54]">Their products:</strong> We use traditional social media differently. We will highlight people who are having effective, real-world conversations so others can learn what worked, what language resonated, and how to navigate <span class="definition-trigger">"Heard, Helped, or Hugged" moments<span class="definition-content">A framework by Charles Duhigg that helps us identify if someone needs validation, a solution, or emotional support, ensuring we meet people where they are.</span></span>.</li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <details class="group border-b border-gray-100 pb-8">
+                            <summary class="flex justify-between items-center cursor-pointer list-none py-4">
+                                <h4 class="font-campaign text-xl md:text-2xl text-[#002b54]">Our Infrastructure</h4>
+                                <span class="text-[#002b54] transition-transform duration-300 group-open:rotate-180">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </span>
+                            </summary>
+                            <div class="mt-4 text-gray-700 space-y-6 text-lg leading-relaxed">
+                                <p>We are building a simple web application to source volunteer assistance to help our campaign while developing a district-wide supportive network. It is designed with intentional friction to know that the person you are communicating with is a real person who has a stake in our community.</p>
+                                <ul class="space-y-6">
+                                    <li><strong class="text-[#002b54]">Semi-anonymous & private:</strong> You provide no identifying information, but you can only join through a direct personal connection. Each individual receives nine invites to expand the network. If you don't know anyone in your area connected to the campaign, we will send a campaign representative to meet you in-person.</li>
+                                    <li><strong class="text-[#002b54]">Noise reduction:</strong> Unlike traditional social media, this app is designed to be used less. All users have the same limits for posting and supporting comments. This decreases the <span class="definition-trigger">"dopaminergic"<span class="definition-content">Related to the neurotransmitter dopamine; in technology, this refers to addictive design features used to capture and monetize human attention.</span></span> noise and forces thoughtful discussion.</li>
+                                    <li><strong class="text-[#002b54]">The bulletin board:</strong> A local "Wanted/Offered" space that uses "Mutual Verifiers" (showing how many circles away you are from someone) to build trust without sacrificing anonymity. We want the community to feel supported and connected, mirroring how a government should function. Our campaign will also utilize this feature to let people know how they can directly support the campaign without donating any money.</li>
+                                    <li><strong class="text-[#002b54]">Public ownership:</strong> This code is open-source, but more importantly, the system itself is intended to be publicly owned. There is no profit motive. If it works, it remains a community utility for long after the 2026 election is over.</li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <details class="group">
+                            <summary class="flex justify-between items-center cursor-pointer list-none py-4">
+                                <h4 class="font-campaign text-xl md:text-2xl text-[#002b54]">The Candidate</h4>
+                                <span class="text-[#002b54] transition-transform duration-300 group-open:rotate-180">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </span>
+                            </summary>
+                            <div class="mt-4 text-gray-700 space-y-6 text-lg leading-relaxed">
+                                <p>I am not a polished politician. I am a neighbor who is leaving a career in healthcare and higher education because the system is busted from the top down. The future for my daughter looks worse than my future at her age. I need to be able to know that I did everything I could to make the world a better place for her. I’ve struggled with the balance of full-time work and parenting; I’ve felt the scarcity of time we all feel. I've spent time in our systems to see where they work well and where they fall short. I'll never give a perfect speech, but I will offer a better design. If we stop fighting for the scraps of time the system leaves us and start building a community that actually supports one another, we can change the current trajectory of our country. </p>
+                                <ul class="space-y-6">
+                                    <li><strong class="text-[#002b54]">Transparency:</strong> I am capping my spending at $10,000 and I will not monetize any of the content. This campaign is a model for election finance reform.</li>
+                                    <li><strong class="text-[#002b54]">Humility:</strong> I will be comfortable acknowledging when I don't know the answer, and using our network to come to a solid response. I will be quick to admit when I’ve changed my mind based on new evidence.</li>
+                                    <li><strong class="text-[#002b54]">My big goal:</strong> My goal is to make sure that by 2028, we have a working-class network ready to run candidates that give us the political numbers needed to change Washington and move our country forward.</li>
+                                </ul>
+                            </div>
+                        </details>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section class="bg-gray-100 py-20 md:py-32 border-y border-gray-200">
+            <div class="container mx-auto px-6 max-w-5xl">
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="w-full md:w-1/2">
+                        <h2 class="font-campaign text-4xl md:text-5xl text-[#002b54] mb-6 leading-none">
+                            Start the <br><span class="text-[#AEE8FF] bg-[#002b54] px-2">Conversation.</span>
+                        </h2>
+                        <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                            We are looking for 300 core people across every working-class sector (healthcare, education, laborers, public sector workers, and more) to be the first link in this campaign.
+                        </p>
+                        <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                            We are building our communication system based on genuine trust and interpersonal connections. These 300 core organizers will launch our invitation-only network by personally inviting 9 people they know and trust, who will keep the process growing. This method of expanding through trusted, in-person invitations ensures our growth is democratic, effective, and protective of your privacy.
+                        </p>                                              
+                        
+                        <div class="bg-white p-6 rounded-xl border-l-4 border-[#002b54] shadow-sm">
+                            <p class="font-bold text-[#002b54] mb-2 uppercase tracking-wide text-xs">Why This Process?</p>
+                            <ul class="space-y-2">
+                                <li class="flex items-start gap-3 text-gray-700">
+                                    <svg class="w-5 h-5 text-[#002b54] flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span>The campaign stays connected to working-class issues.</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-700">
+                                    <svg class="w-5 h-5 text-[#002b54] flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span>Everyone has a voice while protecting your privacy.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full md:w-1/2">
+                        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-gray-200 text-center">
+                            <h3 class="text-2xl font-bold text-[#002b54] mb-4">Lend a Skill</h3>
+                            <p class="text-gray-600 mb-8 leading-relaxed">
+                                This whole operation is about countering current campaign methods, and I need help doing that. If you are a working professional in WI-01 or have a special skill (video editing, graphic design, researching, etc.) and want to lend a hand:
+                            </p>
+                            <a href="mailto:adam@adamforwi.com" class="inline-block w-full bg-[#002b54] text-white font-black uppercase tracking-widest py-4 rounded-lg hover:bg-[#D62828] transition-colors shadow-lg text-lg">
+                                Email Me Directly
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- FOOTER (Matched to Index) -->
+        <footer id="transparency" class="bg-[#002b54] text-white py-20 border-t-8 border-[#AEE8FF]">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col lg:flex-row justify-between items-start gap-12">
+                    <div class="max-w-md">
+                        <img src="logoInvert.png" class="h-16 w-auto mb-6 opacity-90" alt="Follmer For Congress Logo">
+                        <p class="text-blue-200 text-lg mb-8">
+                            Paid for by Adam for WI District 1. <br>
+                        </p>
+                        <a href="mailto:adam@adamforwi.com" class="text-[#AEE8FF] font-black text-xl hover:text-white border-b-2 border-[#AEE8FF] pb-1">
+                            adam@adamforwi.com
+                        </a>
+                    </div>
+                    
+                    <div class="flex flex-col gap-6">
+                        <h4 class="font-campaign text-2xl text-[#AEE8FF]">Connect</h4>
+                        <div class="grid grid-cols-2 gap-x-12 gap-y-4 font-bold text-lg">
+                            <a href="https://www.instagram.com/adamforwi/" class="hover:text-[#AEE8FF] transition-colors">Instagram</a>
+							<a href="https://www.facebook.com/people/Adam-Follmer/61587293092153/" class="hover:text-[#AEE8FF] transition-colors">Facebook</a>
+                            <a href="https://x.com/adamforwi" class="hover:text-[#AEE8FF] transition-colors">X (Twitter)</a>
+                            <a href="https://www.tiktok.com/@adamforwi" class="hover:text-[#AEE8FF] transition-colors">TikTok</a>
+                            <a href="https://bsky.app/profile/adamforwi.bsky.social" class="hover:text-[#AEE8FF] transition-colors">Bluesky</a>
+                            <a href="https://www.youtube.com/@afollmer-5566" class="hover:text-[#AEE8FF] transition-colors">YouTube</a>
+                            <a href="https://substack.com/@adamforwi" class="hover:text-[#AEE8FF] transition-colors">Substack</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <div id="donateModal" class="fixed inset-0 w-full h-full flex items-center justify-center modal-backdrop hidden z-50 p-4">
+		<div class="bg-white text-[#002b54] w-full max-w-2xl p-8 md:p-12 shadow-2xl relative transform transition-all duration-300 scale-95 opacity-0 border-t-8 border-[#D62828]">
+			<button id="closeDonateModal" class="absolute top-4 right-4 text-gray-400 hover:text-[#D62828] transition-colors">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+			<h2 class="font-campaign text-3xl md:text-5xl text-center mb-6 leading-tight">We cannot outspend the billionaires.</h2>
+			<div class="text-center space-y-6">
+				<p class="text-xl font-bold text-[#D62828]">But we can organize and outnumber them.</p>
+				<p class="text-gray-600 leading-relaxed">Fight back by sharing this campaign’s message to your friends, family, coworkers, and neighbors.</p>
+			</div>
+		</div>
+	</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            if(hamburgerBtn) {
+                hamburgerBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    menuIcon.classList.toggle('hidden');
+                    closeIcon.classList.toggle('hidden');
+                    document.body.style.overflow = mobileMenu.classList.contains('hidden') ? '' : 'hidden';
+                });
+            }
+            
+            const donateBtn = document.getElementById('donateBtn');
+            const mobileDonateBtn = document.getElementById('mobileDonateBtn');
+            const donateModal = document.getElementById('donateModal');
+            const closeDonateModalBtn = document.getElementById('closeDonateModal');
+
+            function openModal(modal) {
+                if (modal) {
+                    modal.classList.remove('hidden');
+                    setTimeout(() => {
+                        modal.querySelector('div').classList.remove('scale-95', 'opacity-0');
+                        modal.querySelector('div').classList.add('scale-100', 'opacity-100');
+                    }, 10);
+                }
+            }
+
+            function closeModal(modal) {
+                if (modal && !modal.classList.contains('hidden')) {
+                     modal.querySelector('div').classList.add('scale-95', 'opacity-0');
+                     modal.querySelector('div').classList.remove('scale-100', 'opacity-100');
+                    setTimeout(() => modal.classList.add('hidden'), 300);
+                }
+            }
+
+            if(donateBtn) donateBtn.addEventListener('click', () => openModal(donateModal));
+            if(mobileDonateBtn) mobileDonateBtn.addEventListener('click', () => openModal(donateModal));
+            if(closeDonateModalBtn) closeDonateModalBtn.addEventListener('click', () => closeModal(donateModal));
+            if(donateModal) donateModal.addEventListener('click', (e) => { if(e.target === donateModal) closeModal(donateModal); });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(donateModal); });
+        });
+    </script>
+</body>
+</html>
