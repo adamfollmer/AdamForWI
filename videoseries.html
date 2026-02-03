@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video Series - Follmer For Congress</title>
+  <link rel="icon" href="Minicon.svg" type="image/svg+xml">
+  <link rel="icon" href="Minicon1.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="Minicon2.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    
+    /* Modern Campaign "Punch" - Massive Typography Utility */
+    .font-campaign {
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+    }
+
+    /* Custom underline style for nav links */
+    .nav-underline { position: relative; padding-bottom: 8px; }
+    .nav-underline::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background-color: #AEE8FF; transform: scaleX(0); transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+    .nav-underline:hover::after { transform: scaleX(1); }
+    
+    .modal-backdrop { background-color: rgba(0, 7, 20, 0.9); backdrop-filter: blur(4px); }
+    .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+    /* Subtle texture for backgrounds */
+    .bg-pattern {
+        background-image: radial-gradient(rgba(255, 255, 255, 0.5) 1.5px, transparent 1.5px);
+        background-size: 24px 24px;
+        -webkit-mask-image: linear-gradient(to bottom, black 0%, black 10%, transparent 20%, transparent 80%, black 90%, black 100%);
+        mask-image: linear-gradient(to bottom, black 0%, black 10%, transparent 20%, transparent 80%, black 90%, black 100%);
+    }
+    
+    /* Transitions for accordion */
+    .accordion-content {
+        transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+    }
+    .accordion-content.open {
+        max-height: 1000px; /* Arbitrary large height */
+        opacity: 1;
+    }
+    .rotate-180 {
+        transform: rotate(180deg);
+    }
+  </style>
+</head>
+<body class="bg-white text-[#073763] antialiased selection:bg-[#AEE8FF] selection:text-[#073763]">
+
+    <nav class="bg-[#002b54] text-white py-5 px-6 flex items-center justify-between sticky top-0 z-50 border-b border-[#AEE8FF]/20 shadow-xl backdrop-blur-md bg-opacity-95">
+        <div class="flex items-center space-x-12">
+            <a href="index.html" class="flex items-center group">
+                 <img src="logoInvert.png" class="h-10 md:h-12 w-auto transition-transform group-hover:scale-105" alt="Follmer For Congress">
+			</a>
+
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="meetadam.html" class="text-sm font-black uppercase tracking-widest nav-underline text-white/90 hover:text-white">Meet Adam</a>
+                <a href="platform.html" class="text-sm font-black uppercase tracking-widest nav-underline text-white/90 hover:text-white">Platform</a>
+                <a href="videoseries.html" class="text-sm font-black uppercase tracking-widest nav-underline text-white/90 hover:text-white">Video Series</a>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+             <div class="hidden md:flex items-center gap-3">
+                <button id="donateBtn" class="bg-[#AEE8FF] text-[#002b54] border-2 border-[#AEE8FF] font-black py-2 px-6 rounded text-sm hover:bg-transparent hover:text-[#AEE8FF] transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg">
+                    DON'T DONATE
+                </button>
+                <a href="volunteer.html" class="bg-transparent border-2 border-white text-white font-black py-2 px-6 rounded text-sm hover:bg-white hover:text-[#002b54] transition-all duration-300 transform hover:-translate-y-0.5 inline-block">
+                    GET INVOLVED
+                </a>
+            </div>
+            
+            <div class="md:hidden">
+                <button id="hamburger-btn" class="focus:outline-none text-[#AEE8FF]">
+                    <svg id="menu-icon" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    <svg id="close-icon" class="w-8 h-8 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <div id="mobile-menu" class="hidden md:hidden bg-[#002b54] text-white fixed top-[80px] left-0 right-0 bottom-0 z-40 border-t border-white/10">
+        <div class="flex flex-col p-6 space-y-6">
+            <a href="meetadam.html" class="text-2xl font-black uppercase tracking-wide">Meet Adam</a>
+            <a href="platform.html" class="text-2xl font-black uppercase tracking-wide">Platform</a>
+            <a href="videoseries.html" class="text-2xl font-black uppercase tracking-wide">Video Series</a>
+            <div class="h-px bg-white/20 w-full my-4"></div>
+            <button id="mobileDonateBtn" class="w-full bg-[#AEE8FF] text-[#002b54] font-black py-4 rounded text-lg uppercase shadow-lg">
+                Don't Donate
+            </button>
+			<a href="volunteer.html" class="text-center w-full border-2 border-white text-white font-black py-4 rounded text-lg uppercase">
+             Get Involved
+			</a>
+        </div>
+	</div>
+
+  <main>
+    <section class="bg-gradient-to-br from-[#002b54] to-[#001f3f] text-white pt-20 pb-24 md:py-32 relative overflow-hidden">
+      <div class="absolute inset-0 bg-pattern opacity-40"></div>
+      <div class="absolute -top-20 -right-20 w-96 h-96 bg-[#AEE8FF] rounded-full mix-blend-overlay filter blur-3xl opacity-20"></div>
+
+      <div class="container mx-auto px-6 relative z-10 max-w-6xl">
+        <span class="inline-block py-1 px-3 border border-[#AEE8FF] text-[#AEE8FF] font-bold text-xs tracking-widest uppercase mb-6 bg-black/20 rounded-full">Video Series</span>
+        <h1 class="font-campaign text-5xl md:text-7xl mb-8 leading-tight">
+            The <span class="text-[#AEE8FF]">Issues</span><br>
+            We Face
+        </h1>
+        <div class="flex flex-col lg:flex-row gap-12 items-start">
+            <div class="lg:w-2/3">
+                <p class="text-xl md:text-2xl text-blue-100 font-medium leading-relaxed mb-8">
+                  For each week leading up to the election, I'll cover a new topic contributing to our current situation. While our problems are complex, the common thread is clear: the ultra-rich continue to win out while the working class loses ground.
+                </p>
+            </div>
+            <div class="lg:w-1/3 bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-xl">
+                <h4 class="font-bold text-[#AEE8FF] uppercase tracking-widest text-sm mb-4">In Every Video</h4>
+                <ul class="space-y-4 text-white">
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-[#AEE8FF] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span>How did we get here?</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-[#AEE8FF] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                        <span>Where are we now?</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-[#AEE8FF] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <span>What can we do next?</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-16">
+      <div class="container mx-auto px-6"> 
+        <div class="flex items-end justify-between mb-8 border-b-4 border-[#002b54] pb-4">
+          <h2 class="font-campaign text-4xl md:text-5xl text-[#002b54]">Latest Release</h2>
+          <span id="featuredDate" class="font-bold text-[#AEE8FF] bg-[#002b54] px-3 py-1 text-sm uppercase tracking-widest"></span>
+        </div>
+        
+        <div id="featuredCard" class="group relative bg-black shadow-2xl border-4 border-[#002b54] overflow-hidden">
+          <div class="aspect-video w-full relative"> 
+              <button id="playFeatured" class="absolute inset-0 w-full h-full group focus:outline-none" aria-label="Play latest video">
+                <img id="featuredThumb" src="" alt="Latest video thumbnail" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-24 h-24 bg-[#AEE8FF]/90 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300">
+                      <svg class="w-10 h-10 text-[#002b54] ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+                  </div>
+                </div>
+              </button>
+          </div>
+          <div class="p-6 md:p-8 bg-white border-t-4 border-[#AEE8FF]">
+            <h3 id="featuredTitle" class="font-campaign text-3xl md:text-4xl text-[#002b54] mb-4"></h3>
+            <p id="featuredDesc" class="text-xl text-gray-700 leading-relaxed"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-slate-200 py-20 border-t border-gray-300">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
+          <h2 class="font-campaign text-3xl md:text-4xl text-[#002b54]">All Videos</h2>
+          <div class="relative w-full md:w-auto">
+              <input id="tableFilter" type="text" placeholder="Filter by title…" class="w-full md:w-64 border-2 border-gray-400 rounded p-3 pl-10 text-sm font-bold text-[#073763] focus:outline-none focus:border-[#002b54] focus:ring-0 uppercase tracking-wide placeholder-gray-500 bg-white" />
+              <svg class="w-5 h-5 text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          </div>
+        </div>
+        
+        <div class="overflow-hidden border-2 border-gray-300 shadow-lg bg-white rounded-lg">
+          <div id="videoAccordion" class="divide-y divide-gray-100">
+            </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <footer id="transparency" class="bg-[#002b54] text-white py-20 border-t-8 border-[#AEE8FF]">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row justify-between items-start gap-12">
+                <div class="max-w-md">
+                    <img src="logoInvert.png" class="h-16 w-auto mb-6 opacity-90" alt="Follmer For Congress Logo">
+                    <p class="text-blue-200 text-lg mb-8">
+                        Paid for by Adam for WI District 1. <br>
+                    </p>
+                    <a href="mailto:adam@adamforwi.com" class="text-[#AEE8FF] font-black text-xl hover:text-white border-b-2 border-[#AEE8FF] pb-1">
+                        adam@adamforwi.com
+                    </a>
+                </div>
+                
+                <div class="flex flex-col gap-6">
+                    <h4 class="font-campaign text-2xl text-[#AEE8FF]">Connect</h4>
+                    <div class="grid grid-cols-2 gap-x-12 gap-y-4 font-bold text-lg">
+                            <a href="https://www.instagram.com/adamforwi/" class="hover:text-[#AEE8FF] transition-colors">Instagram</a>
+							<a href="https://www.facebook.com/people/Adam-Follmer/61587293092153/" class="hover:text-[#AEE8FF] transition-colors">Facebook</a>
+                            <a href="https://x.com/adamforwi" class="hover:text-[#AEE8FF] transition-colors">X (Twitter)</a>
+                            <a href="https://www.tiktok.com/@adamforwi" class="hover:text-[#AEE8FF] transition-colors">TikTok</a>
+                            <a href="https://bsky.app/profile/adamforwi.bsky.social" class="hover:text-[#AEE8FF] transition-colors">Bluesky</a>
+                            <a href="https://www.youtube.com/@afollmer-5566" class="hover:text-[#AEE8FF] transition-colors">YouTube</a>
+                            <a href="https://substack.com/@adamforwi" class="hover:text-[#AEE8FF] transition-colors">Substack</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="donateModal" class="fixed inset-0 w-full h-full flex items-center justify-center modal-backdrop hidden z-50 p-4">
+		<div class="bg-white text-[#002b54] w-full max-w-2xl p-8 md:p-12 shadow-2xl relative transform transition-all duration-300 scale-95 opacity-0 border-t-8 border-[#D62828]">
+			<button id="closeDonateModal" class="absolute top-4 right-4 text-gray-400 hover:text-[#D62828] transition-colors">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+			<h2 class="font-campaign text-3xl md:text-5xl text-center mb-6 leading-tight">We cannot outspend the billionaires.</h2>
+			<div class="text-center space-y-6">
+				<p class="text-xl font-bold text-[#D62828]">But we can organize and outnumber them.</p>
+				<p class="text-gray-600 leading-relaxed">
+                    They will use their wealth to influence our politicians. Fight back by sharing this campaign’s message to your friends, family, coworkers, and neighbors.
+                </p>
+			</div>
+		</div>
+	</div>
+    
+    <div id="involvedModal" class="fixed inset-0 w-full h-full flex items-center justify-center modal-backdrop hidden z-50 p-4">
+		<div class="bg-white text-[#002b54] w-full max-w-2xl p-8 md:p-12 shadow-2xl relative transform transition-all duration-300 scale-95 opacity-0 border-t-8 border-[#AEE8FF]">
+			<button id="closeInvolvedModal" class="absolute top-4 right-4 text-gray-400 hover:text-[#D62828] transition-colors">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+			
+			<h2 class="font-campaign text-3xl md:text-5xl text-center mb-6 leading-tight">Campaign Differently.</h2>
+			
+            <div class="space-y-6 text-center">
+                <p class="text-lg text-gray-600">
+                    <span class="block font-black text-[#002b54] text-xl mb-2">Focus on Connection, Not Consumption.</span>
+                    Skip the usual campaign noise. No massive mailers, texts, calls, or yard signs.
+                </p>
+
+                <div class="bg-gray-50 p-6 border-l-4 border-[#002b54] text-left">
+                    <p class="font-bold text-[#002b54] mb-3 uppercase tracking-wide text-sm">Action Item: Share this message with</p>
+                    <ul class="space-y-2 text-gray-700 font-medium">
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-[#AEE8FF] rounded-full"></div> Family members or friends</li>
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-[#AEE8FF] rounded-full"></div> Co-workers</li>
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-[#AEE8FF] rounded-full"></div> Neighbors</li>
+                    </ul>
+                </div>
+                
+                <a href="volunteer.html" 
+                   class="inline-block w-full md:w-auto bg-[#002b54] text-white font-black uppercase tracking-widest py-4 px-8 hover:bg-[#AEE8FF] hover:text-[#002b54] transition-colors shadow-lg">
+                    Volunteer
+                </a>
+            </div>
+		</div>
+	</div>
+
+  <div id="videoModal" class="fixed inset-0 w-full h-full flex items-center justify-center modal-backdrop hidden z-50">
+    <div class="w-11/12 md:w-4/5 lg:w-3/4 relative transform transition-all duration-300 scale-95 opacity-0">
+      <button id="closeVideoModal" class="absolute -top-12 right-0 text-white hover:text-[#AEE8FF] transition-colors flex items-center gap-2 font-bold uppercase tracking-widest">
+        Close <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+      <div class="aspect-[16/9] bg-black shadow-2xl border-4 border-[#002b54]">
+        <iframe id="youtubePlayer" class="w-full h-full" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ------- Data -------
+    const seriesVideos = [
+		  {
+        title: 'Housing',
+        date: '2026-02-03', 
+        url: '57AfXYwKIqQ', 
+        description: 'The American housing crisis is the result of decades of policy that prioritized "market-logic" and assets over human dignity. This video tracks the history of our current shortage, from 1920s exclusionary zoning to the federal government’s post-2008 decision to sell thousands of foreclosed homes to private equity firms. We’ll discuss how corporate landlords now use algorithms to hike rents and why local "NIMBY" resistance makes building affordable homes nearly impossible. By looking toward models like Vienna’s social housing and Community Land Trusts, we can start ensuring that every American has a place to call home.',
+        sources: [
+            { text: 'The Real Reason Behind the Housing Crisis: Gary&apos;s Economics', url: 'https://www.youtube.com/watch?v=BTlUyS-T-_4' },
+            { text: 'Why Housing May Never be Affordable Again: Economics Explained', url: 'https://www.youtube.com/watch?v=nUFZ1_fC3Kw' },
+			{ text: 'If Nobody Can Afford a Home: How Money Works', url: 'https://www.youtube.com/watch?v=1zjcZ661ups' }
+        ]
+      },
+		  {
+        title: 'The Legislative Process',
+        date: '2026-01-25', 
+        url: '2qZE8T18quw', 
+        description: 'The next video explores how Congress has become increasingly dysfunctional. I break down how portions of the legislative process work in our current structure. We will look at how 200 years of procedural shifts have made the process difficult for the public to follow. By examining these historical bottlenecks and the rise of autopilot legislating, we can move toward creative solutions that prioritize public expertise over party discipline and restore transparency to the lawmaking process.',
+        sources: [
+            { text: 'How a Bill Becomes a Law: Schoolhouse Rock', url: 'https://youtu.be/Otbml6WIQPo' },
+            { text: 'Remember I&apos;m Just a Bill? Here is the 2021 version: Politico', url: 'https://www.youtube.com/watch?v=uqBLTz4HIug' }
+        ]
+      },
+		  {
+        title: 'Oil',
+        date: '2026-01-16', 
+        url: 'b4wx0I_EHWw', 
+        description: 'This video traces how 150 years of "business partnership" between the U.S. government and the oil industry has prioritized corporate profits over American lives and energy security. I explain how $35 billion in annual subsidies and tax loopholes like the "depletion allowance" keep us hooked to a volatile resource and foreign conflicts. My campaign is committed to redirecting these subsidies toward renewable innovation to create local jobs, lower family energy bills, and achieve true independence.',
+        sources: [
+            { text: 'The Power of Big Oil Pt. 1: FRONTLINE PBS', url: 'https://www.youtube.com/watch?v=QAAbcNl4Lb8' },
+            { text: 'How Oil Barons Steal from their Truckers: More Perfect Union', url: 'https://www.youtube.com/watch?v=873cRBGiF7w' },
+			{ text: 'Oil Companies are Colluding to Raise Gas Prices: More Perfect Union', url: 'https://www.youtube.com/watch?v=gWwWkH0iJtc' }
+        ]
+      },
+		  {
+        title: 'Prescription Drug Prices',
+        date: '2026-01-06', 
+        url: '5of_gDDEPAw', 
+        description: 'Americans pay three times more for prescription drugs than other wealthy nations. This video reviews how laws allowed Big Pharma to prioritize stock buybacks over medical innovation. I explain how corporate lobbying and business models that profit off sickness have corrupted healthcare. Our campaign is committed to a single-payer system to negotiate fair prices and ensure medication is a right for all.',
+        sources: [
+            { text: 'How pharmacy benefit managers influence drug pricing: STAT', url: 'https://www.youtube.com/watch?v=27INQuNycLA' },
+            { text: 'Corrupt Middlemen Are The Real Reason Drug Prices Keep Increasing: More Perfect Union', url: 'https://www.youtube.com/watch?v=wmZtBW54GNI' },
+			{ text: 'I Worked for Big Pharma: More Perfect Union', url: 'https://www.youtube.com/watch?v=27qUyMuYZJw' }
+        ]
+      },
+		  {
+        title: 'What does Congress do?',
+        date: '2026-01-02', 
+        url: 'sQFaNMmDT7k', 
+        description: 'Congress has drifted from its core functions of oversight and deliberation, becoming a "commuter institution" driven more by fundraising than public service. We examine how the defunding of nonpartisan expert staff and the practice of "selling" committee seats have created a power vacuum filled by lobbyists and corporate interests. Instead we can reinvest in internal expertise and foster social connection through shared congressional housing. This allows us to restore a legislative body that is both productive and accountable to the people.',
+        sources: [
+            { text: 'How Does Congress Work?: Study Hall', url: 'https://www.youtube.com/watch?v=aLFeBfxzurc' },
+            { text: 'Midterm Elections: Retro Report', url: 'https://www.youtube.com/watch?v=zmDTaKqnB_M' }
+        ]
+      },
+	  {
+        title: 'Lobbying',
+        date: '2026-01-01', 
+        url: '87jjbf1C3n4', 
+        description: 'This video explores how corporate lobbying has dismantled fair representation, transforming our legislative process into a tool for the highest bidder. We examine how shadow-authored bills and massive returns on political investments prioritize corporate profits over public safety and social welfare. By removing the influence of money from politics, we can restore a government that truly serves the interests of every citizen.',
+        sources: [
+            { text: 'The Powell Memo: The Lever', url: 'https://www.youtube.com/watch?v=5Fo6rQQYATQ' },
+            { text: 'How Does Lobbying REALLY Work?: Above The Noise', url: 'https://www.youtube.com/watch?v=nhNsb6tVAI0' },
+			{ text: 'How Lobbying Became a $3.5 Billion Industry: CNBC', url: 'https://www.youtube.com/watch?v=FZVfTCBUkgM' }
+        ]
+      },	
+	  {
+        title: 'Who is Congress?',
+        date: '2025-12-18', 
+        url: 'sdUctvI6UG4', 
+        description: 'This video explores why Congress no longer reflects the people it serves, moving from a temporary public service to a career for the wealthy elite. We examine how frozen representation and financial barriers exclude the working class from leadership. By closing the revolving door to lobbying and expanding the House, we can restore a government that is truly within reach.',
+        sources: [
+            { text: 'We Found the Most Corrupt Stock Traders: More Perfect Union', url: 'https://www.youtube.com/watch?v=BsrAZ0gnkPo' },
+            { text: 'How to Make Congress Less Terrible: Robert Reich', url: 'https://www.youtube.com/watch?v=2YMVF0PU-ic' }
+        ]
+      },
+	  {
+        title: 'Media',
+        date: '2025-12-09', 
+        url: 'lhyv_Bi9tts', 
+        description: 'Decades of deregulation have centralized media ownership, reducing independent companies and creating monopolies in both traditional and social media. This shift prioritizes profit instead of the public interest, leading to extreme polarization and the collapse of local journalism. We explore the needed reforms, including greater algorithm transparency, aggressively enforcing anti-trust laws to break up these monopolies, and establishing systems to better reimburse and protect quality journalists.',
+        sources: [
+            { text: 'Lina Khan Interview: Jon Stewart', url: 'https://www.youtube.com/watch?v=vRJWM_3OW2Y' },
+            { text: 'Public Media: Last Week Tonight', url: 'https://www.youtube.com/watch?v=yknMJOgy2pA' },
+			{ text: 'Bari Weiss and CBS: Last Week Tonight', url: 'https://www.youtube.com/watch?v=gieTx_P6INQ' }
+        ]
+      },
+	  {
+        title: 'Health Insurance',
+        date: '2025-12-02', 
+        url: 'dUnhSQ7QFb8', 
+        description: 'Our current healthcare system is driven by profit at the cost of patient care. I explore how giant health insurance companies are reaping massive earnings while costs for working families soar, forcing many to skip essential care. A single-payer system would cut out the insurance middleman, reduce administrative waste, and ensure medical decisions are made by doctors and, not adjusters.',
+        sources: [
+            { text: 'Why US Healthcare Is So Broken: 2 and 20', url: 'https://youtu.be/iWMF4e8RG1I?si=xhsCsp3ixZvvQua0' },
+            { text: 'Whistleblower Exposes Health Insurer&apos;s Most Evil Scheme: More Perfect Union', url: 'https://youtu.be/w99cEq4fAaU?si=wP5JLfL3l7z-Lgsw' },
+			{ text: 'Doctor Explains Why They&apos;re Terrified to Speak Out: More Perfect Union', url: 'https://www.youtube.com/watch?v=eVgIlDsBXZY' }
+        ]
+      },
+	  {
+        title: 'The 32-Hour Workweek',
+        date: '2025-11-25',
+        url: 'ldivq8n4c00', 
+        description: 'The standard 40-hour workweek is 85 years overdue for an update. While worker productivity has soared, wages have stagnated. We discuss the history and the real costs of the current system, including increased stress and burnout. This video proposes moving to a 32-hour week with no loss in pay to give you back time, improve health, and create a better future.',
+        sources: [
+            { text: 'History of the Workweek: Breaking Points/Spencer Snyder', url: 'https://www.youtube.com/watch?v=Rr35Wr0H9mM' },
+        ]
+      },
+	  {
+        title: 'The Two-Party System',
+        date: '2025-11-19',
+        url: 'Bl-nrgoEFCo', 
+        description: 'This video explains how the two-party system creates a false choice that benefits the wealthy elite while dividing the working class. We examine how "winner-takes-all" voting stifles competition and how both major parties serve their own interests over ours. We explore solutions like Ranked-Choice Voting and open primaries that can restore fairness and allow diverse ideas to finally shape our political future.',
+        sources: [
+            { text: 'The two-party system has destroyed democracy: BEME News', url: 'https://youtu.be/oZEe9lNASs4?si=HY_R8Mx8-TEvDGy3' }
+        ]
+      },
+	  {
+        title: 'Money in our Elections',
+        date: '2025-11-11',
+        url: 'lB55f67nrNg', 
+        description: 'This video traces how money corrupts our elections, starting with Supreme Court rulings like Citizens United that allow unlimited corporate and union spending. I explain how Super PACs and "dark money" 501(c)(4) groups shield wealthy donors, letting them use massive funds to buy access and influence. Our campaign is committed to eliminating this influence and fighting for a level playing field.',
+        sources: [
+            { text: 'How EASY it is to buy an American election: Johnny Harris', url: 'https://www.youtube.com/watch?v=-NuXpwB2DV4&t=1466s' },
+			{ text: 'Who&apos;s buying our elections?: Good Work', url: 'https://www.youtube.com/watch?v=CFpFKe3q6Fg' }
+        ]
+      },
+      {
+        title: 'How we can win in 2026',
+        date: '2025-11-03',
+        url: 'FRVNqNc0e18', 
+        description: 'This video outlines our independent campaign strategy for the 2026 election, focusing on correcting wealth inequality. We rely on a grassroots movement and people power, not corporate funding. Our roadmap to victory is an educational campaign connected to trustworthy network model designed to grow to the number of votes needed to win.',
+        sources: [
+			{ text: 'How to stop the economy from collapsing: Gary&apos;s Economics', url: 'https://www.youtube.com/watch?v=rAb_p5DCC3E' }
+		]
+      }
+    ];
+
+    // ------- Utilities -------
+    const ytId = (u) => {
+      if (!u) return '';
+      const m = String(u).match(/[?&]v=([^&#]+)|youtu\.be\/([^?#/]+)|^([\w-]{11})/);
+      return (m && (m[1] || m[2] || m[3])) || String(u);
+    };
+    const ytThumb = (id) => `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+    const prettyDate = (iso) => new Date(iso + 'T12:00:00').toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+
+    // SORTING: Newest First (for Featured)
+    const sortedSeries = [...seriesVideos].sort((a, b) => new Date(b.date) - new Date(a.date));
+    
+    // SORTING: Oldest First (for Archive List) - NEW
+    const chronologicalSeries = [...seriesVideos].sort((a, b) => new Date(a.date) - new Date(b.date));
+
+    // ------- Modal Logic (Featured Video Only) -------
+    const videoModal = document.getElementById('videoModal');
+    const youtubePlayer = document.getElementById('youtubePlayer');
+    const closeVideoModalBtn = document.getElementById('closeVideoModal');
+
+    function openModal(modal) {
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        const inner = modal.querySelector('div');
+        inner.classList.remove('scale-95', 'opacity-0');
+        inner.classList.add('scale-100', 'opacity-100');
+      }, 10);
+    }
+    
+    function closeModal(modal) {
+       if (!modal || modal.classList.contains('hidden')) return;
+        const inner = modal.querySelector('div');
+        inner.classList.add('scale-95', 'opacity-0');
+        inner.classList.remove('scale-100', 'opacity-100');
+        setTimeout(() => { modal.classList.add('hidden'); }, 300);
+    }
+
+    function openFeaturedPlayer(id) {
+        if (!id) return;
+        youtubePlayer.src = `https://www.youtube.com/embed/${id}?autoplay=1&enablejsapi=1`; 
+        openModal(videoModal);
+    }
+
+    function closeVideoPlayer() {
+      closeModal(videoModal); 
+      setTimeout(() => { youtubePlayer.src = ''; }, 300);
+    }
+
+    if (closeVideoModalBtn) closeVideoModalBtn.addEventListener('click', closeVideoPlayer);
+    if (videoModal) videoModal.addEventListener('click', (e) => { if (e.target === videoModal) closeVideoPlayer(); });
+
+    // ------- Featured Section Setup -------
+    const featured = sortedSeries[0];
+    const featuredId = ytId(featured?.url);
+    document.getElementById('featuredThumb').src = ytThumb(featuredId);
+    document.getElementById('featuredTitle').textContent = featured.title;
+    document.getElementById('featuredDesc').textContent = featured.description || '';
+    document.getElementById('featuredDate').textContent = `Released ${prettyDate(featured.date)}`;
+    
+    document.getElementById('playFeatured').addEventListener('click', () => openFeaturedPlayer(featuredId));
+
+
+    // ------- Interactive Accordion Table Logic -------
+    const accordionContainer = document.getElementById('videoAccordion');
+    
+    function toggleAccordion(index) {
+        const content = document.getElementById(`content-${index}`);
+        const icon = document.getElementById(`icon-${index}`);
+        
+        // Toggle current
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            icon.classList.remove('rotate-180');
+            // Stop video when closing
+            const iframe = content.querySelector('iframe');
+            if(iframe) {
+                const src = iframe.src;
+                iframe.src = src; // Reloading stops the video
+            }
+        } else {
+            content.classList.add('open');
+            icon.classList.add('rotate-180');
+        }
+    }
+
+    function renderAccordion(filter = '') {
+      const q = filter.trim().toLowerCase();
+      accordionContainer.innerHTML = '';
+      
+      // Use chronologicalSeries (Oldest First) for the list
+      chronologicalSeries.forEach((v, index) => {
+        if (q && !v.title.toLowerCase().includes(q)) return;
+        
+        const id = ytId(v.url);
+        // Create source links HTML
+        let sourcesHtml = '';
+        if (v.sources && v.sources.length > 0) {
+            sourcesHtml = `<div class="mt-4 pt-4 border-t border-gray-200">
+                <h5 class="font-bold text-xs uppercase tracking-widest text-[#002b54] mb-2">Learn More</h5>
+                <ul class="space-y-1">
+                    ${v.sources.map(s => `<li><a href="${s.url}" target="_blank" rel="noopener noreferrer" class="text-[#002b54] hover:text-[#AEE8FF] hover:underline text-sm flex items-center gap-2"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>${s.text}</a></li>`).join('')}
+                </ul>
+            </div>`;
+        }
+
+        const item = document.createElement('div');
+        item.className = 'group'; // Wrapper for hover effects if needed
+        item.innerHTML = `
+            <button onclick="toggleAccordion(${index})" class="w-full flex items-center justify-between p-6 text-left hover:bg-blue-50 transition-colors focus:outline-none">
+                <div class="flex items-center gap-6">
+                    <span class="text-sm font-bold text-[#AEE8FF] bg-[#002b54] w-8 h-8 flex items-center justify-center rounded-full flex-shrink-0">${index + 1}</span>
+                    <div>
+                        <h4 class="text-lg md:text-xl font-bold text-[#073763]">${v.title}</h4>
+                        <span class="text-sm text-gray-500 font-medium">${prettyDate(v.date)}</span>
+                    </div>
+                </div>
+                <svg id="icon-${index}" class="w-6 h-6 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            
+            <div id="content-${index}" class="accordion-content bg-gray-50">
+                <div class="p-6 border-t border-gray-100">
+                    <div class="flex flex-col lg:flex-row gap-8">
+                        <div class="lg:w-3/5">
+                            <div class="aspect-video bg-black rounded-lg overflow-hidden shadow-lg border border-gray-200">
+                                <iframe class="w-full h-full" src="https://www.youtube.com/embed/${id}" title="${v.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        
+                        <div class="lg:w-2/5">
+                            <h5 class="font-bold text-[#073763] text-lg mb-2">About this video</h5>
+                            <p class="text-gray-700 leading-relaxed text-sm mb-4">${v.description}</p>
+                            ${sourcesHtml}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        accordionContainer.appendChild(item);
+        
+        // Expose function to global scope
+        window.toggleAccordion = toggleAccordion;
+      });
+    }
+    renderAccordion();
+    document.getElementById('tableFilter').addEventListener('input', (e) => renderAccordion(e.target.value));
+
+
+    // ------- Hamburger Menu -------
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+    
+    if (hamburgerBtn) {
+      hamburgerBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+        if(!mobileMenu.classList.contains('hidden')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+      });
+      document.querySelectorAll('#mobile-menu a, #mobile-menu button').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+          document.body.style.overflow = '';
+        });
+      });
+    }
+
+    // ------- Standard Modals Logic (Donate/Volunteer) -------
+    const donateModal = document.getElementById('donateModal');
+    const involvedModal = document.getElementById('involvedModal');
+    const donateBtn = document.getElementById('donateBtn');
+    const mobileDonateBtn = document.getElementById('mobileDonateBtn');
+    const mobileInvolvedBtn = document.getElementById('mobileInvolvedBtn');
+    const closeDonateModalBtn = document.getElementById('closeDonateModal');
+    const closeInvolvedModalBtn = document.getElementById('closeInvolvedModal');
+
+    if (donateBtn) donateBtn.addEventListener('click', () => openModal(donateModal));
+    if (mobileDonateBtn) mobileDonateBtn.addEventListener('click', () => openModal(donateModal));
+    if (mobileInvolvedBtn) mobileInvolvedBtn.addEventListener('click', () => openModal(involvedModal));
+    
+    if (closeDonateModalBtn) closeDonateModalBtn.addEventListener('click', () => closeModal(donateModal));
+    if (closeInvolvedModalBtn) closeInvolvedModalBtn.addEventListener('click', () => closeModal(involvedModal));
+
+    if (donateModal) donateModal.addEventListener('click', (e) => { if (e.target === donateModal) closeModal(donateModal); });
+    if (involvedModal) involvedModal.addEventListener('click', (e) => { if (e.target === involvedModal) closeModal(involvedModal); });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal(donateModal);
+        closeModal(involvedModal);
+        closeVideoPlayer();
+      }
+    });
+
+  </script>
+</body>
+</html>
