@@ -119,6 +119,9 @@
                     alt="Follmer For Congress">
             </a>
             <div class="hidden md:flex items-center space-x-8">
+                <a href="sustainablepolitics.html"
+                    class="text-sm font-black uppercase tracking-widest nav-underline text-white/90 hover:text-white">Sustainable
+                    Politics</a>
                 <a href="meetadam.html"
                     class="text-sm font-black uppercase tracking-widest nav-underline text-white/90 hover:text-white">Meet
                     Adam</a>
@@ -131,9 +134,6 @@
         </div>
         <div class="flex items-center gap-4">
             <div class="hidden md:flex items-center gap-3">
-                <button id="donateBtn"
-                    class="bg-[#AEE8FF] text-[#002b54] border-2 border-[#AEE8FF] font-black py-2 px-6 rounded text-sm hover:bg-transparent hover:text-[#AEE8FF] transition-all duration-300 shadow-lg">DON'T
-                    DONATE</button>
                 <a href="volunteer.html"
                     class="bg-transparent border-2 border-white text-white font-black py-2 px-6 rounded text-sm hover:bg-white hover:text-[#002b54] transition-all duration-300 inline-block">GET
                     INVOLVED</a>
@@ -156,13 +156,11 @@
     <div id="mobile-menu"
         class="hidden md:hidden bg-[#002b54] text-white fixed top-[80px] left-0 right-0 bottom-0 z-40 border-t border-white/10">
         <div class="flex flex-col p-6 space-y-6">
+            <a href="sustainablepolitics.html" class="text-2xl font-black uppercase tracking-wide">Sustainable Politics</a>
             <a href="meetadam.html" class="text-2xl font-black uppercase tracking-wide">Meet Adam</a>
             <a href="platform.html" class="text-2xl font-black uppercase tracking-wide">Platform</a>
             <a href="videoseries.html" class="text-2xl font-black uppercase tracking-wide">Video Series</a>
             <div class="h-px bg-white/20 w-full my-4"></div>
-            <button id="mobileDonateBtn"
-                class="w-full bg-[#AEE8FF] text-[#002b54] font-black py-4 rounded text-lg uppercase shadow-lg">Don't
-                Donate</button>
             <a href="volunteer.html"
                 class="text-center w-full border-2 border-white text-white font-black py-4 rounded text-lg uppercase">Get
                 Involved</a>
@@ -345,27 +343,6 @@
         </footer>
     </main>
 
-    <div id="donateModal"
-        class="fixed inset-0 w-full h-full flex items-center justify-center modal-backdrop hidden z-50 p-4">
-        <div
-            class="bg-white text-[#002b54] w-full max-w-2xl p-8 md:p-12 shadow-2xl relative transform transition-all duration-300 scale-95 opacity-0 border-t-8 border-[#D62828]">
-            <button id="closeDonateModal"
-                class="absolute top-4 right-4 text-gray-400 hover:text-[#D62828] transition-colors">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
-                    </path>
-                </svg>
-            </button>
-            <h2 class="font-campaign text-3xl md:text-5xl text-center mb-6 leading-tight">We cannot outspend the
-                billionaires.</h2>
-            <div class="text-center space-y-6">
-                <p class="text-xl font-bold text-[#D62828]">But we can organize and outnumber them.</p>
-                <p class="text-gray-600 leading-relaxed">Fight back by sharing this campaign’s message to your friends,
-                    family, coworkers, and neighbors.</p>
-            </div>
-        </div>
-    </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const hamburgerBtn = document.getElementById('hamburger-btn');
@@ -382,34 +359,6 @@
                 });
             }
 
-            const donateBtn = document.getElementById('donateBtn');
-            const mobileDonateBtn = document.getElementById('mobileDonateBtn');
-            const donateModal = document.getElementById('donateModal');
-            const closeDonateModalBtn = document.getElementById('closeDonateModal');
-
-            function openModal(modal) {
-                if (modal) {
-                    modal.classList.remove('hidden');
-                    setTimeout(() => {
-                        modal.querySelector('div').classList.remove('scale-95', 'opacity-0');
-                        modal.querySelector('div').classList.add('scale-100', 'opacity-100');
-                    }, 10);
-                }
-            }
-
-            function closeModal(modal) {
-                if (modal && !modal.classList.contains('hidden')) {
-                    modal.querySelector('div').classList.add('scale-95', 'opacity-0');
-                    modal.querySelector('div').classList.remove('scale-100', 'opacity-100');
-                    setTimeout(() => modal.classList.add('hidden'), 300);
-                }
-            }
-
-            if (donateBtn) donateBtn.addEventListener('click', () => openModal(donateModal));
-            if (mobileDonateBtn) mobileDonateBtn.addEventListener('click', () => openModal(donateModal));
-            if (closeDonateModalBtn) closeDonateModalBtn.addEventListener('click', () => closeModal(donateModal));
-            if (donateModal) donateModal.addEventListener('click', (e) => { if (e.target === donateModal) closeModal(donateModal); });
-            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(donateModal); });
         });
     </script>
 </body>

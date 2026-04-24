@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustainable Politics - Follmer For Congress</title>
+    <meta name="description"
+        content="A politics that fits inside the life a person already has. The philosophical backbone of the Follmer for Congress campaign.">
+    <meta property="og:title" content="Sustainable Politics - Follmer For Congress">
+    <meta property="og:description"
+        content="A politics that fits inside the life a person already has. The philosophical backbone of the Follmer for Congress campaign.">
+    <link rel="icon" href="Minicon.svg" type="image/svg+xml">
+    <link rel="icon" href="Minicon1.png" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="Minicon2.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-campaign {
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+
+        .nav-underline {
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .nav-underline::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: #AEE8FF;
+            transform: scaleX(0);
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-underline:hover::after {
+            transform: scaleX(1);
+        }
+
+        .bg-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.5) 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+            -webkit-mask-image: linear-gradient(to bottom, black 0%, black 10%, transparent 20%, transparent 80%, black 90%, black 100%);
+            mask-image: linear-gradient(to bottom, black 0%, black 10%, transparent 20%, transparent 80%, black 90%, black 100%);
+        }
+
+        .longform-body {
+            font-size: 1.125rem;
+            line-height: 1.75;
+        }
+
+        .longform-body p+p {
+            margin-top: 1.25rem;
+        }
+
+        .section-tag {
+            font-size: 0.75rem;
+            font-weight: 900;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-tag .section-number {
+            color: #D62828;
+        }
+
+        .section-tag .section-bar {
+            width: 2rem;
+            height: 2px;
+            background-color: #D62828;
+        }
+
+        .pull-quote {
+            border-left: 4px solid #D62828;
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            font-size: 1.375rem;
+            line-height: 1.5;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+
+        @media (min-width: 768px) {
+            .pull-quote {
+                font-size: 1.625rem;
+            }
+        }
+
+        .why-trigger {
+            color: #D62828;
+            font-size: 0.85rem;
+            font-weight: 900;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: inline-block;
+            padding: 0.5rem 0;
+            list-style: none;
+            transition: color 0.2s;
+        }
+
+        .why-trigger::-webkit-details-marker {
+            display: none;
+        }
+
+        .why-trigger:hover {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .why-trigger .why-arrow {
+            display: inline-block;
+            transition: transform 0.25s ease-out;
+            margin-left: 0.25rem;
+        }
+
+        details[open]>.why-trigger .why-arrow {
+            transform: rotate(90deg);
+        }
+
+        .why-content {
+            margin-top: 0.5rem;
+            margin-left: 0;
+            padding: 1rem 0 1rem 1.5rem;
+            border-left: 3px solid #D62828;
+            font-size: 1rem;
+            line-height: 1.75;
+        }
+
+        .on-dark .why-content {
+            color: rgba(255, 255, 255, 0.78);
+            border-left-color: #AEE8FF;
+        }
+
+        .on-dark .why-trigger {
+            color: #AEE8FF;
+        }
+
+        /* Flip Cards for schedule */
+        .flip-card {
+            perspective: 1200px;
+            min-height: 200px;
+            cursor: pointer;
+        }
+
+        @media (min-width: 768px) {
+            .flip-card {
+                min-height: 220px;
+            }
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: inherit;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner,
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-face {
+            position: absolute;
+            inset: 0;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1.5rem 1.25rem;
+            box-shadow: 0 4px 12px rgba(0, 43, 84, 0.1);
+        }
+
+        .flip-card-front {
+            background: #1e3a5f;
+            border-top: 4px solid #D62828;
+            color: #fff;
+        }
+
+        .flip-card-back {
+            background: #002b54;
+            border-top: 4px solid #AEE8FF;
+            color: #fff;
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-label {
+            font-size: 1.05rem;
+            font-weight: 900;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+            line-height: 1.2;
+            color: #fff;
+        }
+
+        @media (min-width: 768px) {
+            .flip-card-label {
+                font-size: 1.15rem;
+            }
+        }
+
+        .flip-card-hint {
+            font-size: 0.65rem;
+            font-weight: 900;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #AEE8FF;
+            margin-top: 0.85rem;
+        }
+
+        .flip-card-back-text {
+            font-size: 0.9rem;
+            line-height: 1.55;
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        .close-cta {
+            display: block;
+            padding: 1.5rem 1.75rem;
+            background: #002b54;
+            color: #AEE8FF;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            border-left: 4px solid #AEE8FF;
+        }
+
+        .close-cta:hover {
+            background: #AEE8FF;
+            color: #002b54;
+            border-left-color: #D62828;
+        }
+
+        .close-cta .arrow {
+            float: right;
+            transition: transform 0.2s;
+        }
+
+        .close-cta:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        .issue-block {
+            border-top: 4px solid #D62828;
+            padding-top: 1.75rem;
+            margin-bottom: 3.5rem;
+            position: relative;
+        }
+
+        .issue-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .issue-number {
+            position: absolute;
+            top: -1.5rem;
+            left: 0;
+            background: #D62828;
+            color: white;
+            font-weight: 900;
+            font-size: 0.85rem;
+            padding: 0.25rem 0.75rem;
+            letter-spacing: 0.1em;
+        }
+
+        .drop-cap::first-letter {
+            float: left;
+            font-size: 3.5rem;
+            line-height: 0.9;
+            font-weight: 900;
+            padding-right: 0.5rem;
+            padding-top: 0.35rem;
+            color: #D62828;
+        }
+
+        strong {
+            font-weight: 900;
+        }
+
+        .on-dark strong {
+            color: #AEE8FF;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-[#073763] antialiased selection:bg-[#AEE8FF] selection:text-[#073763]">
+
+    <nav
+        class="bg-[#002b54] text-white py-5 px-6 flex items-center justify-between sticky top-0 z-50 border-b border-[#AEE8FF]/20 shadow-xl backdrop-blur-md bg-opacity-95">
+        <div class="flex items-center space-x-12">
+            <a href="index.html" class="flex items-center group">
+                <img src="logoInvert.png" class="h-10 md:h-12 w-auto transition-transform group-hover:scale-105"
+                    alt="Follmer For Congress">
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="sustainablepolitics.html"
+                    class="text-sm font-black uppercase tracking-widest nav-underline text-white/90 hover:text-white">Sustainable
+                    Politics</a>
+                <a href="meetadam.html"
+                    class="text-sm font-black uppercase tracking-widest nav-underline text-white/90 hover:text-white">Meet
+                    Adam</a>
+                <a href="platform.html"
+                    class="text-sm font-black uppercase tracking-widest nav-underline text-white/90 hover:text-white">Platform</a>
+                <a href="videoseries.html"
+                    class="text-sm font-black uppercase tracking-widest nav-underline text-white/90 hover:text-white">Video
+                    Series</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="hidden md:flex items-center gap-3">
+                <a href="volunteer.html"
+                    class="bg-transparent border-2 border-white text-white font-black py-2 px-6 rounded text-sm hover:bg-white hover:text-[#002b54] transition-all duration-300 transform hover:-translate-y-0.5 inline-block">GET
+                    INVOLVED</a>
+            </div>
+            <div class="md:hidden">
+                <button id="hamburger-btn" class="focus:outline-none text-[#AEE8FF]">
+                    <svg id="menu-icon" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                    <svg id="close-icon" class="w-8 h-8 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                            d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobile-menu"
+        class="hidden md:hidden bg-[#002b54] text-white fixed top-[80px] left-0 right-0 bottom-0 z-40 border-t border-white/10">
+        <div class="flex flex-col p-6 space-y-6">
+            <a href="sustainablepolitics.html" class="text-2xl font-black uppercase tracking-wide">Sustainable
+                Politics</a>
+            <a href="meetadam.html" class="text-2xl font-black uppercase tracking-wide">Meet Adam</a>
+            <a href="platform.html" class="text-2xl font-black uppercase tracking-wide">Platform</a>
+            <a href="videoseries.html" class="text-2xl font-black uppercase tracking-wide">Video Series</a>
+            <div class="h-px bg-white/20 w-full my-4"></div>
+            <a href="volunteer.html"
+                class="text-center w-full border-2 border-white text-white font-black py-4 rounded text-lg uppercase">Get
+                Involved</a>
+        </div>
+    </div>
+
+    <main>
+
+        <!-- HERO -->
+        <section
+            class="bg-gradient-to-br from-[#002b54] to-[#001f3f] text-white pt-24 pb-28 md:pt-40 md:pb-40 relative overflow-hidden on-dark">
+            <div class="absolute inset-0 bg-pattern opacity-40"></div>
+            <div
+                class="absolute -top-20 -right-20 w-96 h-96 bg-[#AEE8FF] rounded-full mix-blend-overlay filter blur-3xl opacity-20">
+            </div>
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="max-w-5xl">
+                    <h1 class="font-campaign text-5xl md:text-7xl lg:text-8xl leading-[0.95] mb-12">
+                        How do we make<br>politics for <span class="text-[#AEE8FF]">everyone?</span>
+                    </h1>
+                    <div class="max-w-2xl longform-body text-blue-100">
+                        <p>Politics, at the moment, is for people who have time. Time to attend events, time to donate,
+                            time to stay informed. A large majority of the country spends that time elsewhere — on the
+                            jobs that pay the bills, on the people we love, on the daily work of holding a life
+                            together.</p>
+                        <p class="text-white font-medium">The answer to making politics for everyone is not in asking
+                            people for more, but in building a politics that fits inside the life a person already has.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 01 — BARRIERS (white) -->
+        <section class="bg-white py-20 md:py-28 px-6 relative">
+            <div class="container mx-auto max-w-3xl">
+                <h2 class="font-campaign text-4xl md:text-6xl text-[#002b54] leading-[0.95] mb-10">
+                    Addressing <span class="text-[#AEE8FF] bg-[#002b54] px-2">Barriers.</span>
+                </h2>
+                <div class="longform-body text-gray-700">
+                    <p class="drop-cap">Participating in politics has some obvious barriers: a donation, a weekday
+                        meeting, a ballot you need a car to reach. Others are less obvious and include the hours it
+                        takes to understand what is happening or the social cost of saying something out loud at work.
+                    </p>
+                </div>
+
+                <details class="mt-8">
+                    <summary class="why-trigger">Why the usual tools don't hold <span class="why-arrow">→</span>
+                    </summary>
+                    <div class="why-content text-gray-700">
+                        Even a well-run town hall holds a few hundred people. A full turnout at the best-attended event
+                        in this district is a rounding error against the number of people who actually live here. If I
+                        spent one minute with every resident of the First District, the task would take more than five
+                        hundred days — without sleep, without eating, without pausing for anything else. The usual
+                        campaign answer is to accept that most people will never be reached, and to focus on the ones
+                        who show up and donate.
+                    </div>
+                </details>
+
+                <details class="mt-3">
+                    <summary class="why-trigger">On the texts, calls, door knocking, yard signs, advertisements <span
+                            class="why-arrow">→</span></summary>
+                    <div class="why-content text-gray-700">
+                        Success for the modern campaign is defined on how much money it raises. The result is well known
+                        to us in Southeastern Wisconsin: fundraising emails, unsolicited texts, dinner-hour phone calls,
+                        yard signs on every corner, ads in front of every video. Multiply by every race, and you arrive
+                        at an attention economy where the loudest and most expensive message often wins. The standard
+                        response is to accept this and try to be louder.
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- SECTION 02 — THE CORE IDEA (dark) -->
+        <section class="bg-[#002b54] text-white py-24 md:py-36 px-6 relative overflow-hidden on-dark">
+            <div class="absolute inset-0 bg-pattern opacity-40"></div>
+            <div class="container mx-auto max-w-4xl relative z-10">
+                <h2 class="font-campaign text-6xl md:text-8xl lg:text-9xl leading-[0.9] mb-12">
+                    Sustainable<br><span class="text-[#AEE8FF]">Politics.</span>
+                </h2>
+                <div class="pull-quote text-white border-l-[#AEE8FF]">
+                    Sustainable for me, as the candidate. Sustainable for you, as a voter.
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 02A — FOR ME (white) -->
+        <section class="bg-white py-20 md:py-28 px-6">
+            <div class="container mx-auto max-w-3xl">
+                <div class="section-tag mb-8">
+                    <span class="text-[#002b54]">Sustainable for me</span>
+                </div>
+                <h2 class="font-campaign text-4xl md:text-6xl text-[#002b54] leading-[0.95] mb-10">
+                    Consistency. <span class="text-[#AEE8FF] bg-[#002b54] px-2">Accessibility.</span> Accountability.
+                </h2>
+                <div class="longform-body text-gray-700 mb-12">
+                    <p>A modern congressional campaign is built around raising money, and the candidate's calendar gets
+                        shaped accordingly. I am not doing that. The hours most campaigns lose to fundraising are the
+                        hours I get back, and I would rather spend them on something useful to the district.</p>
+                    <p>My strength is organizing and conveying information. I like to make sense of how decisions in
+                        Washington land in the lives of people who live here. That is
+                        what the weekly video series is. It is the work I am best positioned to contribute,
+                        and it is work that is needed right now.</p>
+                </div>
+
+                <!-- The Weekly Schedule -->
+                <div class="mb-16 md:mb-20">
+                    <h3 class="font-campaign text-2xl md:text-3xl text-[#002b54] mb-3 leading-tight">A Consistent
+                        Schedule.</h3>
+                    <p class="longform-body text-gray-700 mb-8">What to expect each week. <span
+                            class="text-[#D62828] font-bold text-sm uppercase tracking-widest">Tap a card to learn
+                            more.</span></p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+                        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-face flip-card-front">
+                                    <div class="flip-card-label">Weekly Video Series Highlighting Washington's Impact on
+                                        Wealth Inequality</div>
+                                    <div class="flip-card-hint">More →</div>
+                                </div>
+                                <div class="flip-card-face flip-card-back">
+                                    <div class="flip-card-back-text">Each week, I talk about an area of our lives where
+                                        the wealthy take advantage of the working class. I look at how we got here,
+                                        where we stand now, and what we can do about it.</div>
+                                    <div class="flip-card-hint">← Back</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-face flip-card-front">
+                                    <div class="flip-card-label">Weekly Intercommunal Actions</div>
+                                    <div class="flip-card-hint">More →</div>
+                                </div>
+                                <div class="flip-card-face flip-card-back">
+                                    <div class="flip-card-back-text">The idea is to have a community of communities
+                                        performing coordinated tasks around our district. Groups act independently but
+                                        contribute to a weekly action.</div>
+                                    <div class="flip-card-hint">← Back</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-face flip-card-front">
+                                    <div class="flip-card-label">Social Outreach</div>
+                                    <div class="flip-card-hint">More →</div>
+                                </div>
+                                <div class="flip-card-face flip-card-back">
+                                    <div class="flip-card-back-text">Short recaps of the weekly videos, highlights from
+                                        past intercommunal events, promotion for upcoming ones, and other posts bringing
+                                        attention to an alternative political space.</div>
+                                    <div class="flip-card-hint">← Back</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-face flip-card-front">
+                                    <div class="flip-card-label">Time for Opportunities</div>
+                                    <div class="flip-card-hint">More →</div>
+                                </div>
+                                <div class="flip-card-face flip-card-back">
+                                    <div class="flip-card-back-text">Intentional flexibility in the week for interviews,
+                                        long-form writing, and community invitations that would otherwise get squeezed
+                                        out of a fundraising calendar.</div>
+                                    <div class="flip-card-hint">← Back</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ClearCandidate -->
+                <div class="mb-14 md:mb-16">
+                    <h3 class="font-campaign text-2xl md:text-3xl text-[#002b54] mb-5 leading-tight">An accessible
+                        platform for voters.</h3>
+                    <div class="longform-body text-gray-700">
+                        <p>The standard practice of constituents emailing or calling their representative, only to be
+                            processed by a staffer and handed a canned response, should no longer be accepted. We should
+                            demand better. <strong class="text-[#002b54]">ClearCandidate</strong> replaces this
+                            gatekeeping with predictable accessibility. If you have a question, post it on the platform;
+                            when a topic gains enough community support, I provide a direct, public answer. This model
+                            prioritizes slower, asynchronous communication to ensure that every response is deliberate,
+                            transparent, and sustainable.</p>
+                    </div>
+                    <details class="mt-6">
+                        <summary class="why-trigger">Why <span class="why-arrow">→</span></summary>
+                        <div class="why-content text-gray-700">
+                            Do we really need our congresspeople to be quick-witted and strong public speakers? Or
+                            should we value accessibility and transparency? A cycle that asks a candidate to have a
+                            public opinion on everything within the hour is good for content. However, thoughtful
+                            thinking takes longer than that. ClearCandidate keeps a public log of how my views change,
+                            and why. If an answer is not good enough, the community can keep asking for clarification.
+                        </div>
+                    </details>
+                </div>
+
+                <!-- Regular representation -->
+                <div class="mb-14 md:mb-16">
+                    <h3 class="font-campaign text-2xl md:text-3xl text-[#002b54] mb-5 leading-tight">Regular workers
+                        deserve regular representation.</h3>
+                    <div class="longform-body text-gray-700">
+                        <p>I have kept my job and my family life intact, and I intend to keep them that way through the
+                            campaign. Our representatives should be able to live lives that keep them connected to the
+                            communities that elect them.</p>
+                    </div>
+                    <details class="mt-6">
+                        <summary class="why-trigger">Why <span class="why-arrow">→</span></summary>
+                        <div class="why-content text-gray-700">
+                            The expectation that a candidate sacrifice everything — work, family, health — selects for a
+                            very particular kind of person, oftentimes someone who can afford to. These are not the same
+                            type of people who will represent the working class.
+                        </div>
+                    </details>
+                </div>
+
+                <!-- The $10k cap -->
+                <div>
+                    <h3 class="font-campaign text-2xl md:text-3xl text-[#002b54] mb-5 leading-tight">Why limit spending?
+                    </h3>
+                    <div class="longform-body text-gray-700">
+                        <p>My major point is that current method of campaigning is built on money in order to access
+                            fragments of
+                            your attention. I am arguing that our attention is our most valuable resource, and that is
+                            why
+                            sustainability is so important. A campaign with a cap on its fundraising must have a much
+                            better alternative to offer in return.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 02B — FOR YOU (gray) -->
+        <section class="bg-gray-50 py-20 md:py-28 px-6 border-y border-gray-200">
+            <div class="container mx-auto max-w-3xl">
+                <div class="section-tag mb-8">
+                    <span class="text-[#002b54]">Sustainable for you</span>
+                </div>
+                <h2 class="font-campaign text-4xl md:text-6xl text-[#002b54] leading-[0.95] mb-10">
+                    Share what you know<br>with the <span class="text-[#AEE8FF] bg-[#002b54] px-2">people you
+                        know.</span>
+                </h2>
+                <div class="longform-body text-gray-700 mb-12">
+                    <p>The standard campaign instinct is to send a message through every available channel and hope
+                        enough of it sticks. It is an exhausting process for a swing state, and most of it gets ignored.
+                    </p>
+                    <p>There is an alternative. Each of us already has a handful of people in our lives who would hear
+                        us out — people we work with, people we socialize with, people we worship with, people who live
+                        on the same block. Those relationships are the channels that already work.</p>
+                </div>
+
+                <div class="mb-14 md:mb-16">
+                    <h3 class="font-campaign text-2xl md:text-3xl text-[#002b54] mb-5 leading-tight">The specific ask:
+                        Engage nine people in your life.</h3>
+                    <div class="longform-body text-gray-700">
+                        <p><strong class="text-[#002b54]">Nine people. Three groups of three.</strong></p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-8">
+                        <div
+                            class="bg-[#1e3a5f] p-8 border-t-4 border-[#D62828] shadow-md flex flex-col items-center justify-center text-center">
+                            <div class="font-campaign text-6xl text-[#AEE8FF] leading-none mb-4">3</div>
+                            <p class="text-sm text-white/90 leading-relaxed">from where you <strong
+                                    class="text-[#AEE8FF]">work or study.</strong></p>
+                        </div>
+                        <div
+                            class="bg-[#1e3a5f] p-8 border-t-4 border-[#D62828] shadow-md flex flex-col items-center justify-center text-center">
+                            <div class="font-campaign text-6xl text-[#AEE8FF] leading-none mb-4">3</div>
+                            <p class="text-sm text-white/90 leading-relaxed">from your <strong
+                                    class="text-[#AEE8FF]">social or spiritual life.</strong></p>
+                        </div>
+                        <div
+                            class="bg-[#1e3a5f] p-8 border-t-4 border-[#D62828] shadow-md flex flex-col items-center justify-center text-center">
+                            <div class="font-campaign text-6xl text-[#AEE8FF] leading-none mb-4">3</div>
+                            <p class="text-sm text-white/90 leading-relaxed">from the <strong
+                                    class="text-[#AEE8FF]">street or block you live on.</strong></p>
+                        </div>
+                    </div>
+
+                    <details class="mt-4">
+                        <summary class="why-trigger">Why three groups <span class="why-arrow">→</span></summary>
+                        <div class="why-content text-gray-700">
+                            The different groups represent unique
+                            conversations that reach across aspects of our lives that have become separated.
+                            We can discuss wealth inequality across all of these groups in different, but similar ways.
+                        </div>
+                    </details>
+                    <details class="mt-3">
+                        <summary class="why-trigger">Why small groups <span class="why-arrow">→</span></summary>
+                        <div class="why-content text-gray-700">
+                            Counting you, each group is four people. In a
+                            group that size, it becomes easier to communicate ideas. You can then serve the role as
+                            translator by helping people understand that their day-to-day life is profoundly impacted by
+                            political decisions.
+                        </div>
+                    </details>
+                </div>
+
+                <div>
+                    <h3 class="font-campaign text-2xl md:text-3xl text-[#002b54] mb-5 leading-tight">A consistent place
+                        to share ideas.</h3>
+                    <div class="longform-body text-gray-700">
+                        <p>ClearCandidate is not just to understand the candidate but to talk about issues that impact
+                            our community. You can think of it as a <strong class="text-[#002b54]">permanent town
+                                hall</strong> for candidates. Members get one post and one endorsement per week to
+                            encourage slow, deliberate communication.</p>
+                    </div>
+                    <details class="mt-6">
+                        <summary class="why-trigger">Why slow is the feature <span class="why-arrow">→</span></summary>
+                        <div class="why-content text-gray-700">
+                            Most online platforms are built to capture as much of your attention as they can.
+                            ClearCandidate was built for the same reason the nine-person ask was chosen: it fits inside
+                            an already busy life and helps us talk about the issues we face.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 03 — CLEAR-EYED ON THE ISSUES (white) -->
+        <section class="bg-white py-20 md:py-28 px-6">
+            <div class="container mx-auto max-w-3xl">
+                <h2 class="font-campaign text-4xl md:text-6xl text-[#002b54] leading-[0.95] mb-10">
+                    Clear-eyed on the<br><span class="text-[#AEE8FF] bg-[#002b54] px-2">systemic issues.</span>
+                </h2>
+                <div class="longform-body text-gray-700 mb-16">
+                    <p>A sustainable politics should be a simple politics. Not simple in the sense of dumbed down, but
+                        simple in the sense that a person holding down a job and raising a family can understand the
+                        day-to-day decisions without an advanced degree. The way we get there is to notice that most of
+                        what is
+                        called a separate issue is the same issue wearing different clothes: housing, healthcare,
+                        education,
+                        immigration, corruption, the quiet sale of our land and electricity to companies from somewhere
+                        else. <strong class="text-[#002b54]">It is a question of who owns the thing, and who is making
+                            the money.</strong></p>
+                </div>
+
+                <div class="issue-block">
+                    <span class="issue-number">01</span>
+                    <h3 class="font-campaign text-2xl md:text-3xl text-[#002b54] mb-5 leading-tight">Affordability is
+                        <span class="text-[#D62828]">wealth inequality.</span>
+                    </h3>
+                    <div class="longform-body text-gray-700">
+                        <p>When rent and groceries and childcare and medicine outpace wages for decades, we are
+                            witnessing a
+                            transfer of wealth in action. The decision to fund war overnight while millions of
+                            Americans are struggling to get by is one only the cruelest among us would make.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="issue-block">
+                    <span class="issue-number">02</span>
+                    <h3 class="font-campaign text-2xl md:text-3xl text-[#002b54] mb-5 leading-tight">Universal basic
+                        services should not be <span class="text-[#D62828]">tied to your job.</span></h3>
+                    <div class="longform-body text-gray-700">
+                        <p>As long as our survival and well-being depend on our employers, our leverage is small and our
+                            time is borrowed. We have to imagine a world where instead of subsidies for corporations,
+                            our tax dollars fund services that benefit us directly for healthcare, housing, education,
+                            and childcare. It shouldn't be this hard. </p>
+                    </div>
+                </div>
+
+                <div class="issue-block">
+                    <span class="issue-number">03</span>
+                    <h3 class="font-campaign text-2xl md:text-3xl text-[#002b54] mb-5 leading-tight">The people who do
+                        the work should <span class="text-[#D62828]">own the work.</span></h3>
+                    <div class="longform-body text-gray-700">
+                        <p>A data center comes to Wisconsin because the company that owns it answers to shareholders
+                            somewhere else, and our land and our electricity are cheap line items on a balance sheet
+                            they will never have to live next to. Immigration stays broken because the low end of our
+                            consumer economy depends on labor that can be paid less, and the people who benefit from
+                            that arrangement are the same people who pay to keep it in place.</p>
+                    </div>
+                </div>
+
+                <div class="mt-16 space-y-6 longform-body text-gray-700">
+                    <p class="pull-quote text-[#002b54] !text-xl md:!text-2xl">These issues, and issues like them,
+                        share the same story. A small number of people own the thing, and the rest of us work inside
+                        it, under rules we did not write or support.</p>
+                    <p><strong class="text-[#002b54]">Worker-owned companies are one honest answer.</strong> When the
+                        people doing the work also own the enterprise, the success of the company is the success of the
+                        worker. The same logic applies to our utilities, our hospitals,
+                        and the land under our feet.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 04 — WHY + CLOSE -->
+        <section
+            class="bg-gradient-to-br from-[#002b54] to-[#001f3f] text-white py-24 md:py-36 px-6 relative overflow-hidden on-dark">
+            <div class="absolute inset-0 bg-pattern opacity-40"></div>
+            <div
+                class="absolute -bottom-32 -left-32 w-96 h-96 bg-[#AEE8FF] rounded-full mix-blend-overlay filter blur-3xl opacity-20">
+            </div>
+            <div class="container mx-auto max-w-4xl relative z-10">
+                <h2 class="font-campaign text-6xl md:text-8xl lg:text-9xl leading-[0.9] mb-12">
+                    <span class="text-[#AEE8FF]">Why.</span>
+                </h2>
+                <div class="longform-body text-blue-100 max-w-2xl space-y-6 mb-16">
+                    <p class="text-xl md:text-2xl text-white font-medium leading-relaxed">I don't like what I see when I
+                        look in the future, a future that belongs to my daughter and all other children. I want her to
+                        inherit a country where her time, her attention, and her future belong to her, and to the people
+                        she loves.</p>
+                    <p>We get one life. I want to spend what is left of mine building something better than what we
+                        have, especially while the alternatives are sitting there, unused, waiting.</p>
+                    <p>When we feel disconnected from the process, we start to believe our politics is someone else's
+                        job. But it is not. It is ours. This country is something we need to make and nurture together
+                        everyday.</p>
+                    <p>If it works, we will have built something durable that can set the standard for politics not
+                        corrupted by money. If it falls short, hopefully it sparks an alternative outlook for the next
+                        person.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <a href="https://community.adamforwi.com"
+                        class="close-cta !bg-white !text-[#002b54] !border-l-[#D62828] hover:!bg-[#AEE8FF]">
+                        Explore ClearCandidate <span class="arrow">→</span>
+                    </a>
+                    <a href="videoseries.html"
+                        class="close-cta !bg-white !text-[#002b54] !border-l-[#D62828] hover:!bg-[#AEE8FF]">
+                        Watch This Week's Video <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="bg-[#002b54] text-white py-20 border-t-8 border-[#AEE8FF]">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col lg:flex-row justify-between items-start gap-12">
+                    <div class="max-w-md">
+                        <img src="logoInvert.png" class="h-16 w-auto mb-6 opacity-90" alt="Follmer For Congress Logo">
+                        <p class="text-blue-200 text-lg mb-8">
+                            Paid for by Adam for WI District 1. <br>
+                        </p>
+                        <a href="mailto:adam@adamforwi.com"
+                            class="text-[#AEE8FF] font-black text-xl hover:text-white border-b-2 border-[#AEE8FF] pb-1">
+                            adam@adamforwi.com
+                        </a>
+                    </div>
+                    <div class="flex flex-col gap-6">
+                        <h4 class="font-campaign text-2xl text-[#AEE8FF]">Connect</h4>
+                        <div class="grid grid-cols-2 gap-x-12 gap-y-4 font-bold text-lg">
+                            <a href="https://www.instagram.com/adamforwi/"
+                                class="hover:text-[#AEE8FF] transition-colors">Instagram</a>
+                            <a href="https://www.facebook.com/people/Adam-Follmer/61587293092153/"
+                                class="hover:text-[#AEE8FF] transition-colors">Facebook</a>
+                            <a href="https://x.com/adamforwi" class="hover:text-[#AEE8FF] transition-colors">X
+                                (Twitter)</a>
+                            <a href="https://www.tiktok.com/@adamforwi"
+                                class="hover:text-[#AEE8FF] transition-colors">TikTok</a>
+                            <a href="https://bsky.app/profile/adamforwi.bsky.social"
+                                class="hover:text-[#AEE8FF] transition-colors">Bluesky</a>
+                            <a href="https://www.youtube.com/@afollmer-5566"
+                                class="hover:text-[#AEE8FF] transition-colors">YouTube</a>
+                            <a href="https://substack.com/@adamforwi"
+                                class="hover:text-[#AEE8FF] transition-colors">Substack</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            if (hamburgerBtn) {
+                hamburgerBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    menuIcon.classList.toggle('hidden');
+                    closeIcon.classList.toggle('hidden');
+                    document.body.style.overflow = mobileMenu.classList.contains('hidden') ? '' : 'hidden';
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
