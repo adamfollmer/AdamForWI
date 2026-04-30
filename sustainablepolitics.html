@@ -170,9 +170,13 @@
             transform-style: preserve-3d;
         }
 
-        .flip-card:hover .flip-card-inner,
         .flip-card.flipped .flip-card-inner {
             transform: rotateY(180deg);
+        }
+        @media (hover: hover) and (pointer: fine) {
+            .flip-card:hover .flip-card-inner {
+                transform: rotateY(180deg);
+            }
         }
 
         .flip-card-face {
@@ -377,10 +381,7 @@
                         How do we make<br>politics for <span class="text-[#AEE8FF]">everyone?</span>
                     </h1>
                     <div class="max-w-2xl longform-body text-blue-100">
-                        <p>Politics, at the moment, is for people who have time. Time to attend events, time to donate,
-                            time to stay informed. A large majority of the country spends that time elsewhere — on the
-                            jobs that pay the bills, on the people we love, on the daily work of holding a life
-                            together.</p>
+                        <p>Politics, at the moment, is for people who have time. We have built a system that assumes you have a surplus of hours to spare, completely ignoring the reality that most people are already operating at maximum capacity just to hold their lives together. When participation requires time that people do not have to give, it effectively chooses its own audience.</p>
                         <p class="text-white font-medium">The answer to making politics for everyone is not in asking
                             people for more, but in building a politics that fits inside the life a person already has.
                         </p>
@@ -409,9 +410,7 @@
                         Even a well-run town hall holds a few hundred people. A full turnout at the best-attended event
                         in this district is a rounding error against the number of people who actually live here. If I
                         spent one minute with every resident of the First District, the task would take more than five
-                        hundred days — without sleep, without eating, without pausing for anything else. The usual
-                        campaign answer is to accept that most people will never be reached, and to focus on the ones
-                        who show up and donate.
+                        hundred days — without sleep, without eating, without pausing for anything else. Shouldn't we be using ways that allow all of us to reach our elected officials?
                     </div>
                 </details>
 
@@ -433,7 +432,7 @@
         <section class="bg-[#002b54] text-white py-24 md:py-36 px-6 relative overflow-hidden on-dark">
             <div class="absolute inset-0 bg-pattern opacity-40"></div>
             <div class="container mx-auto max-w-4xl relative z-10">
-                <h2 class="font-campaign text-6xl md:text-8xl lg:text-9xl leading-[0.9] mb-12">
+                <h2 class="font-campaign text-5xl sm:text-6xl md:text-8xl lg:text-9xl leading-[0.9] mb-12">
                     Sustainable<br><span class="text-[#AEE8FF]">Politics.</span>
                 </h2>
                 <div class="pull-quote text-white border-l-[#AEE8FF]">
@@ -448,17 +447,17 @@
                 <div class="section-tag mb-8">
                     <span class="text-[#002b54]">Sustainable for me</span>
                 </div>
-                <h2 class="font-campaign text-4xl md:text-6xl text-[#002b54] leading-[0.95] mb-10">
-                    Consistency. <span class="text-[#AEE8FF] bg-[#002b54] px-2">Accessibility.</span> Accountability.
+                <h2 class="font-campaign text-4xl md:text-6xl text-[#002b54] leading-[1.15] md:leading-[0.95] mb-10 space-y-2 md:space-y-0">
+                    <span class="block md:inline">Consistency.</span>
+                    <span class="inline-block md:inline text-[#AEE8FF] bg-[#002b54] px-2">Accessibility.</span>
+                    <span class="block md:inline">Accountability.</span>
                 </h2>
                 <div class="longform-body text-gray-700 mb-12">
                     <p>A modern congressional campaign is built around raising money, and the candidate's calendar gets
                         shaped accordingly. I am not doing that. The hours most campaigns lose to fundraising are the
                         hours I get back, and I would rather spend them on something useful to the district.</p>
                     <p>My strength is organizing and conveying information. I like to make sense of how decisions in
-                        Washington land in the lives of people who live here. That is
-                        what the weekly video series is. It is the work I am best positioned to contribute,
-                        and it is work that is needed right now.</p>
+                        Washington land in the lives of people who live here. I like to think about communication and how we can make it more effective for everyone.</p>
                 </div>
 
                 <!-- The Weekly Schedule -->
@@ -540,7 +539,7 @@
                     <div class="longform-body text-gray-700">
                         <p>The standard practice of constituents emailing or calling their representative, only to be
                             processed by a staffer and handed a canned response, should no longer be accepted. We should
-                            demand better. <strong class="text-[#002b54]">ClearCandidate</strong> replaces this
+                            demand better. <a href="https://community.adamforwi.com" class="text-[#D62828] font-black underline decoration-[#D62828] underline-offset-4 hover:text-[#002b54] hover:decoration-[#002b54] transition-colors">ClearCandidate</a> replaces this
                             gatekeeping with predictable accessibility. If you have a question, post it on the platform;
                             when a topic gains enough community support, I provide a direct, public answer. This model
                             prioritizes slower, asynchronous communication to ensure that every response is deliberate,
@@ -559,29 +558,12 @@
                 </div>
 
                 <!-- Regular representation -->
-                <div class="mb-14 md:mb-16">
-                    <h3 class="font-campaign text-2xl md:text-3xl text-[#002b54] mb-5 leading-tight">Regular workers
-                        deserve regular representation.</h3>
-                    <div class="longform-body text-gray-700">
-                        <p>I have kept my job and my family life intact, and I intend to keep them that way through the
-                            campaign. Our representatives should be able to live lives that keep them connected to the
-                            communities that elect them.</p>
-                    </div>
-                    <details class="mt-6">
-                        <summary class="why-trigger">Why <span class="why-arrow">→</span></summary>
-                        <div class="why-content text-gray-700">
-                            The expectation that a candidate sacrifice everything — work, family, health — selects for a
-                            very particular kind of person, oftentimes someone who can afford to. These are not the same
-                            type of people who will represent the working class.
-                        </div>
-                    </details>
-                </div>
-
-                <!-- The $10k cap -->
+                <!-- Why limit spending -->
                 <div>
                     <h3 class="font-campaign text-2xl md:text-3xl text-[#002b54] mb-5 leading-tight">Why limit spending?
                     </h3>
                     <div class="longform-body text-gray-700">
+                        <p>Limiting my spending keeps my accountability with the voters.</p>
                         <p>My major point is that current method of campaigning is built on money in order to access
                             fragments of
                             your attention. I am arguing that our attention is our most valuable resource, and that is
@@ -590,6 +572,12 @@
                             better alternative to offer in return.
                         </p>
                     </div>
+                    <details class="mt-6">
+                        <summary class="why-trigger">Regular workers deserve regular representation <span class="why-arrow">→</span></summary>
+                        <div class="why-content text-gray-700">
+                            I have kept my job and my family life intact, and I intend to keep them that way through the campaign. Our representatives should be able to live lives that keep them connected to the communities that elect them. The expectation that a candidate sacrifice everything — work, family, health — selects for a very particular kind of person, oftentimes someone who can afford to. These are not the same type of people who will represent the working class.
+                        </div>
+                    </details>
                 </div>
             </div>
         </section>
@@ -688,7 +676,7 @@
                     Clear-eyed on the<br><span class="text-[#AEE8FF] bg-[#002b54] px-2">systemic issues.</span>
                 </h2>
                 <div class="longform-body text-gray-700 mb-16">
-                    <p>A sustainable politics should be a simple politics. Not simple in the sense of dumbed down, but
+                    <p>Sustainable politics should be simple politics. Not simple in the sense of dumbed down, but
                         simple in the sense that a person holding down a job and raising a family can understand the
                         day-to-day decisions without an advanced degree. The way we get there is to notice that most of
                         what is
@@ -701,7 +689,7 @@
 
                 <div class="issue-block">
                     <span class="issue-number">01</span>
-                    <h3 class="font-campaign text-2xl md:text-3xl text-[#002b54] mb-5 leading-tight">Affordability is
+                    <h3 class="font-campaign text-2xl md:text-3xl text-[#002b54] mb-5 leading-tight">Affordability is rooted in
                         <span class="text-[#D62828]">wealth inequality.</span>
                     </h3>
                     <div class="longform-body text-gray-700">
@@ -727,8 +715,7 @@
 
                 <div class="issue-block">
                     <span class="issue-number">03</span>
-                    <h3 class="font-campaign text-2xl md:text-3xl text-[#002b54] mb-5 leading-tight">The people who do
-                        the work should <span class="text-[#D62828]">own the work.</span></h3>
+                    <h3 class="font-campaign text-2xl md:text-3xl text-[#002b54] mb-5 leading-tight">Workers deserve more of the <span class="text-[#D62828]">value they create.</span></h3>
                     <div class="longform-body text-gray-700">
                         <p>A data center comes to Wisconsin because the company that owns it answers to shareholders
                             somewhere else, and our land and our electricity are cheap line items on a balance sheet
